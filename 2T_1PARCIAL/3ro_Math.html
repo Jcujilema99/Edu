@@ -302,15 +302,62 @@
       .checkboxes{grid-template-columns:1fr}
     }
 
+    
+  
     @media print{
-      body{background:white}
-      .page{width:100%;margin:0}
-      .top-actions{display:none!important}
-      .hero,.lesson,.notice,.final-box,.unit-title{box-shadow:none}
-      .hero-art{display:none}
-      a{color:inherit;text-decoration:none}
-      @page{size:A4;margin:12mm}
+      body{background:#fff !important;}
+      .page{width:100%;margin:0;}
+      .top-actions{display:none !important;}
+
+      /* Portada, indicaciones, título de unidad, cada tema y actividad final:
+         cada bloque comienza en una hoja nueva. */
+      .hero,
+      .notice,
+      .unit-title,
+      .lesson,
+      .final-box{
+        break-before:page;
+        page-break-before:always;
+        break-after:page;
+        page-break-after:always;
+        break-inside:avoid;
+        page-break-inside:avoid;
+        box-shadow:none !important;
+        margin:0 !important;
+      }
+
+      /* La portada es la primera hoja, por eso no necesita salto antes. */
+      .hero{
+        break-before:auto;
+        page-break-before:auto;
+      }
+
+      /* Evita cortes internos en ejemplos, gráficos y pasos. */
+      .visual-card,
+      .example,
+      .key-points,
+      .key-point,
+      .steps,
+      .step,
+      .operation,
+      .worksheet-ops,
+      .worksheet-op,
+      .task{
+        break-inside:avoid;
+        page-break-inside:avoid;
+      }
+
+      footer{
+        break-before:page;
+        page-break-before:always;
+      }
+
+      @page{
+        size:A4;
+        margin:10mm;
+      }
     }
+
   </style>
 </head>
 
