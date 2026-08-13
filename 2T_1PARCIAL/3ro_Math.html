@@ -302,37 +302,60 @@
       .checkboxes{grid-template-columns:1fr}
     }
 
-    
-  
+
     @media print{
       body{background:#fff !important;}
       .page{width:100%;margin:0;}
       .top-actions{display:none !important;}
 
-      /* Portada, indicaciones, título de unidad, cada tema y actividad final:
-         cada bloque comienza en una hoja nueva. */
+      /* Portada + indicaciones + título de unidad: una sola hoja */
       .hero,
       .notice,
-      .unit-title,
-      .lesson,
-      .final-box{
-        break-before:page;
-        page-break-before:always;
-        break-after:page;
-        page-break-after:always;
-        break-inside:avoid;
-        page-break-inside:avoid;
+      .unit-title{
+        break-before:auto !important;
+        page-break-before:auto !important;
+        break-after:auto !important;
+        page-break-after:auto !important;
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
+        box-shadow:none !important;
+      }
+
+      .hero{
+        margin:0 0 8mm 0 !important;
+        min-height:auto !important;
+      }
+
+      .notice{
+        margin:0 0 8mm 0 !important;
+      }
+
+      .unit-title{
+        margin:0 !important;
+      }
+
+      /* Desde T1, cada tema inicia en una hoja nueva */
+      .lesson{
+        break-before:page !important;
+        page-break-before:always !important;
+        break-after:auto !important;
+        page-break-after:auto !important;
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
         box-shadow:none !important;
         margin:0 !important;
       }
 
-      /* La portada es la primera hoja, por eso no necesita salto antes. */
-      .hero{
-        break-before:auto;
-        page-break-before:auto;
+      /* Actividad final también inicia en hoja nueva */
+      .final-box{
+        break-before:page !important;
+        page-break-before:always !important;
+        break-inside:auto !important;
+        page-break-inside:auto !important;
+        box-shadow:none !important;
+        margin:0 !important;
       }
 
-      /* Evita cortes internos en ejemplos, gráficos y pasos. */
       .visual-card,
       .example,
       .key-points,
@@ -343,8 +366,30 @@
       .worksheet-ops,
       .worksheet-op,
       .task{
-        break-inside:avoid;
-        page-break-inside:avoid;
+        break-inside:avoid !important;
+        page-break-inside:avoid !important;
+      }
+
+      /* Reducimos ligeramente el tamaño de la portada para asegurar que entre en una hoja */
+      .hero-main{padding:18px 22px !important;}
+      .hero-art{min-height:150px !important;}
+      .hero h1{font-size:2rem !important;}
+      .hero p{font-size:.9rem !important;line-height:1.45 !important;}
+      .meta{margin-top:10px !important;gap:6px !important;}
+      .pill{padding:6px 9px !important;font-size:.78rem !important;}
+
+      .notice{
+        padding:12px 16px !important;
+        font-size:.87rem !important;
+        line-height:1.45 !important;
+      }
+
+      .unit-title{
+        padding:14px 18px !important;
+      }
+      .unit-title h2{
+        font-size:1.45rem !important;
+        line-height:1.25 !important;
       }
 
       footer{
@@ -354,11 +399,11 @@
 
       @page{
         size:A4;
-        margin:10mm;
+        margin:9mm;
       }
     }
 
-  </style>
+</style>
 </head>
 
 <body id="top">
