@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.º Básica - Computación | U2 Trabajar con ventanas</title>
+
+  <style>
+    :root{
+      --blue:#4f9cf9;
+      --blue-dark:#2f6fc2;
+      --cyan:#53d3dc;
+      --green:#6fd08c;
+      --yellow:#ffd166;
+      --orange:#ff9f68;
+      --pink:#ff88b7;
+      --purple:#9c7cf6;
+      --ink:#29405f;
+      --muted:#687b94;
+      --bg:#f4faff;
+      --card:#ffffff;
+      --line:#dce9f7;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 8% 10%, rgba(83,211,220,.18), transparent 24%),
+        radial-gradient(circle at 92% 14%, rgba(255,136,183,.14), transparent 25%),
+        linear-gradient(180deg,#f8fcff,#eef8ff);
+      color:var(--ink);
+      line-height:1.6;
+    }
+
+    .page{
+      width:min(1120px,calc(100% - 28px));
+      margin:24px auto 50px;
+    }
+
+    .top-actions{
+      position:sticky;
+      top:10px;
+      z-index:20;
+      display:flex;
+      gap:10px;
+      justify-content:flex-end;
+      margin-bottom:14px;
+    }
+
+    .btn{
+      border:0;
+      border-radius:14px;
+      padding:12px 18px;
+      font-weight:800;
+      cursor:pointer;
+      box-shadow:0 10px 25px rgba(47,111,194,.18);
+      transition:.2s ease;
+    }
+
+    .btn:hover{transform:translateY(-2px)}
+    .btn-pdf{
+      color:white;
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+    }
+    .btn-top{
+      color:var(--blue-dark);
+      background:white;
+      border:1px solid var(--line);
+    }
+
+    .hero{
+      overflow:hidden;
+      border-radius:28px;
+      background:linear-gradient(135deg,#ffffff,#edf7ff);
+      border:1px solid var(--line);
+      box-shadow:0 18px 45px rgba(68,112,160,.12);
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      min-height:300px;
+    }
+
+    .hero-main{padding:34px}
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:.88rem;
+      font-weight:900;
+      color:#356da9;
+      background:#eaf5ff;
+      border:1px solid #cfe5fb;
+      padding:8px 12px;
+      border-radius:999px;
+    }
+
+    h1{
+      margin:14px 0 8px;
+      font-size:clamp(2rem,5vw,4rem);
+      line-height:1.02;
+      letter-spacing:-2px;
+    }
+
+    .gradient{
+      background:linear-gradient(90deg,var(--blue-dark),var(--purple),#2caeb7);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{color:var(--muted);max-width:720px}
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:20px;
+    }
+
+    .pill{
+      padding:9px 12px;
+      border-radius:12px;
+      font-weight:800;
+      background:white;
+      border:1px solid var(--line);
+      font-size:.9rem;
+    }
+
+    .hero-art{
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(135deg,rgba(79,156,249,.13),rgba(156,124,246,.12));
+      font-size:100px;
+      min-height:250px;
+    }
+
+    .notice{
+      margin:22px 0;
+      border-radius:20px;
+      padding:18px 20px;
+      background:linear-gradient(135deg,#fff8da,#fffdf2);
+      border:1px solid #ffe29a;
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+    }
+    .notice .icon{font-size:28px}
+    .notice strong{color:#9b6a00}
+
+    .toc{
+      margin:22px 0;
+      padding:22px;
+      background:white;
+      border:1px solid var(--line);
+      border-radius:22px;
+      box-shadow:0 12px 35px rgba(68,112,160,.08);
+    }
+
+    .toc h2{margin-top:0}
+    .toc-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+
+    .toc a{
+      padding:13px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#f9fcff;
+      font-weight:800;
+      color:#3d6594;
+    }
+
+    .lesson{
+      margin:22px 0;
+      background:white;
+      border-radius:24px;
+      border:1px solid var(--line);
+      box-shadow:0 12px 35px rgba(68,112,160,.08);
+      overflow:hidden;
+    }
+
+    .lesson-head{
+      padding:20px 24px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .lesson-number{
+      width:52px;
+      height:52px;
+      flex:0 0 auto;
+      border-radius:17px;
+      display:grid;
+      place-items:center;
+      font-size:1.2rem;
+      font-weight:900;
+      color:white;
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+    }
+
+    .lesson:nth-of-type(2) .lesson-number{background:linear-gradient(135deg,var(--cyan),var(--blue))}
+    .lesson:nth-of-type(3) .lesson-number{background:linear-gradient(135deg,var(--green),var(--cyan))}
+    .lesson:nth-of-type(4) .lesson-number{background:linear-gradient(135deg,var(--yellow),var(--orange));color:#6b4b00}
+    .lesson:nth-of-type(5) .lesson-number{background:linear-gradient(135deg,var(--pink),var(--purple))}
+    .lesson:nth-of-type(6) .lesson-number{background:linear-gradient(135deg,var(--purple),var(--blue))}
+
+    .lesson-head h2{margin:0;font-size:1.35rem}
+    .lesson-head p{margin:3px 0 0;color:var(--muted);font-size:.92rem}
+
+    .lesson-body{padding:24px}
+    .lesson-body h3{color:#315f94;margin-bottom:7px}
+    .lesson-body ul{padding-left:22px}
+
+    .example{
+      background:#f7fbff;
+      border-left:5px solid var(--blue);
+      padding:14px 16px;
+      border-radius:12px;
+      margin:14px 0;
+    }
+
+    .activity{
+      margin-top:18px;
+      padding:18px;
+      border-radius:18px;
+      background:linear-gradient(135deg,#f9fbff,#fffaf5);
+      border:1px dashed #b9cce3;
+    }
+
+    .activity h3{margin-top:0}
+    .task{
+      margin:12px 0;
+      padding:12px 14px;
+      border-radius:12px;
+      background:white;
+      border:1px solid var(--line);
+    }
+
+    .answer-line{
+      display:block;
+      border-bottom:2px dotted #9eb4cc;
+      min-height:28px;
+      margin-top:7px;
+    }
+
+    .checkboxes{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:8px;
+      margin-top:8px;
+    }
+
+    .check{
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:white;
+    }
+
+    .final-box{
+      padding:22px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#ecfff3,#f4fffb);
+      border:1px solid #bfe9ce;
+      margin-top:24px;
+    }
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      padding:24px 0 8px;
+      font-size:.9rem;
+    }
+
+
+    .visual-card{
+      margin:18px 0 8px;
+      padding:18px;
+      border-radius:20px;
+      background:linear-gradient(135deg,#f8fcff,#fffaf6);
+      border:1px solid #d9e8f6;
+      box-shadow:0 10px 24px rgba(68,112,160,.07);
+    }
+    .visual-card h4{
+      margin:0 0 12px;
+      color:#2f5f94;
+      font-size:1rem;
+    }
+    .visual-card svg{
+      display:block;
+      width:100%;
+      height:auto;
+      max-height:300px;
+    }
+    .mini-note{
+      margin-top:10px;
+      color:#667892;
+      font-size:.9rem;
+      text-align:center;
+      font-weight:700;
+    }
+    .key-points{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:15px;
+    }
+    .key-point{
+      padding:14px;
+      border-radius:14px;
+      background:#f8fbff;
+      border:1px solid #e0ebf7;
+    }
+    .key-point b{color:#2e5f95}
+    @media(max-width:650px){
+      .key-points{grid-template-columns:1fr}
+    }
+
+    @media(max-width:850px){
+      .hero{grid-template-columns:1fr}
+      .hero-art{min-height:180px;font-size:76px}
+      .toc-grid{grid-template-columns:1fr 1fr}
+    }
+
+    @media(max-width:560px){
+      .page{width:min(100% - 18px,1120px)}
+      .hero-main{padding:24px 20px}
+      .hero-art{display:none}
+      .top-actions{justify-content:stretch}
+      .top-actions .btn{flex:1;padding:11px 10px;font-size:.85rem}
+      .toc-grid{grid-template-columns:1fr}
+      .lesson-head{align-items:flex-start}
+      .lesson-body{padding:18px}
+      .checkboxes{grid-template-columns:1fr}
+    }
+
+    @media print{
+      body{background:white}
+      .page{width:100%;margin:0}
+      .top-actions,.toc{display:none !important}
+      .hero,.lesson,.notice,.final-box{
+        box-shadow:none;
+        break-inside:avoid;
+      }
+      .hero{min-height:auto}
+      .hero-art{display:none}
+      .lesson{break-before:auto}
+      a{color:inherit;text-decoration:none}
+      @page{size:A4;margin:12mm}
+    }
+  </style>
+</head>
+
+<body id="top">
+  <div class="page">
+    <div class="top-actions">
+      <button class="btn btn-pdf" onclick="downloadPDF()">📄 Descargar materia en PDF</button>
+      <button class="btn btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆️ Inicio</button>
+    </div>
+
+    <section class="hero">
+      <div class="hero-main">
+        <span class="kicker">💻 COMPUTACIÓN · 4.º DE BÁSICA</span>
+        <h1>U2 · <span class="gradient">Trabajar con ventanas</span></h1>
+        <p>
+          En esta unidad aprenderás a utilizar el Explorador de archivos de Windows,
+          reconocer sus partes y organizar correctamente archivos y carpetas.
+        </p>
+
+        <div class="meta">
+          <span class="pill">📘 Unidad 2</span>
+          <span class="pill">👦 4.º de Básica</span>
+          <span class="pill">📅 Presentación: miércoles 2 de septiembre de 2026</span>
+        </div>
+      </div>
+      <div class="hero-art">🗂️</div>
+    </section>
+    <div class="notice">
+      <div class="icon">⭐</div>
+      <div>
+        <strong>Indicaciones para el estudiante</strong><br>
+        Toda la <b>materia debe ser copiada obligatoriamente en el cuaderno de Computación</b>.
+        La <b>actividad final de 10 preguntas</b> debe realizarse en <b>hojas de carpeta a cuadros</b>.
+        Tanto la materia del cuaderno como la actividad final deberán ser entregadas completas el
+        <b>miércoles 2 de septiembre de 2026</b>.
+      </div>
+    </div>
+
+    
+    <section style="margin:24px 0 18px;padding:24px;border-radius:24px;
+      background:linear-gradient(135deg,#eaf6ff,#f7f1ff,#fff8ea);
+      border:1px solid #cfe3f7;text-align:center;
+      box-shadow:0 12px 30px rgba(68,112,160,.10);">
+      <div style="font-size:.88rem;font-weight:900;color:#56739a;letter-spacing:1px;">
+        📘 COMPUTACIÓN · 4.º DE BÁSICA
+      </div>
+      <h2 style="margin:7px 0 3px;font-size:clamp(1.8rem,4vw,2.6rem);color:#234f80;">
+        UNIDAD 2: TRABAJAR CON VENTANAS
+      </h2>
+      <p style="margin:5px 0 0;color:#687b94;font-weight:700;">
+        Materia para copiar en el cuaderno
+      </p>
+    </section>
+<section class="lesson" id="l1">
+      <div class="lesson-head">
+        <div class="lesson-number">L1</div>
+        <div>
+          <h2>El Explorador de archivos</h2>
+          <p>Conocemos la herramienta que permite organizar nuestros documentos.</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <h3>¿Qué es el Explorador de archivos?</h3>
+        <p>
+          El <b>Explorador de archivos</b> es una herramienta de Windows que sirve para
+          <b>ver, abrir y organizar</b> archivos y carpetas. Con él podemos encontrar tareas,
+          imágenes, documentos y otros trabajos guardados en la computadora.
+        </p>
+
+        <div class="key-points">
+          <div class="key-point">📄 <b>Archivo:</b> guarda información, por ejemplo una imagen o un documento.</div>
+          <div class="key-point">📁 <b>Carpeta:</b> sirve para ordenar y guardar archivos.</div>
+        </div>
+
+        <div class="visual-card">
+          <h4>🖼️ Así se ve una ventana del Explorador de archivos</h4>
+          <svg viewBox="0 0 760 330" role="img" aria-label="Ilustración del Explorador de archivos">
+            <rect x="20" y="20" width="720" height="290" rx="22" fill="#ffffff" stroke="#bcd7f1" stroke-width="3"/>
+            <rect x="20" y="20" width="720" height="48" rx="22" fill="#dff0ff"/>
+            <circle cx="52" cy="44" r="7" fill="#ff8a8a"/><circle cx="75" cy="44" r="7" fill="#ffd166"/><circle cx="98" cy="44" r="7" fill="#69d58c"/>
+            <rect x="44" y="87" width="185" height="196" rx="14" fill="#f3f8fd"/>
+            <text x="63" y="120" font-size="18" fill="#3d6594" font-weight="700">Acceso rápido</text>
+            <text x="63" y="155" font-size="16" fill="#58738f">📁 Escritorio</text>
+            <text x="63" y="187" font-size="16" fill="#58738f">📁 Documentos</text>
+            <text x="63" y="219" font-size="16" fill="#58738f">📁 Descargas</text>
+            <rect x="255" y="88" width="455" height="42" rx="12" fill="#f4f9ff" stroke="#d9e8f6"/>
+            <text x="275" y="115" font-size="16" fill="#688099">Este equipo &gt; Documentos</text>
+            <rect x="255" y="148" width="132" height="112" rx="14" fill="#fff7d9" stroke="#f0d77d"/>
+            <path d="M282 175h42l13 14h31v48h-86z" fill="#ffd45a"/>
+            <text x="278" y="282" font-size="15" fill="#49698f">Computación</text>
+            <rect x="406" y="148" width="132" height="112" rx="14" fill="#edf7ff" stroke="#bcd7f1"/>
+            <rect x="444" y="173" width="56" height="66" rx="6" fill="#6eb5ff"/>
+            <text x="438" y="282" font-size="15" fill="#49698f">Tarea.docx</text>
+            <rect x="557" y="148" width="132" height="112" rx="14" fill="#f7f0ff" stroke="#d9c7ff"/>
+            <circle cx="623" cy="201" r="30" fill="#a98cf7"/>
+            <text x="586" y="282" font-size="15" fill="#49698f">Foto.jpg</text>
+          </svg>
+          <div class="mini-note">Observa que las carpetas y archivos aparecen dentro del área de contenido.</div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section class="lesson" id="l2">
+      <div class="lesson-head">
+        <div class="lesson-number">L2</div>
+        <div>
+          <h2>Elementos del Explorador de archivos</h2>
+          <p>Identificamos las principales partes de la ventana.</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <h3>Partes principales del Explorador</h3>
+        <p>
+          Para usar correctamente esta herramienta debemos reconocer sus partes más importantes.
+        </p>
+        <ul>
+          <li><b>Barra de direcciones:</b> indica en qué carpeta estamos.</li>
+          <li><b>Panel de navegación:</b> permite entrar rápidamente a otras ubicaciones.</li>
+          <li><b>Área de contenido:</b> muestra los archivos y carpetas.</li>
+          <li><b>Cuadro de búsqueda:</b> ayuda a encontrar información.</li>
+        </ul>
+
+        <div class="visual-card">
+          <h4>🧩 Partes de la ventana</h4>
+          <svg viewBox="0 0 760 360" role="img" aria-label="Partes del Explorador de archivos">
+            <rect x="25" y="25" width="710" height="285" rx="18" fill="#fff" stroke="#bcd7f1" stroke-width="3"/>
+            <rect x="25" y="25" width="710" height="44" rx="18" fill="#e7f3ff"/>
+            <rect x="235" y="86" width="330" height="40" rx="10" fill="#f7fbff" stroke="#cfe3f7"/>
+            <rect x="40" y="86" width="165" height="200" rx="12" fill="#f4f8fc"/>
+            <rect x="235" y="145" width="470" height="141" rx="12" fill="#fbfdff"/>
+            <rect x="580" y="86" width="125" height="40" rx="10" fill="#fff8e8" stroke="#f1dc9a"/>
+
+            <line x1="400" y1="83" x2="400" y2="48" stroke="#4f9cf9" stroke-width="3"/>
+            <text x="318" y="42" font-size="17" fill="#2f6fc2" font-weight="700">Barra de direcciones</text>
+
+            <line x1="120" y1="155" x2="120" y2="330" stroke="#6fd08c" stroke-width="3"/>
+            <text x="50" y="350" font-size="17" fill="#3f8a59" font-weight="700">Panel de navegación</text>
+
+            <line x1="460" y1="210" x2="460" y2="330" stroke="#9c7cf6" stroke-width="3"/>
+            <text x="390" y="350" font-size="17" fill="#7657c7" font-weight="700">Área de contenido</text>
+
+            <line x1="642" y1="84" x2="690" y2="48" stroke="#ffb84d" stroke-width="3"/>
+            <text x="560" y="42" font-size="17" fill="#b57a12" font-weight="700">Búsqueda</text>
+          </svg>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section class="lesson" id="l3">
+      <div class="lesson-head">
+        <div class="lesson-number">L3</div>
+        <div>
+          <h2>Seleccionar archivos y carpetas</h2>
+          <p>Aprendemos a elegir uno o varios elementos.</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <h3>Seleccionar archivos y carpetas</h3>
+        <p>
+          <b>Seleccionar</b> significa marcar un elemento antes de realizar una acción.
+          El archivo o carpeta seleccionado aparece resaltado.
+        </p>
+        <ul>
+          <li>Un archivo: <b>un clic</b>.</li>
+          <li>Varios archivos separados: mantener <b>Ctrl</b> y hacer clic.</li>
+          <li>Todos los archivos: <b>Ctrl + A</b>.</li>
+        </ul>
+
+        <div class="visual-card">
+          <h4>🖱️ Ejemplo de selección</h4>
+          <svg viewBox="0 0 760 250" role="img" aria-label="Archivos seleccionados">
+            <rect x="70" y="45" width="160" height="150" rx="18" fill="#e8f4ff" stroke="#4f9cf9" stroke-width="4"/>
+            <rect x="300" y="45" width="160" height="150" rx="18" fill="#fff" stroke="#dce9f7" stroke-width="3"/>
+            <rect x="530" y="45" width="160" height="150" rx="18" fill="#e8f4ff" stroke="#4f9cf9" stroke-width="4"/>
+            <text x="122" y="105" font-size="45">📄</text><text x="110" y="165" font-size="17" fill="#315f94">Tarea 1</text>
+            <text x="352" y="105" font-size="45">📄</text><text x="340" y="165" font-size="17" fill="#315f94">Tarea 2</text>
+            <text x="582" y="105" font-size="45">📄</text><text x="570" y="165" font-size="17" fill="#315f94">Tarea 3</text>
+            <text x="190" y="225" font-size="18" fill="#2f6fc2" font-weight="700">Ctrl + clic permite seleccionar elementos separados</text>
+          </svg>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section class="lesson" id="l4">
+      <div class="lesson-head">
+        <div class="lesson-number">L4</div>
+        <div>
+          <h2>Copiar y mover archivos y carpetas</h2>
+          <p>Organizamos información sin perder nuestros archivos.</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <h3>Copiar y mover</h3>
+        <p>
+          <b>Copiar</b> crea una segunda versión del archivo y el original permanece en su lugar.
+          <b>Mover</b> cambia el archivo de ubicación.
+        </p>
+
+        <div class="key-points">
+          <div class="key-point">📋 <b>Copiar:</b> Ctrl + C y luego Ctrl + V.</div>
+          <div class="key-point">✂️ <b>Mover:</b> Ctrl + X y luego Ctrl + V.</div>
+        </div>
+
+        <div class="visual-card">
+          <h4>🔄 Diferencia entre copiar y mover</h4>
+          <svg viewBox="0 0 760 300" role="img" aria-label="Copiar y mover archivos">
+            <rect x="45" y="65" width="180" height="150" rx="20" fill="#eef7ff" stroke="#bcd7f1"/>
+            <text x="87" y="105" font-size="20" fill="#315f94" font-weight="700">Carpeta A</text>
+            <text x="106" y="165" font-size="52">📄</text>
+            <rect x="535" y="65" width="180" height="150" rx="20" fill="#f4fff6" stroke="#c7ebd0"/>
+            <text x="577" y="105" font-size="20" fill="#47875a" font-weight="700">Carpeta B</text>
+            <text x="596" y="165" font-size="52">📄</text>
+            <path d="M245 120 C330 65, 430 65, 515 120" fill="none" stroke="#4f9cf9" stroke-width="6" marker-end="url(#arrow)"/>
+            <path d="M245 180 C330 235, 430 235, 515 180" fill="none" stroke="#ff9f68" stroke-width="6" marker-end="url(#arrow2)"/>
+            <text x="328" y="80" font-size="18" fill="#2f6fc2" font-weight="700">COPIAR</text>
+            <text x="332" y="255" font-size="18" fill="#c66c38" font-weight="700">MOVER</text>
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4f9cf9"/></marker>
+              <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ff9f68"/></marker>
+            </defs>
+          </svg>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section class="lesson" id="l5">
+      <div class="lesson-head">
+        <div class="lesson-number">L5</div>
+        <div>
+          <h2>Crear carpetas y eliminar archivos y carpetas</h2>
+          <p>Mantenemos nuestra computadora organizada.</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <h3>Crear y eliminar carpetas</h3>
+        <p>
+          Para crear una carpeta podemos hacer clic derecho en un espacio vacío y elegir
+          <b>Nuevo → Carpeta</b>. Después escribimos un nombre claro.
+        </p>
+        <p>
+          Para eliminar un archivo o carpeta, primero lo seleccionamos y usamos la opción
+          <b>Eliminar</b>. Normalmente pasa a la <b>Papelera de reciclaje</b>.
+        </p>
+
+        <div class="visual-card">
+          <h4>📁 Organizar bien facilita encontrar tus trabajos</h4>
+          <svg viewBox="0 0 760 260" role="img" aria-label="Organización de carpetas">
+            <rect x="70" y="50" width="620" height="160" rx="22" fill="#fbfdff" stroke="#d7e7f5"/>
+            <text x="110" y="105" font-size="48">📁</text>
+            <text x="170" y="96" font-size="22" fill="#315f94" font-weight="700">Computación</text>
+            <line x1="190" y1="115" x2="190" y2="165" stroke="#b9cce3" stroke-width="3"/>
+            <line x1="190" y1="165" x2="480" y2="165" stroke="#b9cce3" stroke-width="3"/>
+            <text x="230" y="195" font-size="20" fill="#49698f">📁 Tareas</text>
+            <text x="410" y="195" font-size="20" fill="#49698f">📁 Imágenes</text>
+            <text x="555" y="195" font-size="20" fill="#49698f">🗑️ Papelera</text>
+          </svg>
+        </div>
+
+
+      </div>
+    </section>
+
+    <section class="lesson" id="l6">
+      <div class="lesson-head">
+        <div class="lesson-number">L6</div>
+        <div>
+          <h2>Búsquedas de archivos y carpetas</h2>
+          <p>Encontramos rápidamente lo que necesitamos.</p>
+        </div>
+      </div>
+      <div class="lesson-body">
+        <h3>Buscar archivos y carpetas</h3>
+        <p>
+          El <b>cuadro de búsqueda</b> sirve para encontrar rápidamente un archivo o carpeta.
+          Podemos escribir el nombre completo o solo una parte.
+        </p>
+        <div class="example">
+          🔎 Si el archivo se llama <b>“Tarea_Matemática.docx”</b>, podemos escribir
+          <b>“Tarea”</b> o <b>“Matemática”</b>.
+        </div>
+
+        <div class="visual-card">
+          <h4>🔍 Ejemplo de búsqueda</h4>
+          <svg viewBox="0 0 760 250" role="img" aria-label="Búsqueda de archivos">
+            <rect x="85" y="45" width="590" height="62" rx="20" fill="#fff" stroke="#bcd7f1" stroke-width="3"/>
+            <circle cx="126" cy="76" r="16" fill="none" stroke="#4f9cf9" stroke-width="5"/>
+            <line x1="138" y1="89" x2="152" y2="103" stroke="#4f9cf9" stroke-width="5"/>
+            <text x="175" y="85" font-size="22" fill="#49698f">Tarea</text>
+            <rect x="145" y="135" width="470" height="72" rx="16" fill="#eef7ff" stroke="#cfe3f7"/>
+            <text x="180" y="180" font-size="24">📄</text>
+            <text x="225" y="178" font-size="20" fill="#315f94" font-weight="700">Tarea_Matemática.docx</text>
+          </svg>
+        </div>
+
+
+      </div>
+    </section>
+<section class="final-box" id="actividad-final">
+      <div style="text-align:center;margin-bottom:14px;"><span style="display:inline-block;background:#e9f5ff;color:#2f6fc2;padding:7px 12px;border-radius:999px;font-weight:900;">DESPUÉS DE COPIAR TODA LA MATERIA</span></div><h2>📝 Actividad final – Unidad 2</h2>
+      <p><b>Indicaciones:</b> realiza esta actividad en <b>hojas de carpeta a cuadros</b>. Lee cuidadosamente y trabaja con orden y buena letra.</p>
+      <div class="activity">
+        <h3>1. Verdadero o falso</h3><div class="task"><p>a) ___ El Explorador de archivos permite organizar archivos y carpetas.</p><p>b) ___ Las carpetas sirven únicamente para guardar fotografías.</p></div>
+        <h3>2. Encierra la respuesta correcta</h3><div class="task"><p>¿Qué elemento muestra la ubicación en la que estamos trabajando?</p><p>a) Barra de direcciones &nbsp;&nbsp; b) Papelera de reciclaje &nbsp;&nbsp; c) Escritorio</p></div>
+        <h3>3. Une con líneas</h3><div class="task"><p>Une cada elemento con su función:</p><div class="checkboxes"><div class="check"><b>Cuadro de búsqueda</b></div><div class="check">Muestra archivos y carpetas.</div><div class="check"><b>Área de contenido</b></div><div class="check">Permite encontrar información.</div><div class="check"><b>Panel de navegación</b></div><div class="check">Permite acceder a diferentes ubicaciones.</div></div></div>
+        <h3>4. Completa</h3><div class="task"><p>a) Para seleccionar varios archivos separados utilizamos la tecla __________.</p><p>b) Para seleccionar todos los elementos podemos utilizar __________.</p></div>
+        <h3>5. Escribe con tus propias palabras</h3><div class="task"><p>a) ¿Qué diferencia existe entre <b>copiar</b> y <b>mover</b> un archivo?</p><span class="answer-line"></span><span class="answer-line"></span><p>b) ¿Por qué es importante organizar nuestros archivos en carpetas?</p><span class="answer-line"></span><span class="answer-line"></span></div>
+        <h3>6. Encierra la opción correcta</h3><div class="task"><p>¿Qué combinación de teclas utilizamos para copiar?</p><p>a) Ctrl + C &nbsp;&nbsp;&nbsp; b) Ctrl + V &nbsp;&nbsp;&nbsp; c) Ctrl + X</p></div>
+        <h3>7. Une con líneas</h3><div class="task"><p>Relaciona cada atajo con su función:</p><div class="checkboxes"><div class="check"><b>Ctrl + C</b></div><div class="check">Pegar</div><div class="check"><b>Ctrl + X</b></div><div class="check">Copiar</div><div class="check"><b>Ctrl + V</b></div><div class="check">Cortar</div></div></div>
+        <h3>8. Dibuja y pinta</h3><div class="task"><p>Dibuja una <b>carpeta de Windows</b>, píntala y escribe dentro de ella <b>“Mis tareas”</b>.</p><div style="height:150px;border:2px dashed #b9cce3;border-radius:14px;margin-top:12px;background:#fff;"></div></div>
+        <h3>9. Verdadero o falso</h3><div class="task"><p>a) ___ Un archivo eliminado normalmente pasa a la Papelera de reciclaje.</p><p>b) ___ Debemos revisar qué archivo seleccionamos antes de eliminarlo.</p></div>
+        <h3>10. Búsqueda de archivos</h3><div class="task"><p>a) Si deseas encontrar <b>“Tarea_Matemática.docx”</b>, escribe una palabra que podrías colocar en el cuadro de búsqueda.</p><span class="answer-line"></span><p>b) Explica con tus propias palabras para qué sirve el cuadro de búsqueda.</p><span class="answer-line"></span><span class="answer-line"></span></div>
+      </div>
+      <p style="margin-top:18px;"><b>Fecha de presentación: miércoles 2 de septiembre de 2026.</b></p>
+    </section>
+
+    <footer>
+      Material educativo de Computación · 4.º de Básica · Unidad 2
+    </footer>
+  </div>
+
+  <script>
+    function downloadPDF(){
+      // Abre el cuadro de impresión del navegador.
+      // Allí el estudiante puede escoger “Guardar como PDF”.
+      window.print();
+    }
+  </script>
+</body>
+</html>
