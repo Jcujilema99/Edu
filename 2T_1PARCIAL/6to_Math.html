@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>6.º Básica - Matemática | Unidad 2</title>
+    <style>
+      :root {
+        --ink: #274665;
+        --blue: #4b9fe8;
+        --cyan: #58c9d4;
+        --purple: #826fe0;
+        --yellow: #ffd76b;
+        --line: #dce9f5;
+        --soft: #f8fbff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: var(--ink);
+        line-height: 1.55;
+        background: linear-gradient(180deg, #effbff, #fff9ef);
+      }
+      .page {
+        width: min(1080px, calc(100% - 24px));
+        margin: 18px auto 45px;
+      }
+      .actions {
+        text-align: right;
+        position: sticky;
+        top: 8px;
+        z-index: 10;
+      }
+      .actions button {
+        border: 0;
+        border-radius: 14px;
+        padding: 12px 18px;
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        background: linear-gradient(135deg, #42a9e7, #756de6);
+        box-shadow: 0 8px 20px #527da833;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: 0 13px 34px #45678916;
+      }
+      .hero-main {
+        padding: 28px;
+      }
+      .badge {
+        display: inline-block;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: #eaf7ff;
+        color: #3277b4;
+        font-weight: 900;
+        font-size: 0.84rem;
+      }
+      h1 {
+        font-size: clamp(2rem, 4vw, 3.35rem);
+        line-height: 1.08;
+        margin: 12px 0;
+      }
+      .gradient {
+        background: linear-gradient(90deg, #268ac7, #54bda7, #795fc9);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+      .meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
+      .pill {
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        border-radius: 11px;
+        font-weight: 800;
+        font-size: 0.84rem;
+      }
+      .hero-art {
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #e8f7ff, #f4efff);
+      }
+      .hero-art svg {
+        width: 85%;
+        max-width: 300px;
+      }
+      .notice,
+      .unit-title {
+        margin: 15px 0;
+        border-radius: 18px;
+        padding: 15px 18px;
+      }
+      .notice {
+        background: #fff9e5;
+        border: 1px solid #efd06d;
+      }
+      .unit-title {
+        text-align: center;
+        background: linear-gradient(135deg, #e9f8ff, #f3efff, #ecfff4);
+        border: 1px solid #cfe5f4;
+      }
+      .unit-title h2 {
+        margin: 4px;
+        font-size: 1.55rem;
+      }
+      .lesson {
+        margin: 22px 0;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 23px;
+        overflow: hidden;
+        box-shadow: 0 10px 28px #45678912;
+      }
+      .lesson-head {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--line);
+      }
+      .lesson-number {
+        width: 52px;
+        height: 52px;
+        display: grid;
+        place-items: center;
+        border-radius: 15px;
+        color: #fff;
+        font-weight: 900;
+        background: linear-gradient(135deg, #53c7d4, #4c8fe5);
+      }
+      .lesson-head h2 {
+        margin: 0;
+        font-size: 1.3rem;
+      }
+      .lesson-head p {
+        margin: 2px 0;
+        color: #6c8095;
+        font-size: 0.9rem;
+      }
+      .lesson-body {
+        padding: 22px;
+      }
+      .lesson-body h3 {
+        color: #2f6fa6;
+      }
+      .steps {
+        display: grid;
+        gap: 9px;
+        margin: 14px 0;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 11px;
+        padding: 12px;
+        border-radius: 13px;
+        background: #f7fbff;
+        border: 1px solid #e0ebf5;
+      }
+      .step-num {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        color: white;
+        font-weight: 900;
+        background: linear-gradient(135deg, #4ba9df, #7a70dd);
+      }
+      .step p {
+        margin: 0;
+      }
+      .example,
+      .tip {
+        padding: 12px 14px;
+        border-radius: 12px;
+        margin: 13px 0;
+      }
+      .example {
+        background: #eef8ff;
+        border-left: 5px solid #58a5e8;
+      }
+      .tip {
+        background: #fff8df;
+        border-left: 5px solid #efbd4c;
+      }
+      .mathbox {
+        padding: 16px;
+        border: 1px solid #dbe8f4;
+        border-radius: 16px;
+        background: #f9fcff;
+        margin: 15px 0;
+        text-align: center;
+        font-size: 1.15rem;
+        font-weight: 800;
+      }
+      .visual {
+        padding: 12px;
+        border-radius: 17px;
+        background: linear-gradient(135deg, #f8fcff, #fffaf4);
+        border: 1px solid #dce9f5;
+        margin-top: 15px;
+      }
+      .visual svg {
+        display: block;
+        width: 100%;
+        max-height: 320px;
+      }
+      .factor {
+        display: inline-block;
+        padding: 4px 9px;
+        border-radius: 8px;
+        background: #eaf6ff;
+        margin: 3px;
+        font-weight: 900;
+      }
+      .final {
+        margin-top: 24px;
+        padding: 22px;
+        background: #fff;
+        border: 1px solid #e8da9b;
+        border-radius: 22px;
+      }
+      .task {
+        padding: 13px;
+        margin: 10px 0;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fbfdff;
+      }
+      .draw {
+        height: 140px;
+        border: 2px dashed #b9ccdc;
+        border-radius: 11px;
+        margin-top: 9px;
+      }
+      table {
+        border-collapse: collapse;
+        margin: 12px auto;
+        width: min(650px, 100%);
+      }
+      th,
+      td {
+        border: 1px solid #bcd0e1;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background: #edf7ff;
+      }
+      @media (max-width: 700px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .hero-art {
+          display: none;
+        }
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        .page {
+          width: 100%;
+          margin: 0;
+        }
+        .actions {
+          display: none;
+        }
+        .hero,
+        .notice,
+        .unit-title {
+          break-inside: avoid;
+          page-break-inside: avoid;
+          box-shadow: none;
+        }
+        .hero {
+          grid-template-columns: 1.2fr 0.8fr;
+        }
+        .hero-main {
+          padding: 15px 18px;
+        }
+        .hero-art svg {
+          max-height: 155px;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        .notice,
+        .unit-title {
+          margin: 5mm 0;
+          padding: 10px 13px;
+          font-size: 0.88rem;
+        }
+        .unit-title h2 {
+          font-size: 1.25rem;
+        }
+        .lesson {
+          break-before: page;
+          page-break-before: always;
+          break-inside: avoid;
+          page-break-inside: avoid;
+          margin: 0;
+          box-shadow: none;
+        }
+        .steps,
+        .step,
+        .example,
+        .tip,
+        .mathbox,
+        .visual,
+        table {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+        .final {
+          break-before: page;
+          page-break-before: always;
+          margin: 0;
+        }
+        @page {
+          size: A4;
+          margin: 9mm;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="actions">
+        <button onclick="window.print()">📄 Descargar materia en PDF</button>
+      </div>
+
+      <section class="hero">
+        <div class="hero-main">
+          <span class="badge">📐 MATEMÁTICA · 6.º DE BÁSICA</span>
+          <h1>
+            Unidad 2 ·
+            <span class="gradient"
+              >Criterio de números, circunferencia y estadística</span
+            >
+          </h1>
+          <p>
+            Estudiaremos números primos y compuestos, divisibilidad,
+            factorización, máximo común divisor, elementos del círculo y la
+            circunferencia, y representación de datos mediante diagramas
+            estadísticos.
+          </p>
+          <div class="meta">
+            <span class="pill">📘 Unidad 2</span
+            ><span class="pill">🧒 6.º de Básica</span
+            ><span class="pill"
+              >📅 Presentación: miércoles 2 de septiembre de 2026</span
+            >
+          </div>
+        </div>
+        <div class="hero-art">
+          <svg viewBox="0 0 320 240">
+            <rect
+              x="25"
+              y="25"
+              width="270"
+              height="185"
+              rx="25"
+              fill="white"
+              stroke="#d8e7f5"
+              stroke-width="4"
+            />
+            <circle
+              cx="95"
+              cy="112"
+              r="52"
+              fill="#edf8ff"
+              stroke="#4e9fe3"
+              stroke-width="5"
+            />
+            <circle cx="95" cy="112" r="5" fill="#4e9fe3" />
+            <line
+              x1="95"
+              y1="112"
+              x2="145"
+              y2="112"
+              stroke="#4e9fe3"
+              stroke-width="4"
+            />
+            <rect
+              x="185"
+              y="120"
+              width="24"
+              height="55"
+              rx="5"
+              fill="#61c9a0"
+            />
+            <rect x="218" y="90" width="24" height="85" rx="5" fill="#f1b557" />
+            <rect
+              x="251"
+              y="55"
+              width="24"
+              height="120"
+              rx="5"
+              fill="#7b75dd"
+            />
+            <text
+              x="175"
+              y="45"
+              font-size="22"
+              font-weight="900"
+              fill="#4b6989"
+            >
+              2 · 3 · 5 · 7
+            </text>
+          </svg>
+        </div>
+      </section>
+
+      <div class="notice">
+        <b>⭐ Indicaciones para el estudiante</b><br />
+        El contenido deberá desarrollarse en el <b>cuaderno de Matemática</b>,
+        manteniendo orden, buena presentación y realizando todos los
+        procedimientos. La <b>actividad final de 10 preguntas</b> se realizará
+        en <b>hojas de carpeta a cuadros</b>. Ambos trabajos deberán entregarse
+        el <b>miércoles 2 de septiembre de 2026</b>.<br />
+        <b>Nota:</b> Las imágenes y gráficos pueden ser
+        <b>pegados o dibujados</b>.
+      </div>
+
+      <section class="unit-title">
+        <small>📐 MATEMÁTICA · 6.º DE BÁSICA</small>
+        <h2>UNIDAD 2: CRITERIO DE NÚMEROS, CIRCUNFERENCIA Y ESTADÍSTICA</h2>
+      </section>
+
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T1</div>
+          <div>
+            <h2>Números primos y compuestos</h2>
+            <p>Reconocemos números según la cantidad de divisores.</p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>¿Qué son los números primos?</h3>
+          <p>
+            Un <b>número primo</b> tiene exactamente <b>dos divisores</b>: 1 y
+            el mismo número. Un <b>número compuesto</b> tiene más de dos
+            divisores.
+          </p>
+          <div class="mathbox">
+            Primos: 2, 3, 5, 7, 11, 13, 17, 19...<br />Compuestos: 4, 6, 8, 9,
+            10, 12, 14...
+          </div>
+          <div class="example">
+            🔎 <b>Ejemplo:</b> 13 solo puede dividirse exactamente para 1 y 13,
+            por eso es primo. En cambio, 12 tiene como divisores 1, 2, 3, 4, 6 y
+            12; por eso es compuesto.
+          </div>
+          <div class="tip">📌 El número <b>1 no es primo ni compuesto</b>.</div>
+        </div>
+      </section>
+
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T2</div>
+          <div>
+            <h2>Criterios de divisibilidad</h2>
+            <p>Determinamos divisibilidad sin realizar toda la división.</p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>Reglas principales</h3>
+          <table>
+            <tr>
+              <th>Divisible para</th>
+              <th>Criterio</th>
+              <th>Ejemplo</th>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Termina en 0, 2, 4, 6 u 8.</td>
+              <td>438</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>La suma de sus cifras es múltiplo de 3.</td>
+              <td>741 → 7+4+1=12</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Termina en 0 o 5.</td>
+              <td>1 235</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Es divisible para 2 y para 3.</td>
+              <td>714</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>La suma de sus cifras es múltiplo de 9.</td>
+              <td>2 736 → 18</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Termina en 0.</td>
+              <td>4 520</td>
+            </tr>
+          </table>
+          <div class="example">
+            💡 <b>Ejemplo:</b> 1 458 es divisible para 2 porque termina en 8 y
+            para 3 porque 1+4+5+8=18. Por lo tanto, también es divisible para
+            <b>6</b>.
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T3</div>
+          <div>
+            <h2>Descomposición de números en factores primos</h2>
+            <p>Expresamos un número como producto de números primos.</p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>Descomposición paso a paso</h3>
+          <p>Dividimos sucesivamente entre números primos hasta obtener 1.</p>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <p>Descomponemos <b>360</b>: 360 ÷ 2 = 180.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <p>180 ÷ 2 = 90; 90 ÷ 2 = 45.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <p>45 ÷ 3 = 15; 15 ÷ 3 = 5.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <p>5 ÷ 5 = 1.</p>
+            </div>
+          </div>
+          <div class="mathbox">
+            360 = 2 × 2 × 2 × 3 × 3 × 5 = <b>2³ × 3² × 5</b>
+          </div>
+          <div class="tip">
+            📌 Todos los factores finales deben ser <b>números primos</b>.
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T4</div>
+          <div>
+            <h2>Máximo común divisor</h2>
+            <p>Encontramos el mayor divisor común de dos o más números.</p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>M.C.D. mediante factores primos</h3>
+          <p>
+            El <b>máximo común divisor (M.C.D.)</b> es el número más grande que
+            divide exactamente a dos o más números.
+          </p>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <p>Calculamos M.C.D. (84, 126).</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <p>84 = <b>2² × 3 × 7</b>.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <p>126 = <b>2 × 3² × 7</b>.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <p>
+                Tomamos los factores comunes con el <b>menor exponente</b>: 2 ×
+                3 × 7.
+              </p>
+            </div>
+          </div>
+          <div class="mathbox">M.C.D. (84, 126) = 2 × 3 × 7 = <b>42</b></div>
+          <div class="example">
+            🧩 El M.C.D. es útil cuando necesitamos formar grupos iguales sin
+            que sobre ningún elemento.
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T5</div>
+          <div>
+            <h2>Los elementos del círculo y de la circunferencia</h2>
+            <p>
+              Identificamos centro, radio, diámetro, cuerda, arco y
+              circunferencia.
+            </p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <p>
+            La <b>circunferencia</b> es la línea curva cerrada que limita una
+            figura. El <b>círculo</b> es toda la región interior limitada por
+            esa circunferencia.
+          </p>
+          <div class="visual">
+            <svg viewBox="0 0 760 390">
+              <circle
+                cx="370"
+                cy="195"
+                r="145"
+                fill="#eef8ff"
+                stroke="#397fc0"
+                stroke-width="6"
+              />
+              <circle cx="370" cy="195" r="7" fill="#263f5b" />
+              <text x="382" y="190" font-size="20" font-weight="900">
+                Centro
+              </text>
+              <line
+                x1="370"
+                y1="195"
+                x2="510"
+                y2="195"
+                stroke="#e76f6f"
+                stroke-width="6"
+              />
+              <text
+                x="430"
+                y="180"
+                font-size="20"
+                font-weight="900"
+                fill="#b64d4d"
+              >
+                Radio
+              </text>
+              <line
+                x1="225"
+                y1="195"
+                x2="515"
+                y2="195"
+                stroke="#61b98a"
+                stroke-width="4"
+              />
+              <text
+                x="325"
+                y="225"
+                font-size="20"
+                font-weight="900"
+                fill="#3b8b64"
+              >
+                Diámetro
+              </text>
+              <line
+                x1="270"
+                y1="105"
+                x2="465"
+                y2="90"
+                stroke="#9a70d5"
+                stroke-width="5"
+              />
+              <text
+                x="330"
+                y="75"
+                font-size="20"
+                font-weight="900"
+                fill="#7450aa"
+              >
+                Cuerda
+              </text>
+              <path
+                d="M270 300 A145 145 0 0 0 480 295"
+                fill="none"
+                stroke="#f1ad45"
+                stroke-width="9"
+              />
+              <text
+                x="355"
+                y="355"
+                font-size="20"
+                font-weight="900"
+                fill="#a56c16"
+              >
+                Arco
+              </text>
+              <text
+                x="535"
+                y="110"
+                font-size="20"
+                font-weight="900"
+                fill="#397fc0"
+              >
+                Circunferencia
+              </text>
+            </svg>
+          </div>
+          <div class="mathbox">
+            <b>Diámetro = 2 × radio</b> &nbsp;&nbsp; | &nbsp;&nbsp;
+            <b>Radio = diámetro ÷ 2</b>
+          </div>
+          <div class="example">
+            Ejemplo: si el radio mide 7 cm, el diámetro mide <b>14 cm</b>.
+          </div>
+        </div>
+      </section>
+
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T6</div>
+          <div>
+            <h2>Diagramas estadísticos</h2>
+            <p>Organizamos e interpretamos información mediante gráficos.</p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>¿Para qué sirven?</h3>
+          <p>
+            Los <b>diagramas estadísticos</b> representan datos de manera visual
+            y facilitan su comparación e interpretación. Entre los más
+            utilizados están los gráficos de <b>barras, líneas y sectores</b>.
+          </p>
+          <table>
+            <tr>
+              <th>Deporte</th>
+              <th>Estudiantes</th>
+            </tr>
+            <tr>
+              <td>Fútbol</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>Baloncesto</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>Natación</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>Atletismo</td>
+              <td>10</td>
+            </tr>
+          </table>
+          <div class="visual">
+            <svg viewBox="0 0 760 360">
+              <line
+                x1="100"
+                y1="300"
+                x2="680"
+                y2="300"
+                stroke="#3c5b78"
+                stroke-width="4"
+              />
+              <line
+                x1="100"
+                y1="300"
+                x2="100"
+                y2="45"
+                stroke="#3c5b78"
+                stroke-width="4"
+              />
+              <g fill="#58a9e4">
+                <rect x="155" y="84" width="75" height="216" rx="6" />
+                <rect x="290" y="156" width="75" height="144" rx="6" />
+                <rect x="425" y="210" width="75" height="90" rx="6" />
+                <rect x="560" y="120" width="75" height="180" rx="6" />
+              </g>
+              <g
+                font-size="18"
+                font-weight="800"
+                fill="#36556f"
+                text-anchor="middle"
+              >
+                <text x="192" y="330">Fútbol</text>
+                <text x="327" y="330">Baloncesto</text>
+                <text x="462" y="330">Natación</text>
+                <text x="597" y="330">Atletismo</text>
+                <text x="192" y="72">12</text>
+                <text x="327" y="144">8</text>
+                <text x="462" y="198">5</text>
+                <text x="597" y="108">10</text>
+              </g>
+            </svg>
+          </div>
+          <div class="example">
+            📊 El deporte con mayor frecuencia es <b>Fútbol (12)</b> y el de
+            menor frecuencia es <b>Natación (5)</b>.
+          </div>
+        </div>
+      </section>
+
+      <section class="final">
+        <h2>📝 Actividad final · Unidad 2</h2>
+        <p>
+          Realiza la actividad en <b>hojas de carpeta a cuadros</b>. Presenta
+          los procedimientos donde sean necesarios.
+        </p>
+        <div class="task">
+          <b>1.</b> Clasifica como <b>primo o compuesto</b>: 17, 21, 29, 35, 43
+          y 51.
+        </div>
+        <div class="task">
+          <b>2.</b> Aplica criterios de divisibilidad. Indica si <b>2 430</b> es
+          divisible para 2, 3, 5, 6, 9 y 10. Justifica cada respuesta.
+        </div>
+        <div class="task">
+          <b>3.</b> Descompón en factores primos:<br />a) 420 &nbsp;&nbsp; b)
+          756.
+        </div>
+        <div class="task">
+          <b>4.</b> Calcula mediante factorización:<br />a) M.C.D. (72, 108)<br />b)
+          M.C.D. (90, 150, 210).
+        </div>
+        <div class="task">
+          <b>5.</b> Problema: se tienen 84 lápices rojos y 126 lápices azules.
+          Se desean formar la mayor cantidad posible de grupos iguales, sin que
+          sobre ningún lápiz. ¿Cuántos grupos se pueden formar y cuántos lápices
+          de cada color tendrá cada grupo?
+        </div>
+        <div class="task">
+          <b>6.</b> Dibuja un círculo e identifica con diferentes colores:
+          <b>centro, radio, diámetro, cuerda, arco y circunferencia</b>.
+          <div class="draw"></div>
+        </div>
+        <div class="task">
+          <b>7.</b> Una circunferencia tiene un radio de 9,5 cm. ¿Cuánto mide su
+          diámetro? Si otra tiene 26 cm de diámetro, ¿cuánto mide su radio?
+        </div>
+        <div class="task">
+          <b>8.</b> Verdadero o falso:<br />a) ___ Todo número primo tiene
+          exactamente dos divisores.<br />b) ___ El número 1 es primo.<br />c)
+          ___ El diámetro equivale a dos radios.<br />d) ___ Un gráfico de
+          barras permite comparar frecuencias.
+        </div>
+        <div class="task">
+          <b>9.</b> Con los datos 6, 10, 4 y 8 correspondientes a cuatro tipos
+          de frutas, construye una <b>tabla y un gráfico de barras</b>. Coloca
+          título y nombres en los ejes.
+        </div>
+        <div class="task">
+          <b>10.</b> Observa los datos de una encuesta: Lectura 12, Deportes 18,
+          Música 10 y Videojuegos 20. Responde:<br />a) ¿Cuál es la categoría
+          con mayor frecuencia?<br />b) ¿Cuál tiene menor frecuencia?<br />c)
+          ¿Cuántas respuestas hubo en total?<br />d) Dibuja el gráfico de barras
+          correspondiente.
+        </div>
+        <p><b>Fecha de presentación: miércoles 2 de septiembre de 2026.</b></p>
+      </section>
+    </main>
+  </body>
+</html>
