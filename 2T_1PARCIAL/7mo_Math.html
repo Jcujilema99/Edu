@@ -558,6 +558,59 @@
         margin: 10px auto;
       }
 
+
+      .solution-chain{
+        margin:18px 0;
+        padding:20px;
+        border-radius:18px;
+        background:linear-gradient(135deg,#fbfdff,#f7fbff);
+        border:1px solid #dce9f7;
+      }
+      .solution-title{
+        margin:0 0 12px;
+        color:#315f94;
+        font-weight:900;
+      }
+      .solution-line{
+        padding:12px 10px;
+        border-bottom:1px solid #e3edf6;
+        text-align:center;
+        font-size:1.14rem;
+        font-weight:800;
+        line-height:1.9;
+      }
+      .solution-line:last-child{border-bottom:0}
+      .solution-label{
+        display:block;
+        margin-bottom:4px;
+        color:#657b93;
+        font-size:.88rem;
+        font-weight:800;
+        text-align:left;
+      }
+      .pemdas-order{
+        display:grid;
+        grid-template-columns:repeat(6,1fr);
+        gap:8px;
+        margin:16px 0;
+      }
+      .pemdas-item{
+        padding:12px 8px;
+        border-radius:13px;
+        text-align:center;
+        background:#f7fbff;
+        border:1px solid #dce9f7;
+        font-weight:900;
+      }
+      .pemdas-item strong{
+        display:block;
+        font-size:1.35rem;
+        color:#3b78b3;
+      }
+      @media(max-width:700px){
+        .pemdas-order{grid-template-columns:repeat(2,1fr)}
+      }
+
       @media (max-width: 850px) {
         .hero {
           grid-template-columns: 1fr;
@@ -1750,285 +1803,174 @@
           <div class="lesson-number">T6</div>
           <div>
             <h2>Operaciones combinadas con fracciones</h2>
-            <p>Aplicamos PEMDAS y la jerarquía de operaciones.</p>
+            <p>Aplicamos PEMDAS y resolvemos respetando la jerarquía de operaciones.</p>
           </div>
         </div>
+
         <div class="lesson-body">
-          <h3>¿Qué es PEMDAS?</h3>
+          <h3>Jerarquía de operaciones: PEMDAS</h3>
           <p>
-            <b>PEMDAS</b> es una regla que nos ayuda a resolver operaciones
-            combinadas en el orden correcto:
+            En una operación combinada no resolvemos de izquierda a derecha sin ningún orden.
+            Debemos seguir la <b>jerarquía de operaciones</b>. La regla <b>PEMDAS</b>
+            nos indica qué debemos resolver primero.
           </p>
 
-          <div class="key-points">
-            <div class="key-point"><b>P</b> = Paréntesis</div>
-            <div class="key-point"><b>E</b> = Exponentes</div>
-            <div class="key-point"><b>M</b> = Multiplicaciones</div>
-            <div class="key-point"><b>D</b> = Divisiones</div>
-            <div class="key-point"><b>A</b> = Adiciones</div>
-            <div class="key-point"><b>S</b> = Sustracciones</div>
+          <div class="pemdas-order">
+            <div class="pemdas-item"><strong>P</strong>Paréntesis</div>
+            <div class="pemdas-item"><strong>E</strong>Exponentes</div>
+            <div class="pemdas-item"><strong>M</strong>Multiplicación</div>
+            <div class="pemdas-item"><strong>D</strong>División</div>
+            <div class="pemdas-item"><strong>A</strong>Adición</div>
+            <div class="pemdas-item"><strong>S</strong>Sustracción</div>
           </div>
 
           <div class="example">
-            📌 <b>Importante:</b> multiplicación y división tienen la misma
-            prioridad y se resuelven de izquierda a derecha. Lo mismo ocurre con
-            adición y sustracción.
+            📌 <b>Importante:</b> multiplicación y división tienen la misma prioridad
+            y se resuelven de <b>izquierda a derecha</b>. Lo mismo ocurre con la adición
+            y la sustracción.
           </div>
 
-          <h3>Ejercicio paso a paso</h3>
+          <h3>Ejercicio desarrollado</h3>
 
           <div class="math-process">
             <div class="math-line">
-              (<span class="frac"
-                ><span class="top">5</span><span class="bottom">6</span></span
-              >
+              (
+              <span class="frac"><span class="top">5</span><span class="bottom">6</span></span>
               +
-              <span class="frac"
-                ><span class="top">3</span><span class="bottom">4</span></span
-              >) ÷
-              <span class="frac"
-                ><span class="top">7</span><span class="bottom">8</span></span
-              >
+              <span class="frac"><span class="top">3</span><span class="bottom">4</span></span>
+              )
+              ÷
+              <span class="frac"><span class="top">7</span><span class="bottom">8</span></span>
               −
-              <span class="frac"
-                ><span class="top">2</span><span class="bottom">3</span></span
-              >
-              × (<span class="frac"
-                ><span class="top">9</span><span class="bottom">10</span></span
-              >
+              <span class="frac"><span class="top">2</span><span class="bottom">3</span></span>
+              ×
+              (
+              <span class="frac"><span class="top">9</span><span class="bottom">10</span></span>
               −
-              <span class="frac"
-                ><span class="top">1</span><span class="bottom">5</span></span
-              >)
+              <span class="frac"><span class="top">1</span><span class="bottom">5</span></span>
+              )
             </div>
           </div>
 
-          <div class="steps">
-            <div class="step">
-              <div class="step-num">1</div>
-              <p>
-                <b>Paréntesis 1:</b><br />
-                <span class="frac"
-                  ><span class="top">5</span><span class="bottom">6</span></span
-                >
-                +
-                <span class="frac"
-                  ><span class="top">3</span><span class="bottom">4</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">10</span
-                  ><span class="bottom">12</span></span
-                >
-                +
-                <span class="frac"
-                  ><span class="top">9</span
-                  ><span class="bottom">12</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">19</span
-                  ><span class="bottom">12</span></span
-                >.
-              </p>
+          <div class="solution-chain">
+            <div class="solution-title">Procedimiento completo</div>
+
+            <div class="solution-line">
+              <span class="solution-label">Primero resolvemos los paréntesis:</span>
+              (
+              <span class="frac"><span class="top">5</span><span class="bottom">6</span></span>
+              +
+              <span class="frac"><span class="top">3</span><span class="bottom">4</span></span>
+              )
+              =
+              (
+              <span class="frac"><span class="top">10</span><span class="bottom">12</span></span>
+              +
+              <span class="frac"><span class="top">9</span><span class="bottom">12</span></span>
+              )
+              =
+              <span class="frac"><span class="top">19</span><span class="bottom">12</span></span>
             </div>
 
-            <div class="step">
-              <div class="step-num">2</div>
-              <p>
-                <b>Paréntesis 2:</b><br />
-                <span class="frac"
-                  ><span class="top">9</span
-                  ><span class="bottom">10</span></span
-                >
-                −
-                <span class="frac"
-                  ><span class="top">1</span><span class="bottom">5</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">9</span
-                  ><span class="bottom">10</span></span
-                >
-                −
-                <span class="frac"
-                  ><span class="top">2</span
-                  ><span class="bottom">10</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">7</span
-                  ><span class="bottom">10</span></span
-                >.
-              </p>
+            <div class="solution-line">
+              (
+              <span class="frac"><span class="top">9</span><span class="bottom">10</span></span>
+              −
+              <span class="frac"><span class="top">1</span><span class="bottom">5</span></span>
+              )
+              =
+              (
+              <span class="frac"><span class="top">9</span><span class="bottom">10</span></span>
+              −
+              <span class="frac"><span class="top">2</span><span class="bottom">10</span></span>
+              )
+              =
+              <span class="frac"><span class="top">7</span><span class="bottom">10</span></span>
             </div>
 
-            <div class="step">
-              <div class="step-num">3</div>
-              <p>
-                <b>División:</b><br />
-                <span class="frac"
-                  ><span class="top">19</span
-                  ><span class="bottom">12</span></span
-                >
-                ÷
-                <span class="frac"
-                  ><span class="top">7</span><span class="bottom">8</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">19</span
-                  ><span class="bottom">12</span></span
-                >
-                ×
-                <span class="frac"
-                  ><span class="top">8</span><span class="bottom">7</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">19 × 2</span
-                  ><span class="bottom">3 × 7</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">38</span
-                  ><span class="bottom">21</span></span
-                >.
-              </p>
+            <div class="solution-line">
+              <span class="solution-label">Sustituimos los resultados en la operación original:</span>
+              <span class="frac"><span class="top">19</span><span class="bottom">12</span></span>
+              ÷
+              <span class="frac"><span class="top">7</span><span class="bottom">8</span></span>
+              −
+              <span class="frac"><span class="top">2</span><span class="bottom">3</span></span>
+              ×
+              <span class="frac"><span class="top">7</span><span class="bottom">10</span></span>
             </div>
 
-            <div class="step">
-              <div class="step-num">4</div>
-              <p>
-                <b>Multiplicación:</b><br />
-                <span class="frac"
-                  ><span class="top">2</span><span class="bottom">3</span></span
-                >
-                ×
-                <span class="frac"
-                  ><span class="top">7</span
-                  ><span class="bottom">10</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">14</span
-                  ><span class="bottom">30</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">7</span
-                  ><span class="bottom">15</span></span
-                >.
-              </p>
+            <div class="solution-line">
+              <span class="solution-label">Resolvemos la división convirtiéndola en multiplicación por el inverso:</span>
+              <span class="frac"><span class="top">19</span><span class="bottom">12</span></span>
+              ×
+              <span class="frac"><span class="top">8</span><span class="bottom">7</span></span>
+              =
+              <span class="frac"><span class="top">152</span><span class="bottom">84</span></span>
+              =
+              <span class="frac"><span class="top">38</span><span class="bottom">21</span></span>
             </div>
 
-            <div class="step">
-              <div class="step-num">5</div>
-              <p>
-                <b>Sustracción final:</b><br />
-                <span class="frac"
-                  ><span class="top">38</span
-                  ><span class="bottom">21</span></span
-                >
-                −
-                <span class="frac"
-                  ><span class="top">7</span
-                  ><span class="bottom">15</span></span
-                >.<br />
-                m.c.m.(21,15) = <b>105</b>.
-              </p>
+            <div class="solution-line">
+              <span class="solution-label">Resolvemos la multiplicación:</span>
+              <span class="frac"><span class="top">2</span><span class="bottom">3</span></span>
+              ×
+              <span class="frac"><span class="top">7</span><span class="bottom">10</span></span>
+              =
+              <span class="frac"><span class="top">14</span><span class="bottom">30</span></span>
+              =
+              <span class="frac"><span class="top">7</span><span class="bottom">15</span></span>
             </div>
 
-            <div class="step">
-              <div class="step-num">6</div>
-              <p>
-                Convertimos:<br />
-                <span class="frac"
-                  ><span class="top">38</span
-                  ><span class="bottom">21</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">190</span
-                  ><span class="bottom">105</span></span
-                >
-                y
-                <span class="frac"
-                  ><span class="top">7</span
-                  ><span class="bottom">15</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">49</span
-                  ><span class="bottom">105</span></span
-                >.
-              </p>
+            <div class="solution-line">
+              <span class="solution-label">La operación queda:</span>
+              <span class="frac"><span class="top">38</span><span class="bottom">21</span></span>
+              −
+              <span class="frac"><span class="top">7</span><span class="bottom">15</span></span>
             </div>
 
-            <div class="step">
-              <div class="step-num">7</div>
-              <p>
-                Restamos:<br />
-                <span class="frac"
-                  ><span class="top">190</span
-                  ><span class="bottom">105</span></span
-                >
-                −
-                <span class="frac"
-                  ><span class="top">49</span
-                  ><span class="bottom">105</span></span
-                >
-                =
-                <span class="frac"
-                  ><span class="top">141</span
-                  ><span class="bottom">105</span></span
-                >.
-              </p>
+            <div class="solution-line">
+              <span class="solution-label">Buscamos un denominador común. m.c.m.(21, 15) = 105:</span>
+              <span class="frac"><span class="top">38 × 5</span><span class="bottom">21 × 5</span></span>
+              −
+              <span class="frac"><span class="top">7 × 7</span><span class="bottom">15 × 7</span></span>
+              =
+              <span class="frac"><span class="top">190</span><span class="bottom">105</span></span>
+              −
+              <span class="frac"><span class="top">49</span><span class="bottom">105</span></span>
             </div>
 
-            <div class="step">
-              <div class="step-num">8</div>
-              <p>
-                Simplificamos entre 3:<br />
-                <span class="frac"
-                  ><span class="top">141</span
-                  ><span class="bottom">105</span></span
-                >
-                =
-                <b
-                  ><span class="frac"
-                    ><span class="top">47</span
-                    ><span class="bottom">35</span></span
-                  ></b
-                >
-                =
-                <b
-                  >1
-                  <span class="frac"
-                    ><span class="top">12</span
-                    ><span class="bottom">35</span></span
-                  ></b
-                >.
-              </p>
+            <div class="solution-line">
+              =
+              <span class="frac"><span class="top">190 − 49</span><span class="bottom">105</span></span>
+              =
+              <span class="frac"><span class="top">141</span><span class="bottom">105</span></span>
+            </div>
+
+            <div class="solution-line">
+              <span class="solution-label">Simplificamos dividiendo numerador y denominador para 3:</span>
+              <span class="frac"><span class="top">141 ÷ 3</span><span class="bottom">105 ÷ 3</span></span>
+              =
+              <span class="frac"><span class="top">47</span><span class="bottom">35</span></span>
+              =
+              1
+              <span class="frac"><span class="top">12</span><span class="bottom">35</span></span>
             </div>
           </div>
 
           <div class="example">
             ✅ <b>Resultado final:</b>
-            <span class="frac"
-              ><span class="top">47</span><span class="bottom">35</span></span
-            >
-            = 1
-            <span class="frac"
-              ><span class="top">12</span><span class="bottom">35</span></span
-            >.
+            <span class="frac"><span class="top">47</span><span class="bottom">35</span></span>
+            =
+            1
+            <span class="frac"><span class="top">12</span><span class="bottom">35</span></span>.
           </div>
 
-          <h3>Consejo para evitar errores</h3>
+          <h3>¿Cómo comprobar que el procedimiento está bien?</h3>
           <p>
-            Antes de comenzar, marca visualmente los <b>paréntesis</b>, luego
-            identifica <b>multiplicaciones y divisiones</b> y deja para el final
-            las <b>sumas y restas</b>.
+            Revisa que primero hayas resuelto los <b>paréntesis</b>, después las
+            <b>multiplicaciones y divisiones</b>, y finalmente las
+            <b>sumas o restas</b>. También verifica que todas las fracciones
+            resultantes estén simplificadas.
           </p>
         </div>
       </section>
