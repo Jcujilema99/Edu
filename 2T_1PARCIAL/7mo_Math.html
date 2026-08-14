@@ -1,758 +1,2257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>7.º Básica - Matemática | Unidad 2</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.º Básica - Matemática | Unidad 2</title>
 
-  <style>
-    :root{
-      --blue:#4f9cf9;
-      --blue-dark:#2f6fc2;
-      --cyan:#53d3dc;
-      --green:#6fd08c;
-      --yellow:#ffd166;
-      --orange:#ff9f68;
-      --pink:#ff88b7;
-      --purple:#9c7cf6;
-      --ink:#29405f;
-      --muted:#687b94;
-      --bg:#f4faff;
-      --card:#ffffff;
-      --line:#dce9f7;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:"Segoe UI",Arial,sans-serif;
-      background:
-        radial-gradient(circle at 8% 10%,rgba(255,209,102,.20),transparent 24%),
-        radial-gradient(circle at 92% 14%,rgba(255,136,183,.14),transparent 25%),
-        radial-gradient(circle at 55% 95%,rgba(83,211,220,.14),transparent 28%),
-        linear-gradient(180deg,#fffdf8,#f2f9ff);
-      color:var(--ink);
-      line-height:1.6;
-    }
-
-    .page{width:min(1120px,calc(100% - 28px));margin:24px auto 50px}
-
-    .top-actions{
-      position:sticky;top:10px;z-index:20;display:flex;gap:10px;
-      justify-content:flex-end;margin-bottom:14px
-    }
-
-    .btn{
-      border:0;border-radius:14px;padding:12px 18px;font-weight:800;cursor:pointer;
-      box-shadow:0 10px 25px rgba(47,111,194,.18);transition:.2s ease
-    }
-    .btn:hover{transform:translateY(-2px)}
-    .btn-pdf{color:white;background:linear-gradient(135deg,var(--orange),var(--pink))}
-    .btn-top{color:var(--blue-dark);background:white;border:1px solid var(--line)}
-
-    .hero{
-      overflow:hidden;border-radius:28px;
-      background:linear-gradient(135deg,#ffffff,#fff7e8,#eef8ff);
-      border:1px solid var(--line);
-      box-shadow:0 18px 45px rgba(68,112,160,.12);
-      display:grid;grid-template-columns:1.3fr .7fr;min-height:300px
-    }
-
-    .hero-main{padding:34px}
-    .kicker{
-      display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:900;
-      color:#8b5b00;background:#fff4ce;border:1px solid #f5dfa1;padding:8px 12px;border-radius:999px
-    }
-
-    h1{margin:14px 0 8px;font-size:clamp(2rem,5vw,4rem);line-height:1.02;letter-spacing:-2px}
-    .gradient{
-      background:linear-gradient(90deg,#e67b36,#e95e9c,#6479e8,#2aa7b0);
-      -webkit-background-clip:text;color:transparent
-    }
-
-    .hero p{color:var(--muted);max-width:720px}
-    .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-    .pill{padding:9px 12px;border-radius:12px;font-weight:800;background:white;border:1px solid var(--line);font-size:.9rem}
-
-    .hero-art{
-      display:grid;place-items:center;
-      background:linear-gradient(135deg,rgba(255,209,102,.18),rgba(255,136,183,.13));
-      min-height:250px
-    }
-    .hero-art svg{width:82%;max-width:280px;height:auto}
-
-    .notice{
-      margin:22px 0;border-radius:20px;padding:18px 20px;
-      background:linear-gradient(135deg,#fff8da,#fffdf2);
-      border:1px solid #ffe29a;display:flex;gap:14px;align-items:flex-start
-    }
-    .notice .icon{font-size:28px}
-    .notice strong{color:#9b6a00}
-
-    .unit-title{
-      margin:24px 0 18px;padding:24px;border-radius:24px;
-      background:linear-gradient(135deg,#fff2dc,#f7f1ff,#eaf8ff);
-      border:1px solid #f0d7b2;text-align:center;
-      box-shadow:0 12px 30px rgba(68,112,160,.10)
-    }
-    .unit-title .small{font-size:.88rem;font-weight:900;color:#8d6c44;letter-spacing:1px}
-    .unit-title h2{margin:7px 0 3px;font-size:clamp(1.7rem,4vw,2.45rem);color:#774d31}
-
-    .lesson{
-      margin:22px 0;background:white;border-radius:24px;border:1px solid var(--line);
-      box-shadow:0 12px 35px rgba(68,112,160,.08);overflow:hidden
-    }
-
-    .lesson-head{
-      padding:20px 24px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--line)
-    }
-    .lesson-number{
-      width:52px;height:52px;flex:0 0 auto;border-radius:17px;display:grid;place-items:center;
-      font-size:1.2rem;font-weight:900;color:white;background:linear-gradient(135deg,var(--orange),var(--pink))
-    }
-    .lesson:nth-of-type(2) .lesson-number{background:linear-gradient(135deg,var(--cyan),var(--blue))}
-    .lesson:nth-of-type(3) .lesson-number{background:linear-gradient(135deg,var(--green),var(--cyan))}
-    .lesson:nth-of-type(4) .lesson-number{background:linear-gradient(135deg,var(--yellow),var(--orange));color:#6b4b00}
-    .lesson:nth-of-type(5) .lesson-number{background:linear-gradient(135deg,var(--pink),var(--purple))}
-    .lesson:nth-of-type(6) .lesson-number{background:linear-gradient(135deg,var(--purple),var(--blue))}
-
-    .lesson-head h2{margin:0;font-size:1.35rem}
-    .lesson-head p{margin:3px 0 0;color:var(--muted);font-size:.92rem}
-    .lesson-body{padding:24px}
-    .lesson-body h3{color:#315f94;margin-bottom:7px}
-    .lesson-body ul{padding-left:22px}
-
-    .example{
-      background:#f7fbff;border-left:5px solid var(--blue);
-      padding:14px 16px;border-radius:12px;margin:14px 0
-    }
-
-    .key-points{
-      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:12px;margin-top:15px
-    }
-    .key-point{
-      padding:14px;border-radius:14px;background:#f8fbff;border:1px solid #e0ebf7
-    }
-    .key-point b{color:#2e5f95}
-
-    .visual-card{
-      margin:18px 0 8px;padding:18px;border-radius:20px;
-      background:linear-gradient(135deg,#f8fcff,#fffaf6);
-      border:1px solid #d9e8f6;box-shadow:0 10px 24px rgba(68,112,160,.07)
-    }
-    .visual-card h4{margin:0 0 12px;color:#2f5f94;font-size:1rem}
-    .visual-card svg{display:block;width:100%;height:auto;max-height:320px}
-    .mini-note{margin-top:10px;color:#667892;font-size:.9rem;text-align:center;font-weight:700}
-
-    .operation{
-      font-family:"Courier New",monospace;
-      width:max-content;min-width:150px;margin:14px auto;padding:16px 26px;
-      background:#fff;border:2px solid #e2ebf5;border-radius:16px;
-      font-weight:900;font-size:1.55rem;text-align:right;line-height:1.35
-    }
-    .operation .line{border-top:3px solid #45698f;padding-top:4px}
-
-    .activity{
-      margin-top:18px;padding:18px;border-radius:18px;
-      background:linear-gradient(135deg,#fffaf2,#f6fbff);border:1px dashed #b9cce3
-    }
-    .activity h3{margin-top:20px;color:#315f94}
-    .task{
-      margin:12px 0;padding:14px 16px;border-radius:12px;background:white;border:1px solid var(--line)
-    }
-    .answer-line{display:block;border-bottom:2px dotted #9eb4cc;min-height:28px;margin-top:7px}
-    .checkboxes{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
-    .check{padding:10px;border:1px solid var(--line);border-radius:10px;background:white}
-
-    .final-box{
-      padding:22px;border-radius:22px;
-      background:linear-gradient(135deg,#fff9e9,#f4fffb);
-      border:1px solid #ead9a8;margin-top:28px
-    }
-
-    .draw-space{
-      height:145px;border:2px dashed #b9cce3;border-radius:14px;
-      margin-top:12px;background:#fff
-    }
-
-    footer{text-align:center;color:var(--muted);padding:24px 0 8px;font-size:.9rem}
-
-
-    .worksheet-ops{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(180px,1fr));
-      gap:18px;
-      margin-top:12px;
-    }
-    .worksheet-op{
-      min-height:165px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-      padding:18px;
-      border-radius:16px;
-      background:#fff;
-      border:1px solid var(--line);
-    }
-    .vertical-op{
-      font-family:"Courier New",monospace;
-      font-size:2rem;
-      font-weight:900;
-      line-height:1.25;
-      color:#29405f;
-      min-width:145px;
-      text-align:right;
-    }
-    .vertical-op .second{
-      display:flex;
-      justify-content:flex-end;
-      gap:14px;
-    }
-    .vertical-op .rule{
-      border-top:3px solid #29405f;
-      height:55px;
-      margin-top:4px;
-    }
-    @media(max-width:560px){
-      .worksheet-ops{grid-template-columns:1fr}
-    }
-
-
-    .steps{
-      display:grid;
-      gap:12px;
-      margin:16px 0;
-    }
-    .step{
-      display:grid;
-      grid-template-columns:46px 1fr;
-      gap:12px;
-      align-items:flex-start;
-      padding:14px;
-      border-radius:16px;
-      background:#f9fcff;
-      border:1px solid #dce9f7;
-    }
-    .step-num{
-      width:42px;
-      height:42px;
-      border-radius:13px;
-      display:grid;
-      place-items:center;
-      font-weight:900;
-      color:white;
-      background:linear-gradient(135deg,var(--blue),var(--purple));
-    }
-    .step p{margin:0}
-    .carry-grid{
-      width:max-content;
-      margin:18px auto;
-      font-family:"Courier New",monospace;
-      font-size:2rem;
-      font-weight:900;
-      color:#29405f;
-      text-align:right;
-      line-height:1.25;
-    }
-    .carry-grid .carry{
-      color:#e16a34;
-      font-size:1.05rem;
-      letter-spacing:17px;
-      padding-right:7px;
-      min-height:22px;
-    }
-    .carry-grid .row{
-      min-width:170px;
-    }
-    .carry-grid .under{
-      border-top:3px solid #29405f;
-      padding-top:4px;
-    }
-    .borrow-note{
-      display:inline-block;
-      padding:4px 8px;
-      border-radius:8px;
-      background:#fff3d6;
-      color:#9a6500;
-      font-weight:900;
-      margin:3px 0;
-    }
-    @media(max-width:560px){
-      .step{grid-template-columns:40px 1fr}
-      .carry-grid{font-size:1.7rem}
-    }
-
-    
-    .frac{display:inline-grid;grid-template-rows:auto auto;vertical-align:middle;text-align:center;
-      line-height:1.05;font-weight:900;min-width:30px;margin:0 3px}
-    .frac .top{border-bottom:2px solid currentColor;padding:0 4px 3px}
-    .frac .bottom{padding:3px 4px 0}
-    .math-process{margin:16px 0;padding:16px;border-radius:16px;background:#f8fbff;border:1px solid #dce9f7}
-    .math-line{font-size:1.2rem;font-weight:800;margin:9px 0;text-align:center}
-    .fraction-model{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:15px 0}
-    .piece{width:55px;height:55px;border:2px solid #6da6d8;display:grid;place-items:center;font-weight:900;background:#eaf5ff}
-    .coordinate-plane{max-width:560px;margin:10px auto}
-
-    @media(max-width:850px){
-      .hero{grid-template-columns:1fr}
-      .hero-art{min-height:180px}
-    }
-    @media(max-width:650px){
-      .key-points{grid-template-columns:1fr}
-    }
-    @media(max-width:560px){
-      .page{width:min(100% - 18px,1120px)}
-      .hero-main{padding:24px 20px}
-      .hero-art{display:none}
-      .top-actions{justify-content:stretch}
-      .top-actions .btn{flex:1;padding:11px 10px;font-size:.84rem}
-      .lesson-head{align-items:flex-start}
-      .lesson-body{padding:18px}
-      .checkboxes{grid-template-columns:1fr}
-    }
-
-
-    @media print{
-      body{background:#fff !important;}
-      .page{width:100%;margin:0;}
-      .top-actions{display:none !important;}
-
-      /* Portada + indicaciones + título de unidad: una sola hoja */
-      .hero,
-      .notice,
-      .unit-title{
-        break-before:auto !important;
-        page-break-before:auto !important;
-        break-after:auto !important;
-        page-break-after:auto !important;
-        break-inside:avoid !important;
-        page-break-inside:avoid !important;
-        box-shadow:none !important;
+    <style>
+      :root {
+        --blue: #4f9cf9;
+        --blue-dark: #2f6fc2;
+        --cyan: #53d3dc;
+        --green: #6fd08c;
+        --yellow: #ffd166;
+        --orange: #ff9f68;
+        --pink: #ff88b7;
+        --purple: #9c7cf6;
+        --ink: #29405f;
+        --muted: #687b94;
+        --bg: #f4faff;
+        --card: #ffffff;
+        --line: #dce9f7;
       }
 
-      .hero{
-        margin:0 0 8mm 0 !important;
-        min-height:auto !important;
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background:
+          radial-gradient(
+            circle at 8% 10%,
+            rgba(255, 209, 102, 0.2),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at 92% 14%,
+            rgba(255, 136, 183, 0.14),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 55% 95%,
+            rgba(83, 211, 220, 0.14),
+            transparent 28%
+          ),
+          linear-gradient(180deg, #fffdf8, #f2f9ff);
+        color: var(--ink);
+        line-height: 1.6;
       }
 
-      .notice{
-        margin:0 0 8mm 0 !important;
+      .page {
+        width: min(1120px, calc(100% - 28px));
+        margin: 24px auto 50px;
       }
 
-      .unit-title{
-        margin:0 !important;
+      .top-actions {
+        position: sticky;
+        top: 10px;
+        z-index: 20;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-bottom: 14px;
       }
 
-      /* Desde T1, cada tema inicia en una hoja nueva */
-      .lesson{
-        break-before:page !important;
-        page-break-before:always !important;
-        break-after:auto !important;
-        page-break-after:auto !important;
-        break-inside:avoid !important;
-        page-break-inside:avoid !important;
-        box-shadow:none !important;
-        margin:0 !important;
+      .btn {
+        border: 0;
+        border-radius: 14px;
+        padding: 12px 18px;
+        font-weight: 800;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(47, 111, 194, 0.18);
+        transition: 0.2s ease;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn-pdf {
+        color: white;
+        background: linear-gradient(135deg, var(--orange), var(--pink));
+      }
+      .btn-top {
+        color: var(--blue-dark);
+        background: white;
+        border: 1px solid var(--line);
       }
 
-      /* Actividad final también inicia en hoja nueva */
-      .final-box{
-        break-before:page !important;
-        page-break-before:always !important;
-        break-inside:auto !important;
-        page-break-inside:auto !important;
-        box-shadow:none !important;
-        margin:0 !important;
+      .hero {
+        overflow: hidden;
+        border-radius: 28px;
+        background: linear-gradient(135deg, #ffffff, #fff7e8, #eef8ff);
+        border: 1px solid var(--line);
+        box-shadow: 0 18px 45px rgba(68, 112, 160, 0.12);
+        display: grid;
+        grid-template-columns: 1.3fr 0.7fr;
+        min-height: 300px;
       }
 
-      .visual-card,
-      .example,
-      .key-points,
-      .key-point,
-      .steps,
-      .step,
-      .operation,
-      .worksheet-ops,
-      .worksheet-op,
-      .task{
-        break-inside:avoid !important;
-        page-break-inside:avoid !important;
+      .hero-main {
+        padding: 34px;
+      }
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.88rem;
+        font-weight: 900;
+        color: #8b5b00;
+        background: #fff4ce;
+        border: 1px solid #f5dfa1;
+        padding: 8px 12px;
+        border-radius: 999px;
       }
 
-      /* Reducimos ligeramente el tamaño de la portada para asegurar que entre en una hoja */
-      .hero-main{padding:18px 22px !important;}
-      .hero-art{min-height:150px !important;}
-      .hero h1{font-size:2rem !important;}
-      .hero p{font-size:.9rem !important;line-height:1.45 !important;}
-      .meta{margin-top:10px !important;gap:6px !important;}
-      .pill{padding:6px 9px !important;font-size:.78rem !important;}
-
-      .notice{
-        padding:12px 16px !important;
-        font-size:.87rem !important;
-        line-height:1.45 !important;
+      h1 {
+        margin: 14px 0 8px;
+        font-size: clamp(2rem, 5vw, 4rem);
+        line-height: 1.02;
+        letter-spacing: -2px;
+      }
+      .gradient {
+        background: linear-gradient(90deg, #e67b36, #e95e9c, #6479e8, #2aa7b0);
+        -webkit-background-clip: text;
+        color: transparent;
       }
 
-      .unit-title{
-        padding:14px 18px !important;
+      .hero p {
+        color: var(--muted);
+        max-width: 720px;
       }
-      .unit-title h2{
-        font-size:1.45rem !important;
-        line-height:1.25 !important;
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .pill {
+        padding: 9px 12px;
+        border-radius: 12px;
+        font-weight: 800;
+        background: white;
+        border: 1px solid var(--line);
+        font-size: 0.9rem;
       }
 
-      footer{
-        break-before:page;
-        page-break-before:always;
+      .hero-art {
+        display: grid;
+        place-items: center;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 209, 102, 0.18),
+          rgba(255, 136, 183, 0.13)
+        );
+        min-height: 250px;
+      }
+      .hero-art svg {
+        width: 82%;
+        max-width: 280px;
+        height: auto;
       }
 
-      @page{
-        size:A4;
-        margin:9mm;
+      .notice {
+        margin: 22px 0;
+        border-radius: 20px;
+        padding: 18px 20px;
+        background: linear-gradient(135deg, #fff8da, #fffdf2);
+        border: 1px solid #ffe29a;
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
       }
-    }
+      .notice .icon {
+        font-size: 28px;
+      }
+      .notice strong {
+        color: #9b6a00;
+      }
 
-</style>
-</head>
+      .unit-title {
+        margin: 24px 0 18px;
+        padding: 24px;
+        border-radius: 24px;
+        background: linear-gradient(135deg, #fff2dc, #f7f1ff, #eaf8ff);
+        border: 1px solid #f0d7b2;
+        text-align: center;
+        box-shadow: 0 12px 30px rgba(68, 112, 160, 0.1);
+      }
+      .unit-title .small {
+        font-size: 0.88rem;
+        font-weight: 900;
+        color: #8d6c44;
+        letter-spacing: 1px;
+      }
+      .unit-title h2 {
+        margin: 7px 0 3px;
+        font-size: clamp(1.7rem, 4vw, 2.45rem);
+        color: #774d31;
+      }
 
-<body id="top">
-  <div class="page">
-    <div class="top-actions">
-      <button class="btn btn-pdf" onclick="downloadPDF()">📄 Descargar materia en PDF</button>
-      <button class="btn btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆️ Inicio</button>
-    </div>
+      .lesson {
+        margin: 22px 0;
+        background: white;
+        border-radius: 24px;
+        border: 1px solid var(--line);
+        box-shadow: 0 12px 35px rgba(68, 112, 160, 0.08);
+        overflow: hidden;
+      }
 
-    <section class="hero">
-      <div class="hero-main">
-        <span class="kicker">📐 MATEMÁTICA · 7.º DE BÁSICA</span>
-        <h1>Unidad 2 · <span class="gradient">Fracciones</span></h1>
-        <p>
-          Estudiaremos las fracciones, su representación en el plano cartesiano y las operaciones de adición, sustracción, multiplicación, división y operaciones combinadas.
-        </p>
-        <div class="meta">
-          <span class="pill">📘 Unidad 2</span>
-          <span class="pill">🧒 7.º de Básica</span>
-          <span class="pill">📅 Presentación: miércoles 2 de septiembre de 2026</span>
+      .lesson-head {
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      .lesson-number {
+        width: 52px;
+        height: 52px;
+        flex: 0 0 auto;
+        border-radius: 17px;
+        display: grid;
+        place-items: center;
+        font-size: 1.2rem;
+        font-weight: 900;
+        color: white;
+        background: linear-gradient(135deg, var(--orange), var(--pink));
+      }
+      .lesson:nth-of-type(2) .lesson-number {
+        background: linear-gradient(135deg, var(--cyan), var(--blue));
+      }
+      .lesson:nth-of-type(3) .lesson-number {
+        background: linear-gradient(135deg, var(--green), var(--cyan));
+      }
+      .lesson:nth-of-type(4) .lesson-number {
+        background: linear-gradient(135deg, var(--yellow), var(--orange));
+        color: #6b4b00;
+      }
+      .lesson:nth-of-type(5) .lesson-number {
+        background: linear-gradient(135deg, var(--pink), var(--purple));
+      }
+      .lesson:nth-of-type(6) .lesson-number {
+        background: linear-gradient(135deg, var(--purple), var(--blue));
+      }
+
+      .lesson-head h2 {
+        margin: 0;
+        font-size: 1.35rem;
+      }
+      .lesson-head p {
+        margin: 3px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .lesson-body {
+        padding: 24px;
+      }
+      .lesson-body h3 {
+        color: #315f94;
+        margin-bottom: 7px;
+      }
+      .lesson-body ul {
+        padding-left: 22px;
+      }
+
+      .example {
+        background: #f7fbff;
+        border-left: 5px solid var(--blue);
+        padding: 14px 16px;
+        border-radius: 12px;
+        margin: 14px 0;
+      }
+
+      .key-points {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 15px;
+      }
+      .key-point {
+        padding: 14px;
+        border-radius: 14px;
+        background: #f8fbff;
+        border: 1px solid #e0ebf7;
+      }
+      .key-point b {
+        color: #2e5f95;
+      }
+
+      .visual-card {
+        margin: 18px 0 8px;
+        padding: 18px;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #f8fcff, #fffaf6);
+        border: 1px solid #d9e8f6;
+        box-shadow: 0 10px 24px rgba(68, 112, 160, 0.07);
+      }
+      .visual-card h4 {
+        margin: 0 0 12px;
+        color: #2f5f94;
+        font-size: 1rem;
+      }
+      .visual-card svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 320px;
+      }
+      .mini-note {
+        margin-top: 10px;
+        color: #667892;
+        font-size: 0.9rem;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .operation {
+        font-family: "Courier New", monospace;
+        width: max-content;
+        min-width: 150px;
+        margin: 14px auto;
+        padding: 16px 26px;
+        background: #fff;
+        border: 2px solid #e2ebf5;
+        border-radius: 16px;
+        font-weight: 900;
+        font-size: 1.55rem;
+        text-align: right;
+        line-height: 1.35;
+      }
+      .operation .line {
+        border-top: 3px solid #45698f;
+        padding-top: 4px;
+      }
+
+      .activity {
+        margin-top: 18px;
+        padding: 18px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #fffaf2, #f6fbff);
+        border: 1px dashed #b9cce3;
+      }
+      .activity h3 {
+        margin-top: 20px;
+        color: #315f94;
+      }
+      .task {
+        margin: 12px 0;
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: white;
+        border: 1px solid var(--line);
+      }
+      .answer-line {
+        display: block;
+        border-bottom: 2px dotted #9eb4cc;
+        min-height: 28px;
+        margin-top: 7px;
+      }
+      .checkboxes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .check {
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: white;
+      }
+
+      .final-box {
+        padding: 22px;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #fff9e9, #f4fffb);
+        border: 1px solid #ead9a8;
+        margin-top: 28px;
+      }
+
+      .draw-space {
+        height: 145px;
+        border: 2px dashed #b9cce3;
+        border-radius: 14px;
+        margin-top: 12px;
+        background: #fff;
+      }
+
+      footer {
+        text-align: center;
+        color: var(--muted);
+        padding: 24px 0 8px;
+        font-size: 0.9rem;
+      }
+
+      .worksheet-ops {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
+        gap: 18px;
+        margin-top: 12px;
+      }
+      .worksheet-op {
+        min-height: 165px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 18px;
+        border-radius: 16px;
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+      .vertical-op {
+        font-family: "Courier New", monospace;
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1.25;
+        color: #29405f;
+        min-width: 145px;
+        text-align: right;
+      }
+      .vertical-op .second {
+        display: flex;
+        justify-content: flex-end;
+        gap: 14px;
+      }
+      .vertical-op .rule {
+        border-top: 3px solid #29405f;
+        height: 55px;
+        margin-top: 4px;
+      }
+      @media (max-width: 560px) {
+        .worksheet-ops {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .steps {
+        display: grid;
+        gap: 12px;
+        margin: 16px 0;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 46px 1fr;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 14px;
+        border-radius: 16px;
+        background: #f9fcff;
+        border: 1px solid #dce9f7;
+      }
+      .step-num {
+        width: 42px;
+        height: 42px;
+        border-radius: 13px;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        color: white;
+        background: linear-gradient(135deg, var(--blue), var(--purple));
+      }
+      .step p {
+        margin: 0;
+      }
+      .carry-grid {
+        width: max-content;
+        margin: 18px auto;
+        font-family: "Courier New", monospace;
+        font-size: 2rem;
+        font-weight: 900;
+        color: #29405f;
+        text-align: right;
+        line-height: 1.25;
+      }
+      .carry-grid .carry {
+        color: #e16a34;
+        font-size: 1.05rem;
+        letter-spacing: 17px;
+        padding-right: 7px;
+        min-height: 22px;
+      }
+      .carry-grid .row {
+        min-width: 170px;
+      }
+      .carry-grid .under {
+        border-top: 3px solid #29405f;
+        padding-top: 4px;
+      }
+      .borrow-note {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 8px;
+        background: #fff3d6;
+        color: #9a6500;
+        font-weight: 900;
+        margin: 3px 0;
+      }
+      @media (max-width: 560px) {
+        .step {
+          grid-template-columns: 40px 1fr;
+        }
+        .carry-grid {
+          font-size: 1.7rem;
+        }
+      }
+
+      .frac {
+        display: inline-grid;
+        grid-template-rows: auto auto;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 1.05;
+        font-weight: 900;
+        min-width: 30px;
+        margin: 0 3px;
+      }
+      .frac .top {
+        border-bottom: 2px solid currentColor;
+        padding: 0 4px 3px;
+      }
+      .frac .bottom {
+        padding: 3px 4px 0;
+      }
+      .math-process {
+        margin: 16px 0;
+        padding: 16px;
+        border-radius: 16px;
+        background: #f8fbff;
+        border: 1px solid #dce9f7;
+      }
+      .math-line {
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin: 9px 0;
+        text-align: center;
+      }
+      .fraction-model {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 15px 0;
+      }
+      .piece {
+        width: 55px;
+        height: 55px;
+        border: 2px solid #6da6d8;
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        background: #eaf5ff;
+      }
+      .coordinate-plane {
+        max-width: 560px;
+        margin: 10px auto;
+      }
+
+      @media (max-width: 850px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+        .hero-art {
+          min-height: 180px;
+        }
+      }
+      @media (max-width: 650px) {
+        .key-points {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .page {
+          width: min(100% - 18px, 1120px);
+        }
+        .hero-main {
+          padding: 24px 20px;
+        }
+        .hero-art {
+          display: none;
+        }
+        .top-actions {
+          justify-content: stretch;
+        }
+        .top-actions .btn {
+          flex: 1;
+          padding: 11px 10px;
+          font-size: 0.84rem;
+        }
+        .lesson-head {
+          align-items: flex-start;
+        }
+        .lesson-body {
+          padding: 18px;
+        }
+        .checkboxes {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media print {
+        body {
+          background: #fff !important;
+        }
+        .page {
+          width: 100%;
+          margin: 0;
+        }
+        .top-actions {
+          display: none !important;
+        }
+
+        /* Portada + indicaciones + título de unidad: una sola hoja */
+        .hero,
+        .notice,
+        .unit-title {
+          break-before: auto !important;
+          page-break-before: auto !important;
+          break-after: auto !important;
+          page-break-after: auto !important;
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+          box-shadow: none !important;
+        }
+
+        .hero {
+          margin: 0 0 8mm 0 !important;
+          min-height: auto !important;
+        }
+
+        .notice {
+          margin: 0 0 8mm 0 !important;
+        }
+
+        .unit-title {
+          margin: 0 !important;
+        }
+
+        /* Desde T1, cada tema inicia en una hoja nueva */
+        .lesson {
+          break-before: page !important;
+          page-break-before: always !important;
+          break-after: auto !important;
+          page-break-after: auto !important;
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+          box-shadow: none !important;
+          margin: 0 !important;
+        }
+
+        /* Actividad final también inicia en hoja nueva */
+        .final-box {
+          break-before: page !important;
+          page-break-before: always !important;
+          break-inside: auto !important;
+          page-break-inside: auto !important;
+          box-shadow: none !important;
+          margin: 0 !important;
+        }
+
+        .visual-card,
+        .example,
+        .key-points,
+        .key-point,
+        .steps,
+        .step,
+        .operation,
+        .worksheet-ops,
+        .worksheet-op,
+        .task {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
+        }
+
+        /* Reducimos ligeramente el tamaño de la portada para asegurar que entre en una hoja */
+        .hero-main {
+          padding: 18px 22px !important;
+        }
+        .hero-art {
+          min-height: 150px !important;
+        }
+        .hero h1 {
+          font-size: 2rem !important;
+        }
+        .hero p {
+          font-size: 0.9rem !important;
+          line-height: 1.45 !important;
+        }
+        .meta {
+          margin-top: 10px !important;
+          gap: 6px !important;
+        }
+        .pill {
+          padding: 6px 9px !important;
+          font-size: 0.78rem !important;
+        }
+
+        .notice {
+          padding: 12px 16px !important;
+          font-size: 0.87rem !important;
+          line-height: 1.45 !important;
+        }
+
+        .unit-title {
+          padding: 14px 18px !important;
+        }
+        .unit-title h2 {
+          font-size: 1.45rem !important;
+          line-height: 1.25 !important;
+        }
+
+        footer {
+          break-before: page;
+          page-break-before: always;
+        }
+
+        @page {
+          size: A4;
+          margin: 9mm;
+        }
+      }
+    </style>
+  </head>
+
+  <body id="top">
+    <div class="page">
+      <div class="top-actions">
+        <button class="btn btn-pdf" onclick="downloadPDF()">
+          📄 Descargar materia en PDF
+        </button>
+        <button
+          class="btn btn-top"
+          onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        >
+          ⬆️ Inicio
+        </button>
+      </div>
+
+      <section class="hero">
+        <div class="hero-main">
+          <span class="kicker">📐 MATEMÁTICA · 7.º DE BÁSICA</span>
+          <h1>Unidad 2 · <span class="gradient">Fracciones</span></h1>
+          <p>
+            Estudiaremos las fracciones, su representación en el plano
+            cartesiano y las operaciones de adición, sustracción,
+            multiplicación, división y operaciones combinadas.
+          </p>
+          <div class="meta">
+            <span class="pill">📘 Unidad 2</span>
+            <span class="pill">🧒 7.º de Básica</span>
+            <span class="pill"
+              >📅 Presentación: miércoles 2 de septiembre de 2026</span
+            >
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 320 250">
+            <rect
+              x="28"
+              y="28"
+              width="264"
+              height="190"
+              rx="28"
+              fill="#fff"
+              stroke="#e9d5ff"
+              stroke-width="4"
+            />
+            <circle
+              cx="92"
+              cy="105"
+              r="43"
+              fill="#eaf5ff"
+              stroke="#5ba4e8"
+              stroke-width="4"
+            />
+            <path d="M92 105 L92 62 A43 43 0 0 1 129 126 Z" fill="#5ba4e8" />
+
+            <text
+              x="92"
+              y="166"
+              font-size="24"
+              font-weight="900"
+              fill="#45698f"
+              text-anchor="middle"
+            >
+              3
+            </text>
+            <line
+              x1="76"
+              y1="174"
+              x2="108"
+              y2="174"
+              stroke="#45698f"
+              stroke-width="3"
+            />
+            <text
+              x="92"
+              y="201"
+              font-size="24"
+              font-weight="900"
+              fill="#45698f"
+              text-anchor="middle"
+            >
+              4
+            </text>
+            <line
+              x1="170"
+              y1="78"
+              x2="255"
+              y2="78"
+              stroke="#ff9f68"
+              stroke-width="5"
+            />
+            <line
+              x1="170"
+              y1="128"
+              x2="255"
+              y2="128"
+              stroke="#ff9f68"
+              stroke-width="5"
+            />
+            <text
+              x="195"
+              y="70"
+              font-size="32"
+              font-weight="900"
+              fill="#8a5b00"
+            >
+              2
+            </text>
+            <text
+              x="195"
+              y="120"
+              font-size="32"
+              font-weight="900"
+              fill="#8a5b00"
+            >
+              5
+            </text>
+            <text
+              x="170"
+              y="184"
+              font-size="27"
+              font-weight="900"
+              fill="#7658b8"
+            >
+              × ÷ + −
+            </text>
+          </svg>
+        </div>
+      </section>
+
+      <div class="notice">
+        <div class="icon">⭐</div>
+        <div>
+          <strong>Indicaciones para el estudiante</strong><br />
+          El contenido de esta unidad deberá desarrollarse en el
+          <b>cuaderno de Matemática</b>, manteniendo orden, buena presentación y
+          letra clara. La <b>actividad final de 10 preguntas</b> se realizará en
+          <b>hojas de carpeta a cuadros</b>. La fecha de presentación de ambos
+          trabajos será el <b>miércoles 2 de septiembre de 2026</b>.<br /><br />
+          <b>Nota:</b> Las imágenes pueden ser <b>pegadas o dibujadas</b>.
         </div>
       </div>
 
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 320 250">
-          <rect x="28" y="28" width="264" height="190" rx="28" fill="#fff" stroke="#e9d5ff" stroke-width="4"/>
-          <circle cx="92" cy="105" r="43" fill="#eaf5ff" stroke="#5ba4e8" stroke-width="4"/>
-          <path d="M92 105 L92 62 A43 43 0 0 1 129 126 Z" fill="#5ba4e8"/>
-          <text x="67" y="178" font-size="30" font-weight="900" fill="#45698f">3/4</text>
-          <line x1="170" y1="78" x2="255" y2="78" stroke="#ff9f68" stroke-width="5"/>
-          <line x1="170" y1="128" x2="255" y2="128" stroke="#ff9f68" stroke-width="5"/>
-          <text x="195" y="70" font-size="32" font-weight="900" fill="#8a5b00">2</text>
-          <text x="195" y="120" font-size="32" font-weight="900" fill="#8a5b00">5</text>
-          <text x="170" y="184" font-size="27" font-weight="900" fill="#7658b8">× ÷ + −</text>
-        </svg>
-      </div>
-    </section>
+      <section class="unit-title">
+        <div class="small">📐 MATEMÁTICA · 7.º DE BÁSICA</div>
+        <h2>UNIDAD 2: FRACCIONES</h2>
+      </section>
 
-    <div class="notice">
-      <div class="icon">⭐</div>
-      <div>
-        <strong>Indicaciones para el estudiante</strong><br>
-        El contenido de esta unidad deberá desarrollarse en el <b>cuaderno de Matemática</b>,
-        manteniendo orden, buena presentación y letra clara. La <b>actividad final de 10 preguntas</b>
-        se realizará en <b>hojas de carpeta a cuadros</b>. La fecha de presentación de ambos trabajos
-        será el <b>miércoles 2 de septiembre de 2026</b>.<br><br>
-        <b>Nota:</b> Las imágenes pueden ser <b>pegadas o dibujadas</b>.
-      </div>
+      <section class="lesson" id="t1">
+        <div class="lesson-head">
+          <div class="lesson-number">T1</div>
+          <div>
+            <h2>Fracciones</h2>
+            <p>Fracciones propias, impropias, números mixtos y equivalentes.</p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>Fracciones y sus clases</h3>
+          <p>
+            Una <b>fracción</b> representa partes de una unidad. Según la
+            relación entre numerador y denominador puede ser <b>propia</b>,
+            <b>impropia</b> o representar un <b>número mixto</b>.
+          </p>
+          <div class="key-points">
+            <div class="key-point">
+              🔹 <b>Propia:</b> numerador menor que denominador. Ej.:
+              <span class="frac"
+                ><span class="top">5</span><span class="bottom">8</span></span
+              >.
+            </div>
+            <div class="key-point">
+              🔸 <b>Impropia:</b> numerador mayor que denominador. Ej.:
+              <span class="frac"
+                ><span class="top">11</span><span class="bottom">4</span></span
+              >.
+            </div>
+          </div>
+          <h3>Conversión de fracción impropia a número mixto</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <p>
+                Convertimos
+                <span class="frac"
+                  ><span class="top">17</span
+                  ><span class="bottom">5</span></span
+                >. Dividimos <b>17 ÷ 5 = 3</b> y sobra <b>2</b>.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <p>
+                El cociente es la parte entera y el residuo queda como
+                numerador.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <p>
+                <span class="frac"
+                  ><span class="top">17</span
+                  ><span class="bottom">5</span></span
+                >
+                =
+                <b
+                  >3
+                  <span class="frac"
+                    ><span class="top">2</span
+                    ><span class="bottom">5</span></span
+                  ></b
+                >.
+              </p>
+            </div>
+          </div>
+          <h3>Fracciones equivalentes</h3>
+          <div class="math-process">
+            <div class="math-line">
+              <span class="frac"
+                ><span class="top">6</span><span class="bottom">8</span></span
+              >
+              =
+              <span class="frac"
+                ><span class="top">3</span><span class="bottom">4</span></span
+              >
+              porque dividimos numerador y denominador para 2.
+            </div>
+          </div>
+          <div class="example">
+            💡 Siempre que sea posible, expresa el resultado en su
+            <b>forma irreducible</b>.
+          </div>
+        </div>
+      </section>
+      <section class="lesson" id="t2">
+        <div class="lesson-head">
+          <div class="lesson-number">T2</div>
+          <div>
+            <h2>
+              Sistema de coordenadas cartesianas con números fraccionarios
+            </h2>
+            <p>Ubicamos pares ordenados con fracciones sobre los ejes X y Y.</p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>¿Cómo se ubica un punto con coordenadas fraccionarias?</h3>
+          <p>
+            En un punto <b>(x, y)</b>, el primer valor corresponde al eje
+            <b>X</b> y el segundo al eje <b>Y</b>. Cuando las coordenadas son
+            fraccionarias, cada unidad del eje debe dividirse en partes iguales.
+          </p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <p>
+                Tomemos el punto A (<span class="frac"
+                  ><span class="top">5</span><span class="bottom">2</span></span
+                >,
+                <span class="frac"
+                  ><span class="top">3</span><span class="bottom">2</span></span
+                >).
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <p>
+                <span class="frac"
+                  ><span class="top">5</span><span class="bottom">2</span></span
+                >
+                = 2½, por lo tanto avanzamos <b>2½ unidades sobre X</b>.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <p>
+                <span class="frac"
+                  ><span class="top">3</span><span class="bottom">2</span></span
+                >
+                = 1½, desde allí subimos <b>1½ unidades sobre Y</b>.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <p>Marcamos el punto donde se cruzan ambos desplazamientos.</p>
+            </div>
+          </div>
+
+          <div class="visual-card">
+            <h4>📍 Plano cartesiano con divisiones de ½ unidad</h4>
+
+            <svg
+              viewBox="0 0 820 500"
+              role="img"
+              aria-label="Plano cartesiano con fracciones verticales en los ejes X y Y"
+            >
+              <rect
+                x="95"
+                y="35"
+                width="640"
+                height="390"
+                fill="#fbfdff"
+                stroke="#d4e4f1"
+                stroke-width="2"
+              />
+
+              <!-- Cuadrícula: cada espacio representa 1/2 unidad -->
+              <g stroke="#e4edf6" stroke-width="1">
+                <line x1="120" y1="55" x2="120" y2="405" />
+                <line x1="170" y1="55" x2="170" y2="405" />
+                <line x1="220" y1="55" x2="220" y2="405" />
+                <line x1="270" y1="55" x2="270" y2="405" />
+                <line x1="320" y1="55" x2="320" y2="405" />
+                <line x1="370" y1="55" x2="370" y2="405" />
+                <line x1="420" y1="55" x2="420" y2="405" />
+                <line x1="470" y1="55" x2="470" y2="405" />
+                <line x1="520" y1="55" x2="520" y2="405" />
+                <line x1="570" y1="55" x2="570" y2="405" />
+                <line x1="620" y1="55" x2="620" y2="405" />
+                <line x1="670" y1="55" x2="670" y2="405" />
+                <line x1="720" y1="55" x2="720" y2="405" />
+                <line x1="120" y1="405" x2="720" y2="405" />
+                <line x1="120" y1="355" x2="720" y2="355" />
+                <line x1="120" y1="305" x2="720" y2="305" />
+                <line x1="120" y1="255" x2="720" y2="255" />
+                <line x1="120" y1="205" x2="720" y2="205" />
+                <line x1="120" y1="155" x2="720" y2="155" />
+                <line x1="120" y1="105" x2="720" y2="105" />
+                <line x1="120" y1="55" x2="720" y2="55" />
+              </g>
+
+              <!-- Ejes -->
+              <line
+                x1="120"
+                y1="405"
+                x2="750"
+                y2="405"
+                stroke="#29405f"
+                stroke-width="4"
+              />
+              <line
+                x1="120"
+                y1="435"
+                x2="120"
+                y2="35"
+                stroke="#29405f"
+                stroke-width="4"
+              />
+              <path d="M750 405 l-16 -10 v20 z" fill="#29405f" />
+              <path d="M120 35 l-10 16 h20 z" fill="#29405f" />
+
+              <!-- Nombres de los ejes -->
+              <text
+                x="763"
+                y="414"
+                font-size="28"
+                font-weight="900"
+                fill="#29405f"
+              >
+                X
+              </text>
+              <text
+                x="91"
+                y="34"
+                font-size="28"
+                font-weight="900"
+                fill="#29405f"
+              >
+                Y
+              </text>
+
+              <!-- Etiquetas enteras del eje X -->
+              <g
+                font-size="17"
+                fill="#486784"
+                font-weight="700"
+                text-anchor="middle"
+              >
+                <text x="120" y="464">0</text>
+                <text x="220" y="464">1</text>
+                <text x="320" y="464">2</text>
+                <text x="420" y="464">3</text>
+                <text x="520" y="464">4</text>
+                <text x="620" y="464">5</text>
+              </g>
+
+              <!-- Fracciones verticales del eje X -->
+
+              <g
+                class="svg-frac"
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="700"
+                fill="#486784"
+                text-anchor="middle"
+              >
+                <text x="170" y="441" font-size="16">1</text>
+                <line
+                  x1="159"
+                  y1="448"
+                  x2="181"
+                  y2="448"
+                  stroke="#486784"
+                  stroke-width="2"
+                />
+                <text x="170" y="464" font-size="16">2</text>
+              </g>
+
+              <g
+                class="svg-frac"
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="700"
+                fill="#486784"
+                text-anchor="middle"
+              >
+                <text x="270" y="441" font-size="16">3</text>
+                <line
+                  x1="259"
+                  y1="448"
+                  x2="281"
+                  y2="448"
+                  stroke="#486784"
+                  stroke-width="2"
+                />
+                <text x="270" y="464" font-size="16">2</text>
+              </g>
+
+              <g
+                class="svg-frac"
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="700"
+                fill="#486784"
+                text-anchor="middle"
+              >
+                <text x="370" y="441" font-size="16">5</text>
+                <line
+                  x1="359"
+                  y1="448"
+                  x2="381"
+                  y2="448"
+                  stroke="#486784"
+                  stroke-width="2"
+                />
+                <text x="370" y="464" font-size="16">2</text>
+              </g>
+
+              <g
+                class="svg-frac"
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="700"
+                fill="#486784"
+                text-anchor="middle"
+              >
+                <text x="470" y="441" font-size="16">7</text>
+                <line
+                  x1="459"
+                  y1="448"
+                  x2="481"
+                  y2="448"
+                  stroke="#486784"
+                  stroke-width="2"
+                />
+                <text x="470" y="464" font-size="16">2</text>
+              </g>
+
+              <g
+                class="svg-frac"
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="700"
+                fill="#486784"
+                text-anchor="middle"
+              >
+                <text x="570" y="441" font-size="16">9</text>
+                <line
+                  x1="559"
+                  y1="448"
+                  x2="581"
+                  y2="448"
+                  stroke="#486784"
+                  stroke-width="2"
+                />
+                <text x="570" y="464" font-size="16">2</text>
+              </g>
+
+              <!-- Etiquetas enteras del eje Y -->
+              <g
+                font-size="17"
+                fill="#486784"
+                font-weight="700"
+                text-anchor="end"
+              >
+                <text x="103" y="410">0</text>
+                <text x="103" y="310">1</text>
+                <text x="103" y="210">2</text>
+                <text x="103" y="110">3</text>
+              </g>
+
+              <!-- Fracciones verticales del eje Y -->
+
+              <g
+                class="svg-frac"
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="700"
+                fill="#486784"
+                text-anchor="middle"
+              >
+                <text x="92" y="348" font-size="15">1</text>
+                <line
+                  x1="81"
+                  y1="355"
+                  x2="103"
+                  y2="355"
+                  stroke="#486784"
+                  stroke-width="2"
+                />
+                <text x="92" y="371" font-size="15">2</text>
+              </g>
+
+              <g
+                class="svg-frac"
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="700"
+                fill="#486784"
+                text-anchor="middle"
+              >
+                <text x="92" y="248" font-size="15">3</text>
+                <line
+                  x1="81"
+                  y1="255"
+                  x2="103"
+                  y2="255"
+                  stroke="#486784"
+                  stroke-width="2"
+                />
+                <text x="92" y="271" font-size="15">2</text>
+              </g>
+
+              <g
+                class="svg-frac"
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="700"
+                fill="#486784"
+                text-anchor="middle"
+              >
+                <text x="92" y="148" font-size="15">5</text>
+                <line
+                  x1="81"
+                  y1="155"
+                  x2="103"
+                  y2="155"
+                  stroke="#486784"
+                  stroke-width="2"
+                />
+                <text x="92" y="171" font-size="15">2</text>
+              </g>
+
+              <!-- Puntos -->
+              <circle cx="370" cy="255" r="10" fill="#ef5f91" />
+              <circle cx="270" cy="155" r="10" fill="#4f9cf9" />
+              <circle cx="470" cy="355" r="10" fill="#57bf87" />
+
+              <!-- Etiquetas de los puntos con fracciones apiladas -->
+              <g
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="900"
+                fill="#b43b68"
+              >
+                <text x="388" y="238" font-size="20">A (</text>
+
+                <g
+                  class="svg-frac"
+                  font-family="Segoe UI, Arial, sans-serif"
+                  font-weight="900"
+                  fill="#b43b68"
+                  text-anchor="middle"
+                >
+                  <text x="438" y="225" font-size="14">5</text>
+                  <line
+                    x1="427"
+                    y1="232"
+                    x2="449"
+                    y2="232"
+                    stroke="#b43b68"
+                    stroke-width="2"
+                  />
+                  <text x="438" y="248" font-size="14">2</text>
+                </g>
+                <text x="452" y="238" font-size="20">,</text>
+
+                <g
+                  class="svg-frac"
+                  font-family="Segoe UI, Arial, sans-serif"
+                  font-weight="900"
+                  fill="#b43b68"
+                  text-anchor="middle"
+                >
+                  <text x="477" y="225" font-size="14">3</text>
+                  <line
+                    x1="466"
+                    y1="232"
+                    x2="488"
+                    y2="232"
+                    stroke="#b43b68"
+                    stroke-width="2"
+                  />
+                  <text x="477" y="248" font-size="14">2</text>
+                </g>
+                <text x="492" y="238" font-size="20">)</text>
+              </g>
+
+              <g
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="900"
+                fill="#2f6fc2"
+              >
+                <text x="288" y="138" font-size="20">B (</text>
+
+                <g
+                  class="svg-frac"
+                  font-family="Segoe UI, Arial, sans-serif"
+                  font-weight="900"
+                  fill="#2f6fc2"
+                  text-anchor="middle"
+                >
+                  <text x="338" y="125" font-size="14">3</text>
+                  <line
+                    x1="327"
+                    y1="132"
+                    x2="349"
+                    y2="132"
+                    stroke="#2f6fc2"
+                    stroke-width="2"
+                  />
+                  <text x="338" y="148" font-size="14">2</text>
+                </g>
+                <text x="352" y="138" font-size="20">,</text>
+
+                <g
+                  class="svg-frac"
+                  font-family="Segoe UI, Arial, sans-serif"
+                  font-weight="900"
+                  fill="#2f6fc2"
+                  text-anchor="middle"
+                >
+                  <text x="377" y="125" font-size="14">5</text>
+                  <line
+                    x1="366"
+                    y1="132"
+                    x2="388"
+                    y2="132"
+                    stroke="#2f6fc2"
+                    stroke-width="2"
+                  />
+                  <text x="377" y="148" font-size="14">2</text>
+                </g>
+                <text x="392" y="138" font-size="20">)</text>
+              </g>
+
+              <g
+                font-family="Segoe UI, Arial, sans-serif"
+                font-weight="900"
+                fill="#34835a"
+              >
+                <text x="488" y="338" font-size="20">C (</text>
+
+                <g
+                  class="svg-frac"
+                  font-family="Segoe UI, Arial, sans-serif"
+                  font-weight="900"
+                  fill="#34835a"
+                  text-anchor="middle"
+                >
+                  <text x="538" y="325" font-size="14">7</text>
+                  <line
+                    x1="527"
+                    y1="332"
+                    x2="549"
+                    y2="332"
+                    stroke="#34835a"
+                    stroke-width="2"
+                  />
+                  <text x="538" y="348" font-size="14">2</text>
+                </g>
+                <text x="552" y="338" font-size="20">,</text>
+
+                <g
+                  class="svg-frac"
+                  font-family="Segoe UI, Arial, sans-serif"
+                  font-weight="900"
+                  fill="#34835a"
+                  text-anchor="middle"
+                >
+                  <text x="577" y="325" font-size="14">1</text>
+                  <line
+                    x1="566"
+                    y1="332"
+                    x2="588"
+                    y2="332"
+                    stroke="#34835a"
+                    stroke-width="2"
+                  />
+                  <text x="577" y="348" font-size="14">2</text>
+                </g>
+                <text x="592" y="338" font-size="20">)</text>
+              </g>
+            </svg>
+            <div class="mini-note">
+              Observa primero el eje X y luego el eje Y. Cada espacio representa
+              ½ unidad. Las fracciones se muestran con numerador arriba y
+              denominador abajo.
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="lesson" id="t3">
+        <div class="lesson-head">
+          <div class="lesson-number">T3</div>
+          <div>
+            <h2>Adición y sustracción de fracciones</h2>
+            <p>
+              Operamos fracciones con distintos denominadores y simplificamos.
+            </p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>Ejemplo de adición con diferente denominador</h3>
+          <div class="math-process">
+            <div class="math-line">
+              <span class="frac"
+                ><span class="top">5</span><span class="bottom">6</span></span
+              >
+              +
+              <span class="frac"
+                ><span class="top">7</span><span class="bottom">8</span></span
+              >
+            </div>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <p>Buscamos el m.c.m. de 6 y 8: <b>m.c.m. = 24</b>.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <p>
+                Convertimos:
+                <span class="frac"
+                  ><span class="top">5</span><span class="bottom">6</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">20</span
+                  ><span class="bottom">24</span></span
+                >
+                y
+                <span class="frac"
+                  ><span class="top">7</span><span class="bottom">8</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">21</span
+                  ><span class="bottom">24</span></span
+                >.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <p>
+                Sumamos:
+                <span class="frac"
+                  ><span class="top">20</span
+                  ><span class="bottom">24</span></span
+                >
+                +
+                <span class="frac"
+                  ><span class="top">21</span
+                  ><span class="bottom">24</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">41</span
+                  ><span class="bottom">24</span></span
+                >.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <p>
+                Como es impropia:
+                <span class="frac"
+                  ><span class="top">41</span
+                  ><span class="bottom">24</span></span
+                >
+                =
+                <b
+                  >1
+                  <span class="frac"
+                    ><span class="top">17</span
+                    ><span class="bottom">24</span></span
+                  ></b
+                >.
+              </p>
+            </div>
+          </div>
+          <h3>Ejemplo de sustracción</h3>
+          <div class="math-process">
+            <div class="math-line">
+              <span class="frac"
+                ><span class="top">11</span><span class="bottom">12</span></span
+              >
+              −
+              <span class="frac"
+                ><span class="top">5</span><span class="bottom">18</span></span
+              >
+              =
+              <span class="frac"
+                ><span class="top">33</span><span class="bottom">36</span></span
+              >
+              −
+              <span class="frac"
+                ><span class="top">10</span><span class="bottom">36</span></span
+              >
+              =
+              <b
+                ><span class="frac"
+                  ><span class="top">23</span
+                  ><span class="bottom">36</span></span
+                ></b
+              >
+            </div>
+          </div>
+          <div class="example">
+            ✅ En 7.º es importante
+            <b>buscar el denominador común, operar y simplificar</b> el
+            resultado.
+          </div>
+        </div>
+      </section>
+      <section class="lesson" id="t4">
+        <div class="lesson-head">
+          <div class="lesson-number">T4</div>
+          <div>
+            <h2>Multiplicación de fracciones</h2>
+            <p>Simplificamos antes o después de multiplicar.</p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>Multiplicación con simplificación</h3>
+          <p>
+            Multiplicamos numeradores entre sí y denominadores entre sí. Para
+            trabajar con números más pequeños podemos
+            <b>simplificar en cruz</b> antes de multiplicar.
+          </p>
+          <div class="math-process">
+            <div class="math-line">
+              <span class="frac"
+                ><span class="top">14</span><span class="bottom">15</span></span
+              >
+              ×
+              <span class="frac"
+                ><span class="top">25</span><span class="bottom">21</span></span
+              >
+            </div>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <p>Simplificamos 14 y 21 entre 7: quedan <b>2</b> y <b>3</b>.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <p>Simplificamos 25 y 15 entre 5: quedan <b>5</b> y <b>3</b>.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <p>
+                Multiplicamos:
+                <span class="frac"
+                  ><span class="top">2 × 5</span
+                  ><span class="bottom">3 × 3</span></span
+                >
+                =
+                <b
+                  ><span class="frac"
+                    ><span class="top">10</span
+                    ><span class="bottom">9</span></span
+                  ></b
+                >
+                =
+                <b
+                  >1
+                  <span class="frac"
+                    ><span class="top">1</span
+                    ><span class="bottom">9</span></span
+                  ></b
+                >.
+              </p>
+            </div>
+          </div>
+          <div class="example">
+            💡 Simplificar antes de multiplicar facilita el cálculo y reduce
+            errores.
+          </div>
+        </div>
+      </section>
+      <section class="lesson" id="t5">
+        <div class="lesson-head">
+          <div class="lesson-number">T5</div>
+          <div>
+            <h2>División de fracciones</h2>
+            <p>Aplicamos el inverso multiplicativo y simplificamos.</p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>Ejemplo</h3>
+          <div class="math-process">
+            <div class="math-line">
+              <span class="frac"
+                ><span class="top">7</span><span class="bottom">12</span></span
+              >
+              ÷
+              <span class="frac"
+                ><span class="top">14</span><span class="bottom">15</span></span
+              >
+            </div>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <p>
+                Conservamos la primera fracción:
+                <span class="frac"
+                  ><span class="top">7</span
+                  ><span class="bottom">12</span></span
+                >.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <p>
+                Cambiamos ÷ por × e invertimos la segunda:
+                <span class="frac"
+                  ><span class="top">14</span
+                  ><span class="bottom">15</span></span
+                >
+                →
+                <span class="frac"
+                  ><span class="top">15</span
+                  ><span class="bottom">14</span></span
+                >.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <p>
+                <span class="frac"
+                  ><span class="top">7</span
+                  ><span class="bottom">12</span></span
+                >
+                ×
+                <span class="frac"
+                  ><span class="top">15</span
+                  ><span class="bottom">14</span></span
+                >. Simplificamos 7 con 14 y 15 con 12.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <p>
+                Obtenemos
+                <span class="frac"
+                  ><span class="top">1</span><span class="bottom">4</span></span
+                >
+                ×
+                <span class="frac"
+                  ><span class="top">5</span><span class="bottom">2</span></span
+                >
+                =
+                <b
+                  ><span class="frac"
+                    ><span class="top">5</span
+                    ><span class="bottom">8</span></span
+                  ></b
+                >.
+              </p>
+            </div>
+          </div>
+          <div class="example">
+            📌 Dividir entre una fracción equivale a
+            <b>multiplicar por su inversa</b>.
+          </div>
+        </div>
+      </section>
+      <section class="lesson" id="t6">
+        <div class="lesson-head">
+          <div class="lesson-number">T6</div>
+          <div>
+            <h2>Operaciones combinadas con fracciones</h2>
+            <p>Aplicamos PEMDAS y la jerarquía de operaciones.</p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>¿Qué es PEMDAS?</h3>
+          <p>
+            <b>PEMDAS</b> es una regla que nos ayuda a resolver operaciones
+            combinadas en el orden correcto:
+          </p>
+
+          <div class="key-points">
+            <div class="key-point"><b>P</b> = Paréntesis</div>
+            <div class="key-point"><b>E</b> = Exponentes</div>
+            <div class="key-point"><b>M</b> = Multiplicaciones</div>
+            <div class="key-point"><b>D</b> = Divisiones</div>
+            <div class="key-point"><b>A</b> = Adiciones</div>
+            <div class="key-point"><b>S</b> = Sustracciones</div>
+          </div>
+
+          <div class="example">
+            📌 <b>Importante:</b> multiplicación y división tienen la misma
+            prioridad y se resuelven de izquierda a derecha. Lo mismo ocurre con
+            adición y sustracción.
+          </div>
+
+          <h3>Ejercicio grande paso a paso</h3>
+
+          <div class="math-process">
+            <div class="math-line">
+              (<span class="frac"
+                ><span class="top">5</span><span class="bottom">6</span></span
+              >
+              +
+              <span class="frac"
+                ><span class="top">3</span><span class="bottom">4</span></span
+              >) ÷
+              <span class="frac"
+                ><span class="top">7</span><span class="bottom">8</span></span
+              >
+              −
+              <span class="frac"
+                ><span class="top">2</span><span class="bottom">3</span></span
+              >
+              × (<span class="frac"
+                ><span class="top">9</span><span class="bottom">10</span></span
+              >
+              −
+              <span class="frac"
+                ><span class="top">1</span><span class="bottom">5</span></span
+              >)
+            </div>
+          </div>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <p>
+                <b>Paréntesis 1:</b><br />
+                <span class="frac"
+                  ><span class="top">5</span><span class="bottom">6</span></span
+                >
+                +
+                <span class="frac"
+                  ><span class="top">3</span><span class="bottom">4</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">10</span
+                  ><span class="bottom">12</span></span
+                >
+                +
+                <span class="frac"
+                  ><span class="top">9</span
+                  ><span class="bottom">12</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">19</span
+                  ><span class="bottom">12</span></span
+                >.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-num">2</div>
+              <p>
+                <b>Paréntesis 2:</b><br />
+                <span class="frac"
+                  ><span class="top">9</span
+                  ><span class="bottom">10</span></span
+                >
+                −
+                <span class="frac"
+                  ><span class="top">1</span><span class="bottom">5</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">9</span
+                  ><span class="bottom">10</span></span
+                >
+                −
+                <span class="frac"
+                  ><span class="top">2</span
+                  ><span class="bottom">10</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">7</span
+                  ><span class="bottom">10</span></span
+                >.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-num">3</div>
+              <p>
+                <b>División:</b><br />
+                <span class="frac"
+                  ><span class="top">19</span
+                  ><span class="bottom">12</span></span
+                >
+                ÷
+                <span class="frac"
+                  ><span class="top">7</span><span class="bottom">8</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">19</span
+                  ><span class="bottom">12</span></span
+                >
+                ×
+                <span class="frac"
+                  ><span class="top">8</span><span class="bottom">7</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">19 × 2</span
+                  ><span class="bottom">3 × 7</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">38</span
+                  ><span class="bottom">21</span></span
+                >.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-num">4</div>
+              <p>
+                <b>Multiplicación:</b><br />
+                <span class="frac"
+                  ><span class="top">2</span><span class="bottom">3</span></span
+                >
+                ×
+                <span class="frac"
+                  ><span class="top">7</span
+                  ><span class="bottom">10</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">14</span
+                  ><span class="bottom">30</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">7</span
+                  ><span class="bottom">15</span></span
+                >.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-num">5</div>
+              <p>
+                <b>Sustracción final:</b><br />
+                <span class="frac"
+                  ><span class="top">38</span
+                  ><span class="bottom">21</span></span
+                >
+                −
+                <span class="frac"
+                  ><span class="top">7</span
+                  ><span class="bottom">15</span></span
+                >.<br />
+                m.c.m.(21,15) = <b>105</b>.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-num">6</div>
+              <p>
+                Convertimos:<br />
+                <span class="frac"
+                  ><span class="top">38</span
+                  ><span class="bottom">21</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">190</span
+                  ><span class="bottom">105</span></span
+                >
+                y
+                <span class="frac"
+                  ><span class="top">7</span
+                  ><span class="bottom">15</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">49</span
+                  ><span class="bottom">105</span></span
+                >.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-num">7</div>
+              <p>
+                Restamos:<br />
+                <span class="frac"
+                  ><span class="top">190</span
+                  ><span class="bottom">105</span></span
+                >
+                −
+                <span class="frac"
+                  ><span class="top">49</span
+                  ><span class="bottom">105</span></span
+                >
+                =
+                <span class="frac"
+                  ><span class="top">141</span
+                  ><span class="bottom">105</span></span
+                >.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step-num">8</div>
+              <p>
+                Simplificamos entre 3:<br />
+                <span class="frac"
+                  ><span class="top">141</span
+                  ><span class="bottom">105</span></span
+                >
+                =
+                <b
+                  ><span class="frac"
+                    ><span class="top">47</span
+                    ><span class="bottom">35</span></span
+                  ></b
+                >
+                =
+                <b
+                  >1
+                  <span class="frac"
+                    ><span class="top">12</span
+                    ><span class="bottom">35</span></span
+                  ></b
+                >.
+              </p>
+            </div>
+          </div>
+
+          <div class="example">
+            ✅ <b>Resultado final:</b>
+            <span class="frac"
+              ><span class="top">47</span><span class="bottom">35</span></span
+            >
+            = 1
+            <span class="frac"
+              ><span class="top">12</span><span class="bottom">35</span></span
+            >.
+          </div>
+
+          <h3>Consejo para evitar errores</h3>
+          <p>
+            Antes de comenzar, marca visualmente los <b>paréntesis</b>, luego
+            identifica <b>multiplicaciones y divisiones</b> y deja para el final
+            las <b>sumas y restas</b>.
+          </p>
+        </div>
+      </section>
+      <section class="final-box" id="actividad-final">
+        <h2>📝 Actividad final – Unidad 2</h2>
+        <p>
+          <b>Indicaciones:</b> realiza la actividad en
+          <b>hojas de carpeta a cuadros</b>. Presenta el procedimiento completo
+          y simplifica todos los resultados cuando sea posible.
+        </p>
+        <div class="activity">
+          <div class="task">
+            <b>1. Convierte y simplifica.</b><br />
+            a) Convierte
+            <span class="frac"
+              ><span class="top">29</span><span class="bottom">6</span></span
+            >
+            a número mixto.<br />
+            b) Convierte 4
+            <span class="frac"
+              ><span class="top">3</span><span class="bottom">5</span></span
+            >
+            a fracción impropia.<br />
+            c) Simplifica
+            <span class="frac"
+              ><span class="top">42</span><span class="bottom">56</span></span
+            >
+            hasta obtener una fracción irreducible.
+          </div>
+
+          <div class="task">
+            <b>2. Fracciones equivalentes.</b><br />
+            Completa los valores que faltan:<br />
+            a)
+            <span class="frac"
+              ><span class="top">7</span><span class="bottom">9</span></span
+            >
+            =
+            <span class="frac"
+              ><span class="top">___</span><span class="bottom">36</span></span
+            ><br />
+            b)
+            <span class="frac"
+              ><span class="top">15</span><span class="bottom">25</span></span
+            >
+            =
+            <span class="frac"
+              ><span class="top">3</span><span class="bottom">___</span></span
+            ><br />
+            c)
+            <span class="frac"
+              ><span class="top">___</span><span class="bottom">48</span></span
+            >
+            =
+            <span class="frac"
+              ><span class="top">5</span><span class="bottom">8</span></span
+            >
+          </div>
+
+          <div class="task">
+            <b>3. Plano cartesiano.</b><br />
+            Dibuja un plano cartesiano con divisiones de ½ unidad y ubica:<br />
+            A (<span class="frac"
+              ><span class="top">5</span><span class="bottom">2</span></span
+            >,
+            <span class="frac"
+              ><span class="top">3</span><span class="bottom">2</span></span
+            >), B (<span class="frac"
+              ><span class="top">1</span><span class="bottom">2</span></span
+            >,
+            <span class="frac"
+              ><span class="top">7</span><span class="bottom">2</span></span
+            >) y C (<span class="frac"
+              ><span class="top">7</span><span class="bottom">2</span></span
+            >, 1).
+          </div>
+
+          <div class="task">
+            <b>4. Resuelve las adiciones y expresa el resultado simplificado.</b
+            ><br />
+            a)
+            <span class="frac"
+              ><span class="top">7</span><span class="bottom">12</span></span
+            >
+            +
+            <span class="frac"
+              ><span class="top">5</span><span class="bottom">18</span></span
+            >
+            = __________<br />
+            b)
+            <span class="frac"
+              ><span class="top">11</span><span class="bottom">15</span></span
+            >
+            +
+            <span class="frac"
+              ><span class="top">7</span><span class="bottom">10</span></span
+            >
+            = __________
+          </div>
+
+          <div class="task">
+            <b>5. Resuelve las sustracciones.</b><br />
+            a)
+            <span class="frac"
+              ><span class="top">13</span><span class="bottom">14</span></span
+            >
+            −
+            <span class="frac"
+              ><span class="top">5</span><span class="bottom">21</span></span
+            >
+            = __________<br />
+            b) 2
+            <span class="frac"
+              ><span class="top">1</span><span class="bottom">3</span></span
+            >
+            −
+            <span class="frac"
+              ><span class="top">5</span><span class="bottom">6</span></span
+            >
+            = __________
+          </div>
+
+          <div class="task">
+            <b>6. Multiplica y simplifica.</b><br />
+            a)
+            <span class="frac"
+              ><span class="top">14</span><span class="bottom">25</span></span
+            >
+            ×
+            <span class="frac"
+              ><span class="top">15</span><span class="bottom">28</span></span
+            >
+            = __________<br />
+            b)
+            <span class="frac"
+              ><span class="top">18</span><span class="bottom">35</span></span
+            >
+            ×
+            <span class="frac"
+              ><span class="top">21</span><span class="bottom">24</span></span
+            >
+            = __________
+          </div>
+
+          <div class="task">
+            <b>7. Divide y simplifica.</b><br />
+            a)
+            <span class="frac"
+              ><span class="top">8</span><span class="bottom">15</span></span
+            >
+            ÷
+            <span class="frac"
+              ><span class="top">16</span><span class="bottom">25</span></span
+            >
+            = __________<br />
+            b)
+            <span class="frac"
+              ><span class="top">21</span><span class="bottom">32</span></span
+            >
+            ÷
+            <span class="frac"
+              ><span class="top">7</span><span class="bottom">12</span></span
+            >
+            = __________
+          </div>
+
+          <div class="task">
+            <b>8. Resuelve las operaciones combinadas aplicando PEMDAS.</b
+            ><br />
+            a) (<span class="frac"
+              ><span class="top">5</span><span class="bottom">6</span></span
+            >
+            +
+            <span class="frac"
+              ><span class="top">1</span><span class="bottom">3</span></span
+            >) ×
+            <span class="frac"
+              ><span class="top">9</span><span class="bottom">10</span></span
+            >
+            −
+            <span class="frac"
+              ><span class="top">2</span><span class="bottom">5</span></span
+            >
+            = __________<br /><br />
+            b)
+            <span class="frac"
+              ><span class="top">7</span><span class="bottom">8</span></span
+            >
+            ÷ (<span class="frac"
+              ><span class="top">5</span><span class="bottom">6</span></span
+            >
+            −
+            <span class="frac"
+              ><span class="top">1</span><span class="bottom">3</span></span
+            >) +
+            <span class="frac"
+              ><span class="top">3</span><span class="bottom">4</span></span
+            >
+            ×
+            <span class="frac"
+              ><span class="top">2</span><span class="bottom">7</span></span
+            >
+            = __________
+          </div>
+
+          <div class="task">
+            <b>9. Analiza y corrige.</b><br />
+            Un estudiante resolvió:
+            <span class="frac"
+              ><span class="top">2</span><span class="bottom">3</span></span
+            >
+            +
+            <span class="frac"
+              ><span class="top">3</span><span class="bottom">5</span></span
+            >
+            =
+            <span class="frac"
+              ><span class="top">5</span><span class="bottom">8</span></span
+            >.<br />
+            a) ¿Es correcto? __________<br />
+            b) Explica el error y realiza correctamente la operación.<br />
+            ____________________________________________________________
+          </div>
+
+          <div class="task">
+            <b>10. Problema.</b><br />
+            Para elaborar un proyecto, un grupo utilizó
+            <span class="frac"
+              ><span class="top">3</span><span class="bottom">5</span></span
+            >
+            de una cartulina el lunes y
+            <span class="frac"
+              ><span class="top">1</span><span class="bottom">4</span></span
+            >
+            de la cartulina el martes.<br />
+            a) ¿Qué fracción de la cartulina utilizaron en total?<br />
+            b) ¿Qué fracción quedó sin utilizar?<br />
+            c) Expresa ambos resultados en su forma irreducible.
+          </div>
+        </div>
+        <p style="margin-top: 18px">
+          <b>Fecha de presentación: miércoles 2 de septiembre de 2026.</b>
+        </p>
+      </section>
+
+      <footer>
+        Material educativo de Matemática · 7.º de Básica · Unidad 2
+      </footer>
     </div>
 
-    <section class="unit-title">
-      <div class="small">📐 MATEMÁTICA · 7.º DE BÁSICA</div>
-      <h2>UNIDAD 2: FRACCIONES</h2>
-    </section>
-
-    <section class="lesson" id="t1">
-<div class="lesson-head"><div class="lesson-number">T1</div><div><h2>Fracciones</h2><p>Fracciones propias, impropias, números mixtos y equivalentes.</p></div></div>
-<div class="lesson-body">
-<h3>Fracciones y sus clases</h3>
-<p>Una <b>fracción</b> representa partes de una unidad. Según la relación entre numerador y denominador puede ser <b>propia</b>, <b>impropia</b> o representar un <b>número mixto</b>.</p>
-<div class="key-points">
-<div class="key-point">🔹 <b>Propia:</b> numerador menor que denominador. Ej.: <span class="frac"><span class="top">5</span><span class="bottom">8</span></span>.</div>
-<div class="key-point">🔸 <b>Impropia:</b> numerador mayor que denominador. Ej.: <span class="frac"><span class="top">11</span><span class="bottom">4</span></span>.</div>
-</div>
-<h3>Conversión de fracción impropia a número mixto</h3>
-<div class="steps">
-<div class="step"><div class="step-num">1</div><p>Convertimos <span class="frac"><span class="top">17</span><span class="bottom">5</span></span>. Dividimos <b>17 ÷ 5 = 3</b> y sobra <b>2</b>.</p></div>
-<div class="step"><div class="step-num">2</div><p>El cociente es la parte entera y el residuo queda como numerador.</p></div>
-<div class="step"><div class="step-num">3</div><p><span class="frac"><span class="top">17</span><span class="bottom">5</span></span> = <b>3 <span class="frac"><span class="top">2</span><span class="bottom">5</span></span></b>.</p></div>
-</div>
-<h3>Fracciones equivalentes</h3>
-<div class="math-process"><div class="math-line"><span class="frac"><span class="top">6</span><span class="bottom">8</span></span> = <span class="frac"><span class="top">3</span><span class="bottom">4</span></span> porque dividimos numerador y denominador para 2.</div></div>
-<div class="example">💡 Siempre que sea posible, expresa el resultado en su <b>forma irreducible</b>.</div>
-</div></section>
-<section class="lesson" id="t2">
-<div class="lesson-head"><div class="lesson-number">T2</div><div><h2>Sistema de coordenadas cartesianas con números fraccionarios</h2><p>Ubicamos pares ordenados con fracciones sobre los ejes X y Y.</p></div></div>
-<div class="lesson-body">
-<h3>¿Cómo se ubica un punto con coordenadas fraccionarias?</h3>
-<p>En un punto <b>(x, y)</b>, el primer valor corresponde al eje <b>X</b> y el segundo al eje <b>Y</b>. Cuando las coordenadas son fraccionarias, cada unidad del eje debe dividirse en partes iguales.</p>
-
-<div class="steps">
-<div class="step"><div class="step-num">1</div><p>Tomemos el punto A (<span class="frac"><span class="top">5</span><span class="bottom">2</span></span>, <span class="frac"><span class="top">3</span><span class="bottom">2</span></span>).</p></div>
-<div class="step"><div class="step-num">2</div><p><span class="frac"><span class="top">5</span><span class="bottom">2</span></span> = 2½, por lo tanto avanzamos <b>2½ unidades sobre X</b>.</p></div>
-<div class="step"><div class="step-num">3</div><p><span class="frac"><span class="top">3</span><span class="bottom">2</span></span> = 1½, desde allí subimos <b>1½ unidades sobre Y</b>.</p></div>
-<div class="step"><div class="step-num">4</div><p>Marcamos el punto donde se cruzan ambos desplazamientos.</p></div>
-</div>
-
-<div class="visual-card">
-<h4>📍 Plano cartesiano con divisiones de ½ unidad</h4>
-<svg viewBox="0 0 760 470" role="img" aria-label="Plano cartesiano con puntos fraccionarios">
-  <rect x="75" y="35" width="610" height="370" fill="#fbfdff" stroke="#d4e4f1" stroke-width="2"/>
-  <!-- grid every 1/2 unit -->
-  <g stroke="#e4edf6" stroke-width="1">
-    <line x1="100" y1="55" x2="100" y2="385"/><line x1="150" y1="55" x2="150" y2="385"/><line x1="200" y1="55" x2="200" y2="385"/><line x1="250" y1="55" x2="250" y2="385"/><line x1="300" y1="55" x2="300" y2="385"/><line x1="350" y1="55" x2="350" y2="385"/><line x1="400" y1="55" x2="400" y2="385"/><line x1="450" y1="55" x2="450" y2="385"/><line x1="500" y1="55" x2="500" y2="385"/><line x1="550" y1="55" x2="550" y2="385"/><line x1="600" y1="55" x2="600" y2="385"/><line x1="650" y1="55" x2="650" y2="385"/>
-    <line x1="100" y1="385" x2="660" y2="385"/><line x1="100" y1="335" x2="660" y2="335"/><line x1="100" y1="285" x2="660" y2="285"/><line x1="100" y1="235" x2="660" y2="235"/><line x1="100" y1="185" x2="660" y2="185"/><line x1="100" y1="135" x2="660" y2="135"/><line x1="100" y1="85" x2="660" y2="85"/>
-  </g>
-
-  <!-- axes -->
-  <line x1="100" y1="385" x2="690" y2="385" stroke="#29405f" stroke-width="4"/>
-  <line x1="100" y1="415" x2="100" y2="35" stroke="#29405f" stroke-width="4"/>
-  <path d="M690 385 l-16 -10 v20 z" fill="#29405f"/>
-  <path d="M100 35 l-10 16 h20 z" fill="#29405f"/>
-
-  <!-- labels X and Y -->
-  <text x="700" y="393" font-size="26" font-weight="900" fill="#29405f">X</text>
-  <text x="78" y="32" font-size="26" font-weight="900" fill="#29405f">Y</text>
-
-  <!-- x ticks and labels -->
-  <g font-size="17" fill="#486784" font-weight="700" text-anchor="middle">
-    <text x="100" y="430">0</text>
-    <text x="150" y="430">1/2</text>
-    <text x="200" y="430">1</text>
-    <text x="250" y="430">3/2</text>
-    <text x="300" y="430">2</text>
-    <text x="350" y="430">5/2</text>
-    <text x="400" y="430">3</text>
-    <text x="450" y="430">7/2</text>
-    <text x="500" y="430">4</text>
-    <text x="550" y="430">9/2</text>
-    <text x="600" y="430">5</text>
-  </g>
-
-  <!-- y ticks and labels -->
-  <g font-size="17" fill="#486784" font-weight="700" text-anchor="end">
-    <text x="88" y="390">0</text>
-    <text x="88" y="340">1/2</text>
-    <text x="88" y="290">1</text>
-    <text x="88" y="240">3/2</text>
-    <text x="88" y="190">2</text>
-    <text x="88" y="140">5/2</text>
-    <text x="88" y="90">3</text>
-  </g>
-
-  <!-- points -->
-  <circle cx="350" cy="235" r="10" fill="#ef5f91"/>
-  <text x="365" y="225" font-size="20" font-weight="900" fill="#b43b68">A (5/2, 3/2)</text>
-
-  <circle cx="250" cy="135" r="10" fill="#4f9cf9"/>
-  <text x="265" y="125" font-size="20" font-weight="900" fill="#2f6fc2">B (3/2, 5/2)</text>
-
-  <circle cx="450" cy="335" r="10" fill="#57bf87"/>
-  <text x="465" y="327" font-size="20" font-weight="900" fill="#34835a">C (7/2, 1/2)</text>
-</svg>
-<div class="mini-note">Observa primero el eje X y luego el eje Y. Cada espacio representa ½ unidad.</div>
-</div>
-</div></section>
-<section class="lesson" id="t3">
-<div class="lesson-head"><div class="lesson-number">T3</div><div><h2>Adición y sustracción de fracciones</h2><p>Operamos fracciones con distintos denominadores y simplificamos.</p></div></div>
-<div class="lesson-body">
-<h3>Ejemplo de adición con diferente denominador</h3>
-<div class="math-process"><div class="math-line"><span class="frac"><span class="top">5</span><span class="bottom">6</span></span> + <span class="frac"><span class="top">7</span><span class="bottom">8</span></span></div></div>
-<div class="steps">
-<div class="step"><div class="step-num">1</div><p>Buscamos el m.c.m. de 6 y 8: <b>m.c.m. = 24</b>.</p></div>
-<div class="step"><div class="step-num">2</div><p>Convertimos: <span class="frac"><span class="top">5</span><span class="bottom">6</span></span> = <span class="frac"><span class="top">20</span><span class="bottom">24</span></span> y <span class="frac"><span class="top">7</span><span class="bottom">8</span></span> = <span class="frac"><span class="top">21</span><span class="bottom">24</span></span>.</p></div>
-<div class="step"><div class="step-num">3</div><p>Sumamos: <span class="frac"><span class="top">20</span><span class="bottom">24</span></span> + <span class="frac"><span class="top">21</span><span class="bottom">24</span></span> = <span class="frac"><span class="top">41</span><span class="bottom">24</span></span>.</p></div>
-<div class="step"><div class="step-num">4</div><p>Como es impropia: <span class="frac"><span class="top">41</span><span class="bottom">24</span></span> = <b>1 <span class="frac"><span class="top">17</span><span class="bottom">24</span></span></b>.</p></div>
-</div>
-<h3>Ejemplo de sustracción</h3>
-<div class="math-process"><div class="math-line"><span class="frac"><span class="top">11</span><span class="bottom">12</span></span> − <span class="frac"><span class="top">5</span><span class="bottom">18</span></span> = <span class="frac"><span class="top">33</span><span class="bottom">36</span></span> − <span class="frac"><span class="top">10</span><span class="bottom">36</span></span> = <b><span class="frac"><span class="top">23</span><span class="bottom">36</span></span></b></div></div>
-<div class="example">✅ En 7.º es importante <b>buscar el denominador común, operar y simplificar</b> el resultado.</div>
-</div></section>
-<section class="lesson" id="t4">
-<div class="lesson-head"><div class="lesson-number">T4</div><div><h2>Multiplicación de fracciones</h2><p>Simplificamos antes o después de multiplicar.</p></div></div>
-<div class="lesson-body">
-<h3>Multiplicación con simplificación</h3>
-<p>Multiplicamos numeradores entre sí y denominadores entre sí. Para trabajar con números más pequeños podemos <b>simplificar en cruz</b> antes de multiplicar.</p>
-<div class="math-process"><div class="math-line"><span class="frac"><span class="top">14</span><span class="bottom">15</span></span> × <span class="frac"><span class="top">25</span><span class="bottom">21</span></span></div></div>
-<div class="steps">
-<div class="step"><div class="step-num">1</div><p>Simplificamos 14 y 21 entre 7: quedan <b>2</b> y <b>3</b>.</p></div>
-<div class="step"><div class="step-num">2</div><p>Simplificamos 25 y 15 entre 5: quedan <b>5</b> y <b>3</b>.</p></div>
-<div class="step"><div class="step-num">3</div><p>Multiplicamos: <span class="frac"><span class="top">2 × 5</span><span class="bottom">3 × 3</span></span> = <b><span class="frac"><span class="top">10</span><span class="bottom">9</span></span></b> = <b>1 <span class="frac"><span class="top">1</span><span class="bottom">9</span></span></b>.</p></div>
-</div>
-<div class="example">💡 Simplificar antes de multiplicar facilita el cálculo y reduce errores.</div>
-</div></section>
-<section class="lesson" id="t5">
-<div class="lesson-head"><div class="lesson-number">T5</div><div><h2>División de fracciones</h2><p>Aplicamos el inverso multiplicativo y simplificamos.</p></div></div>
-<div class="lesson-body">
-<h3>Ejemplo</h3>
-<div class="math-process"><div class="math-line"><span class="frac"><span class="top">7</span><span class="bottom">12</span></span> ÷ <span class="frac"><span class="top">14</span><span class="bottom">15</span></span></div></div>
-<div class="steps">
-<div class="step"><div class="step-num">1</div><p>Conservamos la primera fracción: <span class="frac"><span class="top">7</span><span class="bottom">12</span></span>.</p></div>
-<div class="step"><div class="step-num">2</div><p>Cambiamos ÷ por × e invertimos la segunda: <span class="frac"><span class="top">14</span><span class="bottom">15</span></span> → <span class="frac"><span class="top">15</span><span class="bottom">14</span></span>.</p></div>
-<div class="step"><div class="step-num">3</div><p><span class="frac"><span class="top">7</span><span class="bottom">12</span></span> × <span class="frac"><span class="top">15</span><span class="bottom">14</span></span>. Simplificamos 7 con 14 y 15 con 12.</p></div>
-<div class="step"><div class="step-num">4</div><p>Obtenemos <span class="frac"><span class="top">1</span><span class="bottom">4</span></span> × <span class="frac"><span class="top">5</span><span class="bottom">2</span></span> = <b><span class="frac"><span class="top">5</span><span class="bottom">8</span></span></b>.</p></div>
-</div>
-<div class="example">📌 Dividir entre una fracción equivale a <b>multiplicar por su inversa</b>.</div>
-</div></section>
-<section class="lesson" id="t6">
-<div class="lesson-head"><div class="lesson-number">T6</div><div><h2>Operaciones combinadas con fracciones</h2><p>Aplicamos PEMDAS y la jerarquía de operaciones.</p></div></div>
-<div class="lesson-body">
-
-<h3>¿Qué es PEMDAS?</h3>
-<p><b>PEMDAS</b> es una regla que nos ayuda a resolver operaciones combinadas en el orden correcto:</p>
-
-<div class="key-points">
-  <div class="key-point"><b>P</b> = Paréntesis</div>
-  <div class="key-point"><b>E</b> = Exponentes</div>
-  <div class="key-point"><b>M</b> = Multiplicaciones</div>
-  <div class="key-point"><b>D</b> = Divisiones</div>
-  <div class="key-point"><b>A</b> = Adiciones</div>
-  <div class="key-point"><b>S</b> = Sustracciones</div>
-</div>
-
-<div class="example">
-📌 <b>Importante:</b> multiplicación y división tienen la misma prioridad y se resuelven de izquierda a derecha. Lo mismo ocurre con adición y sustracción.
-</div>
-
-<h3>Ejercicio grande paso a paso</h3>
-
-<div class="math-process">
-  <div class="math-line">
-    (<span class="frac"><span class="top">5</span><span class="bottom">6</span></span> + <span class="frac"><span class="top">3</span><span class="bottom">4</span></span>) ÷ <span class="frac"><span class="top">7</span><span class="bottom">8</span></span> − <span class="frac"><span class="top">2</span><span class="bottom">3</span></span> × (<span class="frac"><span class="top">9</span><span class="bottom">10</span></span> − <span class="frac"><span class="top">1</span><span class="bottom">5</span></span>)
-  </div>
-</div>
-
-<div class="steps">
-  <div class="step">
-    <div class="step-num">1</div>
-    <p><b>Paréntesis 1:</b><br>
-    <span class="frac"><span class="top">5</span><span class="bottom">6</span></span> + <span class="frac"><span class="top">3</span><span class="bottom">4</span></span> = <span class="frac"><span class="top">10</span><span class="bottom">12</span></span> + <span class="frac"><span class="top">9</span><span class="bottom">12</span></span> = <span class="frac"><span class="top">19</span><span class="bottom">12</span></span>.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-num">2</div>
-    <p><b>Paréntesis 2:</b><br>
-    <span class="frac"><span class="top">9</span><span class="bottom">10</span></span> − <span class="frac"><span class="top">1</span><span class="bottom">5</span></span> = <span class="frac"><span class="top">9</span><span class="bottom">10</span></span> − <span class="frac"><span class="top">2</span><span class="bottom">10</span></span> = <span class="frac"><span class="top">7</span><span class="bottom">10</span></span>.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-num">3</div>
-    <p><b>División:</b><br>
-    <span class="frac"><span class="top">19</span><span class="bottom">12</span></span> ÷ <span class="frac"><span class="top">7</span><span class="bottom">8</span></span> = <span class="frac"><span class="top">19</span><span class="bottom">12</span></span> × <span class="frac"><span class="top">8</span><span class="bottom">7</span></span>
-    = <span class="frac"><span class="top">19 × 2</span><span class="bottom">3 × 7</span></span> = <span class="frac"><span class="top">38</span><span class="bottom">21</span></span>.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-num">4</div>
-    <p><b>Multiplicación:</b><br>
-    <span class="frac"><span class="top">2</span><span class="bottom">3</span></span> × <span class="frac"><span class="top">7</span><span class="bottom">10</span></span> = <span class="frac"><span class="top">14</span><span class="bottom">30</span></span> = <span class="frac"><span class="top">7</span><span class="bottom">15</span></span>.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-num">5</div>
-    <p><b>Sustracción final:</b><br>
-    <span class="frac"><span class="top">38</span><span class="bottom">21</span></span> − <span class="frac"><span class="top">7</span><span class="bottom">15</span></span>.<br>
-    m.c.m.(21,15) = <b>105</b>.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-num">6</div>
-    <p>Convertimos:<br>
-    <span class="frac"><span class="top">38</span><span class="bottom">21</span></span> = <span class="frac"><span class="top">190</span><span class="bottom">105</span></span> y <span class="frac"><span class="top">7</span><span class="bottom">15</span></span> = <span class="frac"><span class="top">49</span><span class="bottom">105</span></span>.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-num">7</div>
-    <p>Restamos:<br>
-    <span class="frac"><span class="top">190</span><span class="bottom">105</span></span> − <span class="frac"><span class="top">49</span><span class="bottom">105</span></span> = <span class="frac"><span class="top">141</span><span class="bottom">105</span></span>.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-num">8</div>
-    <p>Simplificamos entre 3:<br>
-    <span class="frac"><span class="top">141</span><span class="bottom">105</span></span> = <b><span class="frac"><span class="top">47</span><span class="bottom">35</span></span></b> = <b>1 <span class="frac"><span class="top">12</span><span class="bottom">35</span></span></b>.</p>
-  </div>
-</div>
-
-<div class="example">
-✅ <b>Resultado final:</b> <span class="frac"><span class="top">47</span><span class="bottom">35</span></span> = 1 <span class="frac"><span class="top">12</span><span class="bottom">35</span></span>.
-</div>
-
-<h3>Consejo para evitar errores</h3>
-<p>Antes de comenzar, marca visualmente los <b>paréntesis</b>, luego identifica <b>multiplicaciones y divisiones</b> y deja para el final las <b>sumas y restas</b>.</p>
-
-</div></section>
-<section class="final-box" id="actividad-final">
-<h2>📝 Actividad final – Unidad 2</h2>
-<p><b>Indicaciones:</b> realiza la actividad en <b>hojas de carpeta a cuadros</b>. Presenta el procedimiento completo y simplifica todos los resultados cuando sea posible.</p>
-<div class="activity">
-<div class="task"><b>1. Convierte y simplifica.</b><br>
-a) Convierte <span class="frac"><span class="top">29</span><span class="bottom">6</span></span> a número mixto.<br>
-b) Convierte 4 <span class="frac"><span class="top">3</span><span class="bottom">5</span></span> a fracción impropia.<br>
-c) Simplifica <span class="frac"><span class="top">42</span><span class="bottom">56</span></span> hasta obtener una fracción irreducible.</div>
-
-<div class="task"><b>2. Fracciones equivalentes.</b><br>
-Completa los valores que faltan:<br>
-a) <span class="frac"><span class="top">7</span><span class="bottom">9</span></span> = <span class="frac"><span class="top">___</span><span class="bottom">36</span></span><br>
-b) <span class="frac"><span class="top">15</span><span class="bottom">25</span></span> = <span class="frac"><span class="top">3</span><span class="bottom">___</span></span><br>
-c) <span class="frac"><span class="top">___</span><span class="bottom">48</span></span> = <span class="frac"><span class="top">5</span><span class="bottom">8</span></span></div>
-
-<div class="task"><b>3. Plano cartesiano.</b><br>
-Dibuja un plano cartesiano con divisiones de ½ unidad y ubica:<br>
-A (<span class="frac"><span class="top">5</span><span class="bottom">2</span></span>, <span class="frac"><span class="top">3</span><span class="bottom">2</span></span>), B (<span class="frac"><span class="top">1</span><span class="bottom">2</span></span>, <span class="frac"><span class="top">7</span><span class="bottom">2</span></span>) y C (<span class="frac"><span class="top">7</span><span class="bottom">2</span></span>, <span class="frac"><span class="top">1</span><span class="bottom">1</span></span>).</div>
-
-<div class="task"><b>4. Resuelve las adiciones y expresa el resultado simplificado.</b><br>
-a) <span class="frac"><span class="top">7</span><span class="bottom">12</span></span> + <span class="frac"><span class="top">5</span><span class="bottom">18</span></span> = __________<br>
-b) <span class="frac"><span class="top">11</span><span class="bottom">15</span></span> + <span class="frac"><span class="top">7</span><span class="bottom">10</span></span> = __________</div>
-
-<div class="task"><b>5. Resuelve las sustracciones.</b><br>
-a) <span class="frac"><span class="top">13</span><span class="bottom">14</span></span> − <span class="frac"><span class="top">5</span><span class="bottom">21</span></span> = __________<br>
-b) 2 <span class="frac"><span class="top">1</span><span class="bottom">3</span></span> − <span class="frac"><span class="top">5</span><span class="bottom">6</span></span> = __________</div>
-
-<div class="task"><b>6. Multiplica y simplifica.</b><br>
-a) <span class="frac"><span class="top">14</span><span class="bottom">25</span></span> × <span class="frac"><span class="top">15</span><span class="bottom">28</span></span> = __________<br>
-b) <span class="frac"><span class="top">18</span><span class="bottom">35</span></span> × <span class="frac"><span class="top">21</span><span class="bottom">24</span></span> = __________</div>
-
-<div class="task"><b>7. Divide y simplifica.</b><br>
-a) <span class="frac"><span class="top">8</span><span class="bottom">15</span></span> ÷ <span class="frac"><span class="top">16</span><span class="bottom">25</span></span> = __________<br>
-b) <span class="frac"><span class="top">21</span><span class="bottom">32</span></span> ÷ <span class="frac"><span class="top">7</span><span class="bottom">12</span></span> = __________</div>
-
-<div class="task"><b>8. Resuelve las operaciones combinadas aplicando PEMDAS.</b><br>
-a) (<span class="frac"><span class="top">5</span><span class="bottom">6</span></span> + <span class="frac"><span class="top">1</span><span class="bottom">3</span></span>) × <span class="frac"><span class="top">9</span><span class="bottom">10</span></span> − <span class="frac"><span class="top">2</span><span class="bottom">5</span></span> = __________<br><br>
-b) <span class="frac"><span class="top">7</span><span class="bottom">8</span></span> ÷ (<span class="frac"><span class="top">5</span><span class="bottom">6</span></span> − <span class="frac"><span class="top">1</span><span class="bottom">3</span></span>) + <span class="frac"><span class="top">3</span><span class="bottom">4</span></span> × <span class="frac"><span class="top">2</span><span class="bottom">7</span></span> = __________</div>
-
-<div class="task"><b>9. Analiza y corrige.</b><br>
-Un estudiante resolvió: <span class="frac"><span class="top">2</span><span class="bottom">3</span></span> + <span class="frac"><span class="top">3</span><span class="bottom">5</span></span> = <span class="frac"><span class="top">5</span><span class="bottom">8</span></span>.<br>
-a) ¿Es correcto? __________<br>
-b) Explica el error y realiza correctamente la operación.<br>
-____________________________________________________________</div>
-
-<div class="task"><b>10. Problema.</b><br>
-Para elaborar un proyecto, un grupo utilizó <span class="frac"><span class="top">3</span><span class="bottom">5</span></span> de una cartulina el lunes y <span class="frac"><span class="top">1</span><span class="bottom">4</span></span> de la cartulina el martes.<br>
-a) ¿Qué fracción de la cartulina utilizaron en total?<br>
-b) ¿Qué fracción quedó sin utilizar?<br>
-c) Expresa ambos resultados en su forma irreducible.</div>
-</div>
-<p style="margin-top:18px;"><b>Fecha de presentación: miércoles 2 de septiembre de 2026.</b></p>
-</section>
-
-    <footer>
-      Material educativo de Matemática · 7.º de Básica · Unidad 2
-    </footer>
-  </div>
-
-  <script>
-    function downloadPDF(){
-      window.print();
-    }
-  </script>
-</body>
+    <script>
+      function downloadPDF() {
+        window.print();
+      }
+    </script>
+  </body>
 </html>
