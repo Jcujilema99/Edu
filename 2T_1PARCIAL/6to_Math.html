@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>6.º Básica - Matemática | Unidad 2 ·</title>
+    <title>6.º Básica - Matemática | Unidad 2 </title>
     
 <style>
   :root{
@@ -497,6 +497,7 @@
       background:#fff !important;
       -webkit-print-color-adjust:exact !important;
       print-color-adjust:exact !important;
+      color-adjust:exact !important;
     }
 
     body{
@@ -730,6 +731,298 @@
     @page{
       size:A4 portrait;
       margin:0;
+    }
+  }
+
+
+  /* ===== PROCEDIMIENTOS COMPACTOS ===== */
+  .steps{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:4px 8px;
+    margin:8px 0;
+    padding:7px 10px;
+    background:rgba(235,247,252,.46);
+    border-left:4px solid #5d8f67;
+    border-radius:4px 9px 9px 4px;
+  }
+
+  .step{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    padding:0;
+    margin:0;
+    background:transparent;
+    border:0;
+    border-radius:0;
+  }
+
+  .step:not(:last-child)::after{
+    content:"→";
+    margin-left:4px;
+    color:#b28a2d;
+    font-weight:900;
+  }
+
+  .step-num{
+    width:22px;
+    height:22px;
+    flex:0 0 22px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#5d8f67;
+    color:#fff;
+    border:1px solid #42694a;
+    font:800 .78rem/1 "Trebuchet MS","Segoe UI",sans-serif;
+  }
+
+  .step p{
+    margin:0;
+    white-space:normal;
+  }
+
+  /* Menos cajas grandes: ejemplos, notas y fórmulas más tipo apunte */
+  .example,.tip{
+    margin:7px 0;
+    padding:7px 10px;
+    border-radius:3px 7px 7px 3px;
+  }
+
+  .mathbox{
+    margin:8px auto;
+    padding:8px 12px;
+    box-shadow:none;
+  }
+
+  .lesson-body{
+    padding-top:9px;
+    padding-bottom:2px;
+  }
+
+  .lesson{
+    margin-top:16px;
+    margin-bottom:20px;
+  }
+
+  /* Impresión todavía más compacta */
+  @media print{
+    .steps{
+      display:flex !important;
+      flex-wrap:wrap !important;
+      gap:1mm 2mm !important;
+      margin:1.2mm 0 !important;
+      padding:1.5mm 2mm !important;
+      break-inside:avoid !important;
+      page-break-inside:avoid !important;
+    }
+
+    .step{
+      display:flex !important;
+      gap:1mm !important;
+      padding:0 !important;
+      border:0 !important;
+      background:transparent !important;
+    }
+
+    .step-num{
+      width:5.5mm !important;
+      height:5.5mm !important;
+      flex:0 0 5.5mm !important;
+      font-size:8pt !important;
+    }
+
+    .example,.tip{
+      margin:1.2mm 0 !important;
+      padding:1.7mm 2.5mm !important;
+    }
+
+    .mathbox{
+      margin:1.3mm 0 !important;
+      padding:1.8mm 2.5mm !important;
+    }
+
+    .lesson-body{
+      padding-top:1.5mm !important;
+      padding-bottom:.5mm !important;
+    }
+
+    .lesson{
+      margin-top:1.5mm !important;
+      margin-bottom:2mm !important;
+    }
+  }
+
+
+  /* ===== ESTILO CUADERNO: CONTENIDO DIRECTAMENTE SOBRE LA CUADRÍCULA ===== */
+  .lesson,
+  .lesson-body,
+  .steps,
+  .step,
+  .example,
+  .tip,
+  .mathbox,
+  .visual,
+  .final,
+  .task{
+    background:transparent !important;
+    box-shadow:none !important;
+  }
+
+  .lesson{
+    border:0 !important;
+  }
+
+  .lesson-body{
+    padding-left:8px !important;
+    padding-right:8px !important;
+  }
+
+  /* Procedimientos como escritura continua, sin cajas */
+  .steps{
+    border:0 !important;
+    border-left:0 !important;
+    padding:2px 0 !important;
+  }
+
+  .step{
+    border:0 !important;
+  }
+
+  /* Ejemplos y notas: solo una marca lateral discreta */
+  .example{
+    border:0 !important;
+    border-left:3px solid #397cad !important;
+    border-radius:0 !important;
+    padding:3px 0 3px 9px !important;
+  }
+
+  .tip{
+    border:0 !important;
+    border-left:3px solid #d79f2b !important;
+    border-radius:0 !important;
+    padding:3px 0 3px 9px !important;
+  }
+
+  /* Fórmulas directamente en la hoja */
+  .mathbox{
+    border:0 !important;
+    border-radius:0 !important;
+    padding:4px 0 !important;
+    text-align:center;
+    transform:none !important;
+  }
+
+  /* Los dibujos también sin una caja grande alrededor */
+  .visual{
+    border:0 !important;
+    border-radius:0 !important;
+    padding:2px 0 !important;
+  }
+
+  /* Actividad final sin gran contenedor de fondo */
+  .final{
+    border:0 !important;
+    border-radius:0 !important;
+    padding-left:6px !important;
+    padding-right:6px !important;
+  }
+
+  .task{
+    border:0 !important;
+    border-bottom:1px dashed rgba(72,111,137,.32) !important;
+    border-radius:0 !important;
+    padding:5px 2px !important;
+  }
+
+  @media print{
+    .lesson-body{
+      padding-left:1mm !important;
+      padding-right:1mm !important;
+    }
+
+    .steps{
+      padding:0 !important;
+      margin:1mm 0 !important;
+    }
+
+    .example,.tip{
+      padding:.7mm 0 .7mm 2mm !important;
+      margin:1mm 0 !important;
+    }
+
+    .mathbox{
+      padding:.8mm 0 !important;
+      margin:1mm 0 !important;
+    }
+
+    .visual{
+      padding:0 !important;
+      margin:1mm 0 !important;
+    }
+
+    .task{
+      padding:1mm 0 !important;
+      margin:.8mm 0 !important;
+    }
+  }
+
+
+  /* ===== PASOS VERTICALES, COMO EN UN CUADERNO ===== */
+  .steps{
+    display:block !important;
+    margin:6px 0 !important;
+    padding:0 !important;
+  }
+
+  .step{
+    display:grid !important;
+    grid-template-columns:28px 1fr !important;
+    align-items:start !important;
+    gap:7px !important;
+    margin:3px 0 !important;
+    padding:0 !important;
+  }
+
+  .step:not(:last-child)::after{
+    content:none !important;
+  }
+
+  .step-num{
+    width:23px !important;
+    height:23px !important;
+    min-width:23px !important;
+    border-radius:50% !important;
+    font-size:.78rem !important;
+  }
+
+  .step p{
+    margin:0 !important;
+    padding-top:1px !important;
+  }
+
+  @media print{
+    .steps{
+      display:block !important;
+      margin:1mm 0 !important;
+      padding:0 !important;
+    }
+
+    .step{
+      display:grid !important;
+      grid-template-columns:6mm 1fr !important;
+      gap:1.5mm !important;
+      margin:.8mm 0 !important;
+      padding:0 !important;
+    }
+
+    .step-num{
+      width:5mm !important;
+      height:5mm !important;
+      min-width:5mm !important;
+      font-size:7.5pt !important;
     }
   }
 
