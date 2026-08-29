@@ -3,436 +3,759 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>6.º Básica - Matemática | Unidad 2</title>
-    <style>
-      :root {
-        --ink: #274665;
-        --blue: #4b9fe8;
-        --cyan: #58c9d4;
-        --purple: #826fe0;
-        --yellow: #ffd76b;
-        --line: #dce9f5;
-        --soft: #f8fbff;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: "Segoe UI", Arial, sans-serif;
-        color: var(--ink);
-        line-height: 1.55;
-        background: linear-gradient(180deg, #effbff, #fff9ef);
-      }
-      .page {
-        width: min(1080px, calc(100% - 24px));
-        margin: 18px auto 45px;
-      }
-      .actions {
-        text-align: right;
-        position: sticky;
-        top: 8px;
-        z-index: 10;
-      }
-      .actions button {
-        border: 0;
-        border-radius: 14px;
-        padding: 12px 18px;
-        color: #fff;
-        font-weight: 900;
-        cursor: pointer;
-        background: linear-gradient(135deg, #42a9e7, #756de6);
-        box-shadow: 0 8px 20px #527da833;
-      }
-      .hero {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 26px;
-        overflow: hidden;
-        box-shadow: 0 13px 34px #45678916;
-      }
-      .hero-main {
-        padding: 28px;
-      }
-      .badge {
-        display: inline-block;
-        padding: 7px 11px;
-        border-radius: 999px;
-        background: #eaf7ff;
-        color: #3277b4;
-        font-weight: 900;
-        font-size: 0.84rem;
-      }
-      h1 {
-        font-size: clamp(2rem, 4vw, 3.35rem);
-        line-height: 1.08;
-        margin: 12px 0;
-      }
-      .gradient {
-        background: linear-gradient(90deg, #268ac7, #54bda7, #795fc9);
-        -webkit-background-clip: text;
-        color: transparent;
-      }
-      .meta {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-top: 14px;
-      }
-      .pill {
-        padding: 7px 10px;
-        border: 1px solid var(--line);
-        border-radius: 11px;
-        font-weight: 800;
-        font-size: 0.84rem;
-      }
-      .hero-art {
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, #e8f7ff, #f4efff);
-      }
-      .hero-art svg {
-        width: 85%;
-        max-width: 300px;
-      }
-      .notice,
-      .unit-title {
-        margin: 15px 0;
-        border-radius: 18px;
-        padding: 15px 18px;
-      }
-      .notice {
-        background: #fff9e5;
-        border: 1px solid #efd06d;
-      }
-      .unit-title {
-        text-align: center;
-        background: linear-gradient(135deg, #e9f8ff, #f3efff, #ecfff4);
-        border: 1px solid #cfe5f4;
-      }
-      .unit-title h2 {
-        margin: 4px;
-        font-size: 1.55rem;
-      }
-      .lesson {
-        margin: 22px 0;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 23px;
-        overflow: hidden;
-        box-shadow: 0 10px 28px #45678912;
-      }
-      .lesson-head {
-        display: flex;
-        align-items: center;
-        gap: 13px;
-        padding: 18px 22px;
-        border-bottom: 1px solid var(--line);
-      }
-      .lesson-number {
-        width: 52px;
-        height: 52px;
-        display: grid;
-        place-items: center;
-        border-radius: 15px;
-        color: #fff;
-        font-weight: 900;
-        background: linear-gradient(135deg, #53c7d4, #4c8fe5);
-      }
-      .lesson-head h2 {
-        margin: 0;
-        font-size: 1.3rem;
-      }
-      .lesson-head p {
-        margin: 2px 0;
-        color: #6c8095;
-        font-size: 0.9rem;
-      }
-      .lesson-body {
-        padding: 22px;
-      }
-      .lesson-body h3 {
-        color: #2f6fa6;
-      }
-      .steps {
-        display: grid;
-        gap: 9px;
-        margin: 14px 0;
-      }
-      .step {
-        display: grid;
-        grid-template-columns: 44px 1fr;
-        gap: 11px;
-        padding: 12px;
-        border-radius: 13px;
-        background: #f7fbff;
-        border: 1px solid #e0ebf5;
-      }
-      .step-num {
-        width: 40px;
-        height: 40px;
-        display: grid;
-        place-items: center;
-        border-radius: 12px;
-        color: white;
-        font-weight: 900;
-        background: linear-gradient(135deg, #4ba9df, #7a70dd);
-      }
-      .step p {
-        margin: 0;
-      }
-      .example,
-      .tip {
-        padding: 12px 14px;
-        border-radius: 12px;
-        margin: 13px 0;
-      }
-      .example {
-        background: #eef8ff;
-        border-left: 5px solid #58a5e8;
-      }
-      .tip {
-        background: #fff8df;
-        border-left: 5px solid #efbd4c;
-      }
-      .mathbox {
-        padding: 16px;
-        border: 1px solid #dbe8f4;
-        border-radius: 16px;
-        background: #f9fcff;
-        margin: 15px 0;
-        text-align: center;
-        font-size: 1.15rem;
-        font-weight: 800;
-      }
-      .visual {
-        padding: 12px;
-        border-radius: 17px;
-        background: linear-gradient(135deg, #f8fcff, #fffaf4);
-        border: 1px solid #dce9f5;
-        margin-top: 15px;
-      }
-      .visual svg {
-        display: block;
-        width: 100%;
-        max-height: 320px;
-      }
-      .factor {
-        display: inline-block;
-        padding: 4px 9px;
-        border-radius: 8px;
-        background: #eaf6ff;
-        margin: 3px;
-        font-weight: 900;
-      }
-      .final {
-        margin-top: 24px;
-        padding: 22px;
-        background: #fff;
-        border: 1px solid #e8da9b;
-        border-radius: 22px;
-      }
-      .task {
-        padding: 13px;
-        margin: 10px 0;
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        background: #fbfdff;
-      }
-      .draw {
-        height: 140px;
-        border: 2px dashed #b9ccdc;
-        border-radius: 11px;
-        margin-top: 9px;
-      }
-      table {
-        border-collapse: collapse;
-        margin: 12px auto;
-        width: min(650px, 100%);
-      }
-      th,
-      td {
-        border: 1px solid #bcd0e1;
-        padding: 8px;
-        text-align: center;
-      }
-      th {
-        background: #edf7ff;
-      }
-      @media (max-width: 700px) {
-        .hero {
-          grid-template-columns: 1fr;
-        }
-        .hero-art {
-          display: none;
-        }
-      }
-      @media print {
-        body {
-          background: #fff;
-        }
-        .page {
-          width: 100%;
-          margin: 0;
-        }
-        .actions {
-          display: none;
-        }
-        .hero,
-        .notice,
-        .unit-title {
-          break-inside: avoid;
-          page-break-inside: avoid;
-          box-shadow: none;
-        }
-        .hero {
-          grid-template-columns: 1.2fr 0.8fr;
-        }
-        .hero-main {
-          padding: 15px 18px;
-        }
-        .hero-art svg {
-          max-height: 155px;
-        }
-        h1 {
-          font-size: 2rem;
-        }
-        .notice,
-        .unit-title {
-          margin: 5mm 0;
-          padding: 10px 13px;
-          font-size: 0.88rem;
-        }
-        .unit-title h2 {
-          font-size: 1.25rem;
-        }
-        .lesson {
-          break-before: page;
-          page-break-before: always;
-          break-inside: avoid;
-          page-break-inside: avoid;
-          margin: 0;
-          box-shadow: none;
-        }
-        .steps,
-        .step,
-        .example,
-        .tip,
-        .mathbox,
-        .visual,
-        table {
-          break-inside: avoid;
-          page-break-inside: avoid;
-        }
-        .final {
-          break-before: page;
-          page-break-before: always;
-          margin: 0;
-        }
-        @page {
-          size: A4;
-          margin: 9mm;
-        }
-      }
-    </style>
+    <title>6.º Básica - Matemática | Unidad 2 · Versión Cuaderno Premium</title>
+    
+<style>
+  :root{
+    --ink:#24354a;
+    --blue:#2f78b7;
+    --red:#c94c4c;
+    --green:#5d8f67;
+    --mustard:#d8a22f;
+    --cream:#fffdf5;
+    --paper:#fffef8;
+    --line:#b9d8ec;
+    --purple:#8062a8;
+  }
+
+  *{box-sizing:border-box}
+
+  html{scroll-behavior:smooth}
+
+  body{
+    margin:0;
+    color:var(--ink);
+    line-height:1.55;
+    font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;
+    background:
+      radial-gradient(circle at 10% 20%, rgba(246,205,94,.18) 0 3px, transparent 4px),
+      radial-gradient(circle at 90% 15%, rgba(72,142,193,.13) 0 4px, transparent 5px),
+      linear-gradient(135deg,#efe8d8,#faf6ea 45%,#eee4cf);
+    background-size:44px 44px,58px 58px,100% 100%;
+  }
+
+  .page{
+    position:relative;
+    width:min(980px,calc(100% - 24px));
+    margin:24px auto 55px;
+    padding:26px 34px 40px 64px;
+    background:
+      linear-gradient(90deg, transparent 0 42px, rgba(220,78,78,.32) 42px 44px, transparent 44px),
+      linear-gradient(rgba(88,151,194,.13) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88,151,194,.13) 1px, transparent 1px),
+      var(--paper);
+    background-size:auto, 22px 22px, 22px 22px, auto;
+    background-position:0 0, 0 0, 0 0, 0 0;
+    border:1px solid #ddd2bb;
+    border-radius:8px;
+    box-shadow:0 18px 50px rgba(71,58,35,.18);
+    overflow:hidden;
+  }
+
+  .page::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:.23;
+    background:
+      radial-gradient(circle at 7% 9%, #dbbf83 0 1px, transparent 2px),
+      radial-gradient(circle at 80% 70%, #c9b27e 0 1px, transparent 2px);
+    background-size:31px 31px,47px 47px;
+    mix-blend-mode:multiply;
+  }
+
+  .page::after{
+    content:"✎   ∑   π   2·3·5·7   ◯   📐";
+    position:absolute;
+    top:10px;
+    right:20px;
+    color:#7b6b54;
+    opacity:.15;
+    font:700 18px/1.2 "Comic Sans MS","Segoe Print",cursive;
+    transform:rotate(-2deg);
+    letter-spacing:4px;
+  }
+
+  .actions{
+    position:sticky;
+    top:10px;
+    z-index:30;
+    text-align:right;
+    margin-bottom:8px;
+  }
+
+  .actions button{
+    border:2px solid #2c5f88;
+    background:#fff8d8;
+    color:#28475f;
+    padding:10px 16px;
+    border-radius:8px 14px 7px 13px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:4px 5px 0 #b5cfe0;
+    transform:rotate(-1deg);
+  }
+
+  .hero{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.18fr .82fr;
+    gap:18px;
+    padding:22px 24px;
+    margin:8px 0 20px;
+    background:rgba(255,252,238,.84);
+    border:2px solid #385a73;
+    border-radius:8px 16px 9px 14px;
+    box-shadow:5px 6px 0 rgba(60,92,113,.12);
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    left:22px;
+    right:22px;
+    top:-9px;
+    height:14px;
+    background:
+      repeating-linear-gradient(135deg,
+        #2f78b7 0 13px,
+        transparent 13px 24px,
+        #c94c4c 24px 37px,
+        transparent 37px 49px
+      );
+    opacity:.9;
+    border-radius:50%;
+  }
+
+  .hero-main{padding:4px 4px 8px}
+
+  .badge{
+    display:inline-block;
+    padding:5px 12px;
+    background:#e9f4d9;
+    border:1.5px solid #7a9f62;
+    color:#466441;
+    font-weight:900;
+    border-radius:4px 10px 5px 9px;
+    transform:rotate(-1deg);
+    letter-spacing:.4px;
+  }
+
+  h1,h2,h3{
+    font-family:"Comic Sans MS","Segoe Print","Bradley Hand",cursive;
+  }
+
+  h1{
+    margin:12px 0 8px;
+    font-size:clamp(2.15rem,5vw,4rem);
+    line-height:1.03;
+    color:#295879;
+    text-shadow:1px 1px 0 #fff;
+    transform:rotate(-.5deg);
+  }
+
+  .gradient{
+    color:#b34f4f;
+    background:none;
+    -webkit-text-fill-color:initial;
+  }
+
+  .hero p{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:1.04rem;
+    color:#34475a;
+  }
+
+  .meta{
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+    margin-top:13px;
+  }
+
+  .pill{
+    padding:5px 10px;
+    font-weight:800;
+    background:#fff8cb;
+    border:1.5px solid #c8a73b;
+    border-radius:4px 10px 5px 10px;
+    box-shadow:2px 2px 0 rgba(163,128,33,.13);
+  }
+
+  .hero-art{
+    display:grid;
+    place-items:center;
+    align-self:center;
+    min-height:240px;
+    padding:9px;
+    background:
+      linear-gradient(rgba(255,255,255,.72),rgba(255,255,255,.72)),
+      repeating-linear-gradient(0deg,#f4ead6 0 18px,#f0dfc2 19px 20px);
+    border:2px dashed #9c7e4a;
+    border-radius:14px 5px 15px 7px;
+    transform:rotate(1.2deg);
+  }
+
+  .hero-art svg{
+    width:90%;
+    max-width:300px;
+    filter:drop-shadow(2px 3px 0 rgba(51,72,91,.12));
+  }
+
+  .notice,
+  .unit-title{
+    position:relative;
+    margin:18px 0;
+    padding:16px 18px;
+  }
+
+  .notice{
+    background:#fff3b8;
+    border:2px solid #c5912e;
+    border-radius:5px 14px 5px 13px;
+    box-shadow:4px 5px 0 rgba(177,132,43,.14);
+    transform:rotate(.15deg);
+  }
+
+  .notice::before{
+    content:"📌";
+    position:absolute;
+    left:-18px;
+    top:-16px;
+    font-size:28px;
+    transform:rotate(-15deg);
+  }
+
+  .unit-title{
+    text-align:center;
+    background:transparent;
+    border:none;
+    padding:16px 8px 10px;
+  }
+
+  .unit-title small{
+    color:#658150;
+    font-weight:900;
+    letter-spacing:1.2px;
+  }
+
+  .unit-title h2{
+    display:inline-block;
+    margin:7px auto 0;
+    padding:5px 14px 8px;
+    color:#2a577a;
+    font-size:1.65rem;
+    border-bottom:5px double #d0a63c;
+    transform:rotate(-.4deg);
+  }
+
+  .lesson{
+    position:relative;
+    margin:26px 0 34px;
+    padding:0 3px 10px;
+    background:rgba(255,255,255,.16);
+    border:none;
+    overflow:visible;
+    box-shadow:none;
+  }
+
+  .lesson::after{
+    content:"✦";
+    position:absolute;
+    right:7px;
+    top:18px;
+    color:#d29b32;
+    font-size:26px;
+    transform:rotate(12deg);
+  }
+
+  .lesson-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:8px 8px 10px;
+    border-bottom:2px solid rgba(53,98,132,.4);
+  }
+
+  .lesson-number{
+    flex:0 0 auto;
+    width:58px;
+    height:45px;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    font:900 1.1rem "Comic Sans MS","Segoe Print",cursive;
+    background:#2f78b7;
+    border:2px solid #244d6b;
+    border-radius:5px 13px 4px 11px;
+    box-shadow:3px 3px 0 #f2c14d;
+    transform:rotate(-3deg);
+  }
+
+  .lesson:nth-of-type(even) .lesson-number{
+    background:#bd5e5e;
+    box-shadow:3px 3px 0 #97b874;
+  }
+
+  .lesson-head h2{
+    margin:0;
+    color:#2f5674;
+    font-size:1.65rem;
+    line-height:1.1;
+  }
+
+  .lesson-head p{
+    margin:3px 0 0;
+    color:#6a5a4d;
+    font-family:Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-size:.96rem;
+  }
+
+  .lesson-body{
+    padding:14px 16px 4px;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:1.02rem;
+  }
+
+  .lesson-body h3{
+    display:inline-block;
+    margin:7px 0 8px;
+    color:#a84e4e;
+    font-size:1.28rem;
+    border-bottom:3px solid #d9b747;
+    line-height:1.15;
+  }
+
+  .steps{
+    display:grid;
+    gap:10px;
+    margin:14px 0;
+  }
+
+  .step{
+    display:grid;
+    grid-template-columns:42px 1fr;
+    gap:12px;
+    align-items:center;
+    padding:9px 12px;
+    background:rgba(235,247,252,.65);
+    border:1.6px solid #87acc3;
+    border-radius:5px 12px 5px 12px;
+  }
+
+  .step-num{
+    width:36px;
+    height:36px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#5c8d67;
+    color:white;
+    font-weight:900;
+    font-family:"Comic Sans MS","Segoe Print",cursive;
+    border:2px solid #42694a;
+  }
+
+  .step p{margin:0}
+
+  .example,.tip{
+    position:relative;
+    margin:14px 0;
+    padding:12px 14px 12px 18px;
+    border-radius:5px 12px 5px 12px;
+  }
+
+  .example{
+    background:rgba(232,244,251,.82);
+    border:1.8px solid #6598bb;
+    border-left:6px solid #397cad;
+  }
+
+  .tip{
+    background:rgba(255,242,184,.84);
+    border:1.8px solid #cda83d;
+    border-left:6px solid #d79f2b;
+  }
+
+  .mathbox{
+    margin:15px auto;
+    padding:13px 16px;
+    text-align:center;
+    font:800 1.08rem/1.5 "Comic Sans MS","Segoe Print",cursive;
+    background:rgba(244,234,219,.86);
+    border:2px solid #7f6b54;
+    border-radius:4px 12px 4px 12px;
+    box-shadow:3px 4px 0 rgba(111,89,56,.12);
+    transform:rotate(-.2deg);
+  }
+
+  .visual{
+    margin-top:16px;
+    padding:12px;
+    background:rgba(255,252,235,.72);
+    border:2px dashed #86724f;
+    border-radius:12px 5px 13px 6px;
+  }
+
+  .visual svg{
+    display:block;
+    width:100%;
+    max-height:330px;
+    filter:saturate(.86);
+  }
+
+  .factor{
+    display:inline-block;
+    padding:4px 9px;
+    margin:3px;
+    background:#eaf2d7;
+    border:1px solid #8ca26c;
+    border-radius:5px 9px 5px 9px;
+    font-weight:900;
+  }
+
+  table{
+    border-collapse:separate;
+    border-spacing:0;
+    width:min(680px,100%);
+    margin:15px auto;
+    background:rgba(255,254,245,.82);
+    border:2px solid #587a91;
+    border-radius:8px;
+    overflow:hidden;
+    font-family:"Trebuchet MS","Segoe UI",sans-serif;
+  }
+
+  th,td{
+    padding:9px 10px;
+    text-align:center;
+    border-right:1px solid #94b1c1;
+    border-bottom:1px solid #94b1c1;
+  }
+
+  th{
+    background:#dcebf2;
+    color:#355d76;
+    font-family:"Comic Sans MS","Segoe Print",cursive;
+  }
+
+  tr:last-child td{border-bottom:none}
+  th:last-child,td:last-child{border-right:none}
+
+  .final{
+    position:relative;
+    margin-top:30px;
+    padding:20px 18px 25px;
+    background:rgba(255,248,213,.55);
+    border:2px solid #b38d35;
+    border-radius:7px 16px 7px 15px;
+    box-shadow:5px 6px 0 rgba(167,127,39,.12);
+  }
+
+  .final h2{
+    margin-top:0;
+    color:#9b4f4f;
+    font-size:1.8rem;
+    text-align:center;
+    text-decoration:underline wavy #d2a33c;
+    text-underline-offset:7px;
+  }
+
+  .task{
+    margin:11px 0;
+    padding:11px 13px;
+    background:rgba(255,255,255,.62);
+    border:1.6px solid #8aa6b7;
+    border-radius:4px 10px 4px 10px;
+  }
+
+  .draw{
+    height:150px;
+    margin-top:10px;
+    border:2px dashed #7f99a8;
+    border-radius:8px;
+    background:
+      linear-gradient(90deg,transparent 0 34px,rgba(222,88,88,.2) 35px 36px,transparent 37px),
+      repeating-linear-gradient(to bottom,rgba(255,255,255,.7) 0 23px,rgba(109,165,200,.18) 24px 25px);
+  }
+
+  @media (max-width:760px){
+    .page{padding:22px 18px 35px 44px}
+    .hero{grid-template-columns:1fr}
+    .hero-art{min-height:180px}
+    .lesson-head{align-items:flex-start}
+    .lesson-head h2{font-size:1.35rem}
+  }
+
+  
+  @media print{
+    html, body{
+      margin:0 !important;
+      padding:0 !important;
+      background:#fff !important;
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+      color-adjust:exact !important;
+    }
+
+    body{
+      width:210mm;
+      min-height:297mm;
+    }
+
+    .page{
+      position:relative;
+      width:210mm !important;
+      max-width:210mm !important;
+      margin:0 auto !important;
+      padding:3mm 8mm 3mm 16mm !important;
+      border:0 !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+      overflow:visible !important;
+
+      /* Papel cuadriculado visible al imprimir */
+      background-color:#fffef8 !important;
+      background-image:
+        linear-gradient(90deg, transparent 0 12mm, rgba(210,72,72,.34) 12mm 12.45mm, transparent 12.45mm),
+        linear-gradient(rgba(86,145,186,.18) .28mm, transparent .28mm),
+        linear-gradient(90deg, rgba(86,145,186,.18) .28mm, transparent .28mm) !important;
+      background-size:auto, 6.5mm 6.5mm, 6.5mm 6.5mm !important;
+      background-position:0 0, 0 0, 0 0 !important;
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+    }
+
+    .page::before,
+    .page::after{
+      display:none !important;
+    }
+
+    .actions,
+    .print-help{
+      display:none !important;
+    }
+
+    .hero{
+      display:grid !important;
+      grid-template-columns:1.18fr .82fr !important;
+      gap:6mm !important;
+      margin:0 0 3mm 0 !important;
+      padding:3mm 4mm !important;
+      break-inside:avoid !important;
+      page-break-inside:avoid !important;
+      box-shadow:none !important;
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+    }
+
+    .hero-art{
+      min-height:42mm !important;
+      max-height:46mm !important;
+      padding:3mm !important;
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+    }
+
+    .hero-art svg{
+      max-height:44mm !important;
+    }
+
+    h1{
+      font-size:24pt !important;
+      line-height:1.05 !important;
+    }
+
+    .notice,
+    .unit-title{
+      margin:1.8mm 0 !important;
+      padding:3mm 4mm !important;
+      break-inside:avoid !important;
+      page-break-inside:avoid !important;
+      box-shadow:none !important;
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+    }
+
+    .unit-title h2{
+      font-size:15pt !important;
+    }
+
+    /* Cada tema inicia en una hoja nueva para que no salga "todo de largo" */
+    .lesson{
+      display:block !important;
+      margin:2mm 0 3mm !important;
+      padding:0 0 2mm 0 !important;
+      break-before:auto !important;
+      page-break-before:auto !important;
+      break-inside:auto !important;
+      page-break-inside:auto !important;
+      background:transparent !important;
+    }
+
+    .lesson-head{
+      padding:2.5mm 3mm 2mm !important;
+      break-after:avoid !important;
+      page-break-after:avoid !important;
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+    }
+
+    .lesson-head h2{
+      font-size:17pt !important;
+    }
+
+    .lesson-head p{
+      font-size:10pt !important;
+    }
+
+    .lesson-body{
+      padding:2mm 4mm 1mm !important;
+      font-size:10.5pt !important;
+      line-height:1.45 !important;
+    }
+
+    .lesson-body h3{
+      font-size:13pt !important;
+      margin:2mm 0 !important;
+    }
+
+    .steps,
+    .step,
+    .example,
+    .tip,
+    .mathbox,
+    table{
+      break-inside:avoid !important;
+      page-break-inside:avoid !important;
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+    }
+
+    .steps{gap:2mm !important; margin:2mm 0 !important;}
+    .step{padding:2.5mm 3mm !important;}
+    .example,.tip,.mathbox{margin:2mm 0 !important; padding:3mm 4mm !important;}
+
+    .visual{
+      margin:1.5mm 0 !important;
+      padding:1.5mm !important;
+      break-inside:auto !important;
+      page-break-inside:auto !important;
+    }
+
+    .visual svg{
+      display:block !important;
+      width:100% !important;
+      height:auto !important;
+      max-height:50mm !important;
+      break-inside:avoid !important;
+      page-break-inside:avoid !important;
+    }
+
+    table{
+      width:96% !important;
+      margin:2mm auto !important;
+      font-size:9.5pt !important;
+    }
+
+    th,td{
+      padding:2mm 2.5mm !important;
+    }
+
+    .final{
+      margin:3mm 0 0 !important;
+      padding:3mm 4mm !important;
+      break-before:auto !important;
+      page-break-before:auto !important;
+      break-inside:auto !important;
+      page-break-inside:auto !important;
+      box-shadow:none !important;
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+    }
+
+    .final h2{
+      font-size:18pt !important;
+    }
+
+    .task{
+      margin:1.8mm 0 !important;
+      padding:3mm !important;
+      break-inside:avoid !important;
+      page-break-inside:avoid !important;
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+    }
+
+    .draw{
+      height:32mm !important;
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+    }
+
+
+    /* Evita huecos grandes antes de gráficos o diagramas */
+    .lesson-body > p{
+      orphans:2 !important;
+      widows:2 !important;
+    }
+
+    .lesson .visual{
+      break-before:auto !important;
+      page-break-before:auto !important;
+    }
+
+    /* Diagramas compactos para que entren en el espacio restante */
+    .lesson:nth-of-type(5) .visual svg,
+    .lesson:nth-of-type(6) .visual svg,
+    .lesson:nth-of-type(7) .visual svg{
+      max-height:46mm !important;
+    }
+
+    .lesson:nth-of-type(5) .visual,
+    .lesson:nth-of-type(6) .visual,
+    .lesson:nth-of-type(7) .visual{
+      padding:1mm !important;
+      margin:1mm 0 !important;
+    }
+
+    /* No reservar una página completa para un elemento visual */
+    .lesson,
+    .lesson-body,
+    .visual{
+      overflow:visible !important;
+    }
+
+    @page{
+      size:A4 portrait;
+      margin:0;
+    }
+  }
+
+</style>
+
   </head>
   <body>
     <main class="page">
+  <div aria-hidden="true" style="
+    position:absolute;left:9px;top:160px;writing-mode:vertical-rl;
+    font-family:'Comic Sans MS','Segoe Print',cursive;font-size:13px;
+    color:#8a7357;opacity:.34;letter-spacing:3px;transform:rotate(180deg)">
+    MATEMÁTICA • 6.º EGB
+  </div>
+
       <div class="actions">
-        <button onclick="window.print()">📄 Descargar materia en PDF</button>
+        <button onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
       </div>
-
-      <section class="hero">
-        <div class="hero-main">
-          <span class="badge">📐 MATEMÁTICA · 6.º DE BÁSICA</span>
-          <h1>
-            Unidad 2 ·
-            <span class="gradient"
-              >Criterio de números, circunferencia y estadística</span
-            >
-          </h1>
-          <p>
-            Estudiaremos números primos y compuestos, divisibilidad,
-            factorización, máximo común divisor, elementos del círculo y la
-            circunferencia, y representación de datos mediante diagramas
-            estadísticos.
-          </p>
-          <div class="meta">
-            <span class="pill">📘 Unidad 2</span
-            ><span class="pill">🧒 6.º de Básica</span
-            ><span class="pill"
-              >📅 Presentación: miércoles 2 de septiembre de 2026</span
-            >
-          </div>
-        </div>
-        <div class="hero-art">
-          <svg viewBox="0 0 320 240">
-            <rect
-              x="25"
-              y="25"
-              width="270"
-              height="185"
-              rx="25"
-              fill="white"
-              stroke="#d8e7f5"
-              stroke-width="4"
-            />
-            <circle
-              cx="95"
-              cy="112"
-              r="52"
-              fill="#edf8ff"
-              stroke="#4e9fe3"
-              stroke-width="5"
-            />
-            <circle cx="95" cy="112" r="5" fill="#4e9fe3" />
-            <line
-              x1="95"
-              y1="112"
-              x2="145"
-              y2="112"
-              stroke="#4e9fe3"
-              stroke-width="4"
-            />
-            <rect
-              x="185"
-              y="120"
-              width="24"
-              height="55"
-              rx="5"
-              fill="#61c9a0"
-            />
-            <rect x="218" y="90" width="24" height="85" rx="5" fill="#f1b557" />
-            <rect
-              x="251"
-              y="55"
-              width="24"
-              height="120"
-              rx="5"
-              fill="#7b75dd"
-            />
-            <text
-              x="175"
-              y="45"
-              font-size="22"
-              font-weight="900"
-              fill="#4b6989"
-            >
-              2 · 3 · 5 · 7
-            </text>
-          </svg>
-        </div>
-      </section>
-
-      <div class="notice">
+<div class="notice">
         <b>⭐ Indicaciones para el estudiante</b><br />
         El contenido deberá desarrollarse en el <b>cuaderno de Matemática</b>,
         manteniendo orden, buena presentación y realizando todos los
         procedimientos. La <b>actividad final de 10 preguntas</b> se realizará
         en <b>hojas de carpeta a cuadros</b>. Ambos trabajos deberán entregarse
-        el <b>miércoles 2 de septiembre de 2026</b>.<br />
+        el <b>lunes 28 de septiembre de 2026</b>.<br />
         <b>Nota:</b> Las imágenes y gráficos pueden ser
         <b>pegados o dibujados</b>.
       </div>
@@ -443,7 +766,7 @@
       </section>
 
       <section class="lesson">
-        <div class="lesson-head">
+        <div class="lesson-head"><span aria-hidden="true" style="font-size:22px;opacity:.65;transform:rotate(-8deg)">✎</span>
           <div class="lesson-number">T1</div>
           <div>
             <h2>Números primos y compuestos</h2>
@@ -471,7 +794,7 @@
       </section>
 
       <section class="lesson">
-        <div class="lesson-head">
+        <div class="lesson-head"><span aria-hidden="true" style="font-size:22px;opacity:.65;transform:rotate(-8deg)">✎</span>
           <div class="lesson-number">T2</div>
           <div>
             <h2>Criterios de divisibilidad</h2>
@@ -526,7 +849,7 @@
       </section>
 
       <section class="lesson">
-        <div class="lesson-head">
+        <div class="lesson-head"><span aria-hidden="true" style="font-size:22px;opacity:.65;transform:rotate(-8deg)">✎</span>
           <div class="lesson-number">T3</div>
           <div>
             <h2>Descomposición de números en factores primos</h2>
@@ -564,7 +887,7 @@
       </section>
 
       <section class="lesson">
-        <div class="lesson-head">
+        <div class="lesson-head"><span aria-hidden="true" style="font-size:22px;opacity:.65;transform:rotate(-8deg)">✎</span>
           <div class="lesson-number">T4</div>
           <div>
             <h2>Máximo común divisor</h2>
@@ -607,7 +930,7 @@
       </section>
 
       <section class="lesson">
-        <div class="lesson-head">
+        <div class="lesson-head"><span aria-hidden="true" style="font-size:22px;opacity:.65;transform:rotate(-8deg)">✎</span>
           <div class="lesson-number">T5</div>
           <div>
             <h2>Los elementos del círculo y de la circunferencia</h2>
@@ -725,7 +1048,7 @@
       </section>
 
       <section class="lesson">
-        <div class="lesson-head">
+        <div class="lesson-head"><span aria-hidden="true" style="font-size:22px;opacity:.65;transform:rotate(-8deg)">✎</span>
           <div class="lesson-number">T6</div>
           <div>
             <h2>Diagramas estadísticos</h2>
@@ -864,7 +1187,7 @@
           ¿Cuántas respuestas hubo en total?<br />d) Dibuja el gráfico de barras
           correspondiente.
         </div>
-        <p><b>Fecha de presentación: miércoles 2 de septiembre de 2026.</b></p>
+        <p><b>Fecha de presentación: lunes 28 de septiembre de 2026.</b></p>
       </section>
     </main>
   </body>
