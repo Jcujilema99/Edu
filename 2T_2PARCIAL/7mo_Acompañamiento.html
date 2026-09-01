@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Acompañamiento Integral 7.º EGB - Parte 2</title>
+    <style>
+      :root {
+        --ink: #24354a;
+        --blue: #2f78b7;
+        --red: #b55353;
+        --green: #5d8f67;
+        --mustard: #d8a22f;
+        --paper: #fffef8;
+        --grid: #9cc8e3;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        line-height: 1.55;
+        font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+        background: #eee7d8;
+        overflow-x: hidden;
+      }
+      .page {
+        position: relative;
+        width: min(980px, calc(100% - 24px));
+        margin: 24px auto 55px;
+        padding: 26px 34px 40px 64px;
+        background: var(--paper);
+        border: 1px solid #ddd2bb;
+        border-radius: 8px;
+        box-shadow: 0 18px 50px rgba(71, 58, 35, 0.18);
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(88, 151, 194, 0.16) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(88, 151, 194, 0.16) 1px, transparent 1px);
+        background-size: 22px 22px;
+        background-position: 0 0;
+      }
+      .page::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 42px;
+        width: 2px;
+        background: rgba(220, 78, 78, 0.3);
+        z-index: -1;
+        pointer-events: none;
+      }
+      .actions {
+        position: sticky;
+        top: 10px;
+        z-index: 30;
+        text-align: right;
+        margin-bottom: 8px;
+      }
+      .actions button {
+        border: 2px solid #2c5f88;
+        background: #fff8d8;
+        color: #28475f;
+        padding: 10px 16px;
+        border-radius: 8px 14px 7px 13px;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 4px 5px 0 #b5cfe0;
+      }
+      .notice {
+        position: relative;
+        margin: 18px 0;
+        padding: 16px 18px;
+        background: rgba(255, 243, 184, 0.9);
+        border: 2px solid #c5912e;
+        border-radius: 5px 14px 5px 13px;
+      }
+      .notice::before {
+        content: "📌";
+        position: absolute;
+        left: -18px;
+        top: -16px;
+        font-size: 28px;
+      }
+      .unit-title {
+        text-align: center;
+        margin: 18px 0 24px;
+        padding: 16px 8px 10px;
+      }
+      .unit-title small {
+        color: #658150;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+      }
+      .unit-title h1 {
+        display: inline-block;
+        margin: 7px auto 0;
+        padding: 5px 14px 8px;
+        color: #2a577a;
+        font:
+          700 1.75rem "Comic Sans MS",
+          "Segoe Print",
+          cursive;
+        border-bottom: 5px double #d0a63c;
+      }
+      .lesson {
+        position: relative;
+        margin: 24px 0 30px;
+        padding: 0 3px 10px;
+      }
+      .lesson-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 8px 8px 10px;
+        border-bottom: 2px solid rgba(53, 98, 132, 0.4);
+      }
+      .lesson-number {
+        width: 58px;
+        height: 45px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font:
+          900 1.1rem "Comic Sans MS",
+          "Segoe Print",
+          cursive;
+        background: #2f78b7;
+        border: 2px solid #244d6b;
+        border-radius: 5px 13px 4px 11px;
+        box-shadow: 3px 3px 0 #f2c14d;
+      }
+      .lesson:nth-of-type(even) .lesson-number {
+        background: #bd5e5e;
+        box-shadow: 3px 3px 0 #97b874;
+      }
+      .lesson-head h2 {
+        margin: 0;
+        color: #2f5674;
+        font:
+          700 1.55rem/1.15 "Comic Sans MS",
+          "Segoe Print",
+          cursive;
+      }
+      .lesson-head p {
+        margin: 3px 0 0;
+        color: #6a5a4d;
+        font-family: Georgia, serif;
+        font-style: italic;
+      }
+      .lesson-body {
+        padding: 10px 8px 4px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.02rem;
+      }
+      .lesson-body h3 {
+        display: inline-block;
+        margin: 10px 0 8px;
+        color: #a84e4e;
+        font:
+          700 1.25rem "Comic Sans MS",
+          "Segoe Print",
+          cursive;
+        border-bottom: 3px solid #d9b747;
+      }
+      .example,
+      .tip,
+      .cloud-note {
+        margin: 10px 0;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.76);
+        border-radius: 10px;
+      }
+      .example {
+        border-left: 4px solid #397cad;
+      }
+      .tip {
+        border-left: 4px solid #d79f2b;
+      }
+      .cloud-note {
+        border: 2px dashed #78909c;
+        border-radius: 20px;
+        text-align: center;
+      }
+      .clean-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        table-layout: fixed;
+        margin: 14px 0 18px;
+        border: 1px solid #8fb0c4;
+        border-radius: 12px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.72);
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+      .clean-table th,
+      .clean-table td {
+        padding: 10px 12px;
+        text-align: left;
+        border-right: 1px solid #9db8c8;
+        border-bottom: 1px solid #9db8c8;
+        vertical-align: top;
+      }
+      .clean-table th {
+        background: #dcecf5;
+        color: #28546f;
+        font-weight: 800;
+      }
+      .clean-table th:last-child,
+      .clean-table td:last-child {
+        border-right: 0;
+      }
+      .clean-table tr:last-child > * {
+        border-bottom: 0;
+      }
+      .activity {
+        margin-top: 34px;
+        padding: 18px 18px 24px;
+        border: 2px dashed #78909c;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.62);
+      }
+      .activity h2 {
+        margin: 0 0 8px;
+        color: #9b4f4f;
+        font:
+          700 1.8rem "Comic Sans MS",
+          "Segoe Print",
+          cursive;
+        text-align: center;
+        text-decoration: underline wavy #d2a33c;
+        text-underline-offset: 7px;
+      }
+      .activity-intro {
+        font-weight: 700;
+      }
+      .q {
+        margin: 12px 0 16px;
+      }
+      .q-title {
+        font-weight: 800;
+      }
+      .sub {
+        margin: 4px 0 4px 26px;
+      }
+      .compact {
+        margin: 4px 0;
+      }
+      .vertical-label {
+        position: absolute;
+        left: 9px;
+        top: 160px;
+        writing-mode: vertical-rl;
+        font-family: "Comic Sans MS", "Segoe Print", cursive;
+        font-size: 13px;
+        color: #8a7357;
+        opacity: 0.34;
+        letter-spacing: 3px;
+        transform: rotate(180deg);
+      }
+      @media (max-width: 700px) {
+        .page {
+          width: 100%;
+          margin: 0;
+          padding: 22px 16px 35px 44px;
+          border-radius: 0;
+        }
+        .lesson-head {
+          align-items: flex-start;
+        }
+        .lesson-number {
+          min-width: 42px;
+          width: 42px;
+          height: 42px;
+          font-size: 0.95rem;
+        }
+        .lesson-head h2 {
+          font-size: 1.18rem;
+        }
+        .unit-title h1 {
+          font-size: 1.35rem;
+        }
+        .vertical-label {
+          display: none;
+        }
+        .clean-table {
+          display: block;
+          border: 0;
+          background: transparent;
+        }
+        .clean-table tr:first-child {
+          display: none;
+        }
+        .clean-table tr {
+          display: block;
+          margin: 0 0 10px;
+          border: 1px solid #8fb0c4;
+          border-radius: 10px;
+          overflow: hidden;
+          background: rgba(255, 255, 255, 0.84);
+        }
+        .clean-table th,
+        .clean-table td {
+          display: grid;
+          grid-template-columns: minmax(110px, 38%) 1fr;
+          width: 100%;
+          border-right: 0 !important;
+          border-bottom: 1px solid #c4d5df !important;
+        }
+        .clean-table tr > *:last-child {
+          border-bottom: 0 !important;
+        }
+        .clean-table td::before {
+          content: attr(data-label);
+          font-weight: 800;
+          color: #28546f;
+        }
+      }
+      @media print {
+        html,
+        body {
+          margin: 0 !important;
+          padding: 0 !important;
+          background: #fff !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        body {
+          width: 210mm;
+        }
+        .page {
+          width: 210mm !important;
+          max-width: 210mm !important;
+          margin: 0 !important;
+          padding: 5mm 8mm 6mm 16mm !important;
+          border: 0 !important;
+          box-shadow: none !important;
+          background: #fffef8 !important;
+          overflow: visible !important;
+        }
+        .page::before {
+          position: fixed !important;
+          inset: 0 !important;
+          background-image:
+            linear-gradient(
+              rgba(88, 151, 194, 0.18) 0.28mm,
+              transparent 0.28mm
+            ),
+            linear-gradient(
+              90deg,
+              rgba(88, 151, 194, 0.18) 0.28mm,
+              transparent 0.28mm
+            ) !important;
+          background-size: 6.5mm 6.5mm !important;
+        }
+        .page::after {
+          position: fixed !important;
+          left: 12mm !important;
+          width: 0.45mm !important;
+        }
+        .actions {
+          display: none !important;
+        }
+        .lesson {
+          margin: 2mm 0 3mm !important;
+        }
+        .lesson-body {
+          font-size: 10.5pt !important;
+          line-height: 1.38 !important;
+        }
+        .activity {
+          background: transparent !important;
+        }
+        .q {
+          margin: 2.5mm 0 3mm !important;
+        }
+        .sub {
+          margin: 1mm 0 1mm 7mm !important;
+        }
+        .clean-table {
+          font-size: 9.3pt !important;
+          break-inside: avoid;
+        }
+        .notice,
+        .example,
+        .tip,
+        .cloud-note,
+        .activity {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        @page {
+          size: A4 portrait;
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="vertical-label">ACOMPAÑAMIENTO • 7.º EGB</div>
+      <div class="actions">
+        <button onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
+      </div>
+      <div class="notice">
+        <p style="margin: 0">
+          <b>⭐ Indicaciones para el estudiante:</b> Lee, observa y desarrolla
+          en tu cuaderno todos los contenidos de esta parte con orden y
+          claridad. Revisa los ejemplos y completa la actividad de aplicación
+          explicando tus respuestas cuando sea necesario.
+        </p>
+      </div>
+      <section class="unit-title">
+        <small>🌱 ACOMPAÑAMIENTO INTEGRAL · 7.º EGB · SEGUNDO TRIMESTRE</small
+        ><br />
+        <h1>PARTE 2 · CREATIVIDAD Y RESOLUCIÓN DE CONFLICTOS</h1>
+      </section>
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T4</div>
+          <div>
+            <h2>Creatividad y expresión artística</h2>
+            <p>
+              Usamos el arte para comunicar ideas, emociones y valorar el
+              trabajo propio y ajeno.
+            </p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>Crear también es comunicar</h3>
+          <p>
+            El dibujo, la pintura, el collage, la música, el teatro y la
+            expresión corporal permiten expresar ideas y emociones de distintas
+            maneras. No existe una única forma “correcta” de crear.
+          </p>
+          <h3>Empatía al apreciar una obra</h3>
+          <table class="clean-table">
+            <tr>
+              <th>En lugar de...</th>
+              <th>Podemos...</th>
+            </tr>
+            <tr>
+              <td data-label="En lugar de...">“Está feo.”</td>
+              <td data-label="Podemos...">
+                Explicar con respeto qué nos llama la atención y qué podría
+                mejorarse.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="En lugar de...">Comparar para burlarse.</td>
+              <td data-label="Podemos...">
+                Reconocer que cada persona tiene una forma distinta de
+                expresarse.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="En lugar de...">Ignorar el esfuerzo.</td>
+              <td data-label="Podemos...">
+                Valorar el proceso, la paciencia y la perseverancia.
+              </td>
+            </tr>
+          </table>
+          <div class="example">
+            <b>Ejemplo de comentario respetuoso:</b> “Me gusta cómo usaste las
+            formas para representar movimiento. Tal vez podrías añadir más
+            contraste para que la idea principal destaque.”
+          </div>
+        </div>
+      </section>
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T5</div>
+          <div>
+            <h2>Resolución de conflictos y comunicación</h2>
+            <p>
+              Escuchamos de forma activa y analizamos opciones antes de actuar.
+            </p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>Un conflicto no se resuelve ganando a toda costa</h3>
+          <p>
+            Resolver un conflicto de manera constructiva implica comprender qué
+            ocurrió, escuchar a la otra persona, expresar lo que necesitamos y
+            buscar opciones que reduzcan el daño.
+          </p>
+          <table class="clean-table">
+            <tr>
+              <th>Paso</th>
+              <th>¿Qué hago?</th>
+            </tr>
+            <tr>
+              <td data-label="Paso"><b>1. Escucho</b></td>
+              <td data-label="¿Qué hago?">
+                Dejo hablar, observo y trato de entender antes de responder.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Paso"><b>2. Expreso</b></td>
+              <td data-label="¿Qué hago?">
+                Digo lo que pienso y siento sin insultar ni amenazar.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Paso"><b>3. Propongo</b></td>
+              <td data-label="¿Qué hago?">
+                Busco más de una opción para resolver la situación.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Paso"><b>4. Evalúo</b></td>
+              <td data-label="¿Qué hago?">
+                Pienso qué consecuencias puede tener cada opción para todos.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Paso"><b>5. Acuerdo</b></td>
+              <td data-label="¿Qué hago?">
+                Elegimos una solución posible y respetuosa.
+              </td>
+            </tr>
+          </table>
+          <h3>Comunicación asertiva</h3>
+          <div class="cloud-note">
+            <b>Asertividad = claridad + respeto.</b><br />Podemos defender una
+            idea sin humillar, gritar ni ignorar a los demás.
+          </div>
+          <div class="tip">
+            📌 Si el conflicto incluye violencia, amenazas o una situación que
+            no puedes manejar con seguridad, es importante buscar apoyo de un
+            adulto responsable.
+          </div>
+        </div>
+      </section>
+      <section class="activity">
+        <h2>📝 Actividad de aplicación · Parte 2</h2>
+        <p class="activity-intro">
+          Desarrolla en tu cuaderno. Responde de forma clara y utiliza ejemplos
+          cuando sea necesario.
+        </p>
+        <div class="q">
+          <span class="q-title">1. Expresión artística.</span>
+          <div class="sub">
+            Menciona dos formas de expresión artística y explica qué podría
+            comunicar una persona mediante cada una.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">2. Comentario respetuoso.</span>
+          <div class="sub">
+            Escribe un ejemplo de cómo darías una opinión sobre el dibujo de un
+            compañero sin burlarte ni desvalorizar su trabajo.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">3. Empatía.</span>
+          <div class="sub">
+            Explica por qué valorar el esfuerzo de otra persona también es una
+            forma de empatía.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">4. Ordena el proceso.</span>
+          <div class="sub">
+            Escribe en orden estos pasos para resolver un conflicto: acordar,
+            escuchar, proponer, expresar, evaluar.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">5. Caso práctico.</span>
+          <div class="sub">
+            Dos compañeros quieren usar al mismo tiempo el mismo material para
+            una actividad. Escribe una solución que tome en cuenta a ambos.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">6. Comunicación asertiva.</span>
+          <div class="sub">
+            Transforma esta frase en una forma respetuosa de expresar el mismo
+            problema: “¡Tú nunca me escuchas y todo lo haces mal!”.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">7. Consecuencias.</span>
+          <div class="sub">
+            Explica por qué conviene pensar en las consecuencias antes de elegir
+            una solución durante un conflicto.
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

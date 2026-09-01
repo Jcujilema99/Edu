@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Acompañamiento Integral 7.º EGB - Parte 1</title>
+    <style>
+      :root {
+        --ink: #24354a;
+        --blue: #2f78b7;
+        --red: #b55353;
+        --green: #5d8f67;
+        --mustard: #d8a22f;
+        --paper: #fffef8;
+        --grid: #9cc8e3;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        line-height: 1.55;
+        font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+        background: #eee7d8;
+        overflow-x: hidden;
+      }
+      .page {
+        position: relative;
+        width: min(980px, calc(100% - 24px));
+        margin: 24px auto 55px;
+        padding: 26px 34px 40px 64px;
+        background: var(--paper);
+        border: 1px solid #ddd2bb;
+        border-radius: 8px;
+        box-shadow: 0 18px 50px rgba(71, 58, 35, 0.18);
+        overflow: hidden;
+        isolation: isolate;
+      }
+      .page::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(88, 151, 194, 0.16) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(88, 151, 194, 0.16) 1px, transparent 1px);
+        background-size: 22px 22px;
+        background-position: 0 0;
+      }
+      .page::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 42px;
+        width: 2px;
+        background: rgba(220, 78, 78, 0.3);
+        z-index: -1;
+        pointer-events: none;
+      }
+      .actions {
+        position: sticky;
+        top: 10px;
+        z-index: 30;
+        text-align: right;
+        margin-bottom: 8px;
+      }
+      .actions button {
+        border: 2px solid #2c5f88;
+        background: #fff8d8;
+        color: #28475f;
+        padding: 10px 16px;
+        border-radius: 8px 14px 7px 13px;
+        font-weight: 900;
+        cursor: pointer;
+        box-shadow: 4px 5px 0 #b5cfe0;
+      }
+      .notice {
+        position: relative;
+        margin: 18px 0;
+        padding: 16px 18px;
+        background: rgba(255, 243, 184, 0.9);
+        border: 2px solid #c5912e;
+        border-radius: 5px 14px 5px 13px;
+      }
+      .notice::before {
+        content: "📌";
+        position: absolute;
+        left: -18px;
+        top: -16px;
+        font-size: 28px;
+      }
+      .unit-title {
+        text-align: center;
+        margin: 18px 0 24px;
+        padding: 16px 8px 10px;
+      }
+      .unit-title small {
+        color: #658150;
+        font-weight: 900;
+        letter-spacing: 1.2px;
+      }
+      .unit-title h1 {
+        display: inline-block;
+        margin: 7px auto 0;
+        padding: 5px 14px 8px;
+        color: #2a577a;
+        font:
+          700 1.75rem "Comic Sans MS",
+          "Segoe Print",
+          cursive;
+        border-bottom: 5px double #d0a63c;
+      }
+      .lesson {
+        position: relative;
+        margin: 24px 0 30px;
+        padding: 0 3px 10px;
+      }
+      .lesson-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 8px 8px 10px;
+        border-bottom: 2px solid rgba(53, 98, 132, 0.4);
+      }
+      .lesson-number {
+        width: 58px;
+        height: 45px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font:
+          900 1.1rem "Comic Sans MS",
+          "Segoe Print",
+          cursive;
+        background: #2f78b7;
+        border: 2px solid #244d6b;
+        border-radius: 5px 13px 4px 11px;
+        box-shadow: 3px 3px 0 #f2c14d;
+      }
+      .lesson:nth-of-type(even) .lesson-number {
+        background: #bd5e5e;
+        box-shadow: 3px 3px 0 #97b874;
+      }
+      .lesson-head h2 {
+        margin: 0;
+        color: #2f5674;
+        font:
+          700 1.55rem/1.15 "Comic Sans MS",
+          "Segoe Print",
+          cursive;
+      }
+      .lesson-head p {
+        margin: 3px 0 0;
+        color: #6a5a4d;
+        font-family: Georgia, serif;
+        font-style: italic;
+      }
+      .lesson-body {
+        padding: 10px 8px 4px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.02rem;
+      }
+      .lesson-body h3 {
+        display: inline-block;
+        margin: 10px 0 8px;
+        color: #a84e4e;
+        font:
+          700 1.25rem "Comic Sans MS",
+          "Segoe Print",
+          cursive;
+        border-bottom: 3px solid #d9b747;
+      }
+      .example,
+      .tip,
+      .cloud-note {
+        margin: 10px 0;
+        padding: 10px 14px;
+        background: rgba(255, 255, 255, 0.76);
+        border-radius: 10px;
+      }
+      .example {
+        border-left: 4px solid #397cad;
+      }
+      .tip {
+        border-left: 4px solid #d79f2b;
+      }
+      .cloud-note {
+        border: 2px dashed #78909c;
+        border-radius: 20px;
+        text-align: center;
+      }
+      .clean-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        table-layout: fixed;
+        margin: 14px 0 18px;
+        border: 1px solid #8fb0c4;
+        border-radius: 12px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.72);
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+      .clean-table th,
+      .clean-table td {
+        padding: 10px 12px;
+        text-align: left;
+        border-right: 1px solid #9db8c8;
+        border-bottom: 1px solid #9db8c8;
+        vertical-align: top;
+      }
+      .clean-table th {
+        background: #dcecf5;
+        color: #28546f;
+        font-weight: 800;
+      }
+      .clean-table th:last-child,
+      .clean-table td:last-child {
+        border-right: 0;
+      }
+      .clean-table tr:last-child > * {
+        border-bottom: 0;
+      }
+      .activity {
+        margin-top: 34px;
+        padding: 18px 18px 24px;
+        border: 2px dashed #78909c;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.62);
+      }
+      .activity h2 {
+        margin: 0 0 8px;
+        color: #9b4f4f;
+        font:
+          700 1.8rem "Comic Sans MS",
+          "Segoe Print",
+          cursive;
+        text-align: center;
+        text-decoration: underline wavy #d2a33c;
+        text-underline-offset: 7px;
+      }
+      .activity-intro {
+        font-weight: 700;
+      }
+      .q {
+        margin: 12px 0 16px;
+      }
+      .q-title {
+        font-weight: 800;
+      }
+      .sub {
+        margin: 4px 0 4px 26px;
+      }
+      .compact {
+        margin: 4px 0;
+      }
+      .vertical-label {
+        position: absolute;
+        left: 9px;
+        top: 160px;
+        writing-mode: vertical-rl;
+        font-family: "Comic Sans MS", "Segoe Print", cursive;
+        font-size: 13px;
+        color: #8a7357;
+        opacity: 0.34;
+        letter-spacing: 3px;
+        transform: rotate(180deg);
+      }
+      @media (max-width: 700px) {
+        .page {
+          width: 100%;
+          margin: 0;
+          padding: 22px 16px 35px 44px;
+          border-radius: 0;
+        }
+        .lesson-head {
+          align-items: flex-start;
+        }
+        .lesson-number {
+          min-width: 42px;
+          width: 42px;
+          height: 42px;
+          font-size: 0.95rem;
+        }
+        .lesson-head h2 {
+          font-size: 1.18rem;
+        }
+        .unit-title h1 {
+          font-size: 1.35rem;
+        }
+        .vertical-label {
+          display: none;
+        }
+        .clean-table {
+          display: block;
+          border: 0;
+          background: transparent;
+        }
+        .clean-table tr:first-child {
+          display: none;
+        }
+        .clean-table tr {
+          display: block;
+          margin: 0 0 10px;
+          border: 1px solid #8fb0c4;
+          border-radius: 10px;
+          overflow: hidden;
+          background: rgba(255, 255, 255, 0.84);
+        }
+        .clean-table th,
+        .clean-table td {
+          display: grid;
+          grid-template-columns: minmax(110px, 38%) 1fr;
+          width: 100%;
+          border-right: 0 !important;
+          border-bottom: 1px solid #c4d5df !important;
+        }
+        .clean-table tr > *:last-child {
+          border-bottom: 0 !important;
+        }
+        .clean-table td::before {
+          content: attr(data-label);
+          font-weight: 800;
+          color: #28546f;
+        }
+      }
+      @media print {
+        html,
+        body {
+          margin: 0 !important;
+          padding: 0 !important;
+          background: #fff !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        body {
+          width: 210mm;
+        }
+        .page {
+          width: 210mm !important;
+          max-width: 210mm !important;
+          margin: 0 !important;
+          padding: 5mm 8mm 6mm 16mm !important;
+          border: 0 !important;
+          box-shadow: none !important;
+          background: #fffef8 !important;
+          overflow: visible !important;
+        }
+        .page::before {
+          position: fixed !important;
+          inset: 0 !important;
+          background-image:
+            linear-gradient(
+              rgba(88, 151, 194, 0.18) 0.28mm,
+              transparent 0.28mm
+            ),
+            linear-gradient(
+              90deg,
+              rgba(88, 151, 194, 0.18) 0.28mm,
+              transparent 0.28mm
+            ) !important;
+          background-size: 6.5mm 6.5mm !important;
+        }
+        .page::after {
+          position: fixed !important;
+          left: 12mm !important;
+          width: 0.45mm !important;
+        }
+        .actions {
+          display: none !important;
+        }
+        .lesson {
+          margin: 2mm 0 3mm !important;
+        }
+        .lesson-body {
+          font-size: 10.5pt !important;
+          line-height: 1.38 !important;
+        }
+        .activity {
+          background: transparent !important;
+        }
+        .q {
+          margin: 2.5mm 0 3mm !important;
+        }
+        .sub {
+          margin: 1mm 0 1mm 7mm !important;
+        }
+        .clean-table {
+          font-size: 9.3pt !important;
+          break-inside: avoid;
+        }
+        .notice,
+        .example,
+        .tip,
+        .cloud-note,
+        .activity {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        @page {
+          size: A4 portrait;
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="vertical-label">ACOMPAÑAMIENTO • 7.º EGB</div>
+      <div class="actions">
+        <button onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
+      </div>
+      <div class="notice">
+        <p style="margin: 0">
+          <b>⭐ Indicaciones para el estudiante:</b> Lee, observa y desarrolla
+          en tu cuaderno todos los contenidos de esta parte con orden y
+          claridad. Revisa los ejemplos y completa la actividad de aplicación
+          explicando tus respuestas cuando sea necesario.
+        </p>
+      </div>
+      <section class="unit-title">
+        <small>🌱 ACOMPAÑAMIENTO INTEGRAL · 7.º EGB · SEGUNDO TRIMESTRE</small
+        ><br />
+        <h1>PARTE 1 · METAS, ESTUDIO Y BIENESTAR</h1>
+      </section>
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T1</div>
+          <div>
+            <h2>Estableciendo metas</h2>
+            <p>
+              Tomamos decisiones con propósito y convertimos una intención en un
+              plan.
+            </p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>¿Qué es una meta?</h3>
+          <p>
+            Una meta es algo que queremos alcanzar. Puede ser
+            <b>personal</b> —por ejemplo, mejorar un hábito— o
+            <b>académica</b> —como organizar mejor el tiempo de estudio—. Una
+            buena meta debe ser clara, posible y tener un camino para lograrla.
+          </p>
+          <div class="example">
+            <b>Ejemplo:</b> “Quiero mejorar en Matemática” es una intención. Una
+            meta más clara sería:
+            <b
+              >“Durante este mes practicaré 20 minutos, cuatro días por semana,
+              y revisaré mis errores.”</b
+            >
+          </div>
+          <h3>Antes de decidir: me conozco</h3>
+          <table class="clean-table">
+            <tr>
+              <th>Aspecto</th>
+              <th>Pregunta útil</th>
+            </tr>
+            <tr>
+              <td data-label="Aspecto"><b>Fortalezas</b></td>
+              <td data-label="Pregunta útil">
+                ¿Qué hago bien y qué me ayuda a avanzar?
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Aspecto"><b>Dificultades</b></td>
+              <td data-label="Pregunta útil">
+                ¿Qué me cuesta y qué apoyo necesito?
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Aspecto"><b>Intereses</b></td>
+              <td data-label="Pregunta útil">¿Qué me motiva de verdad?</td>
+            </tr>
+            <tr>
+              <td data-label="Aspecto"><b>Valores</b></td>
+              <td data-label="Pregunta útil">
+                ¿Qué es importante para mí al tomar una decisión?
+              </td>
+            </tr>
+          </table>
+          <h3>Plan de acción</h3>
+          <div class="cloud-note">
+            <b>Meta → pasos concretos → tiempo → apoyo → revisión.</b><br />Si
+            algo no funciona, el plan se ajusta; abandonar no es la única
+            opción.
+          </div>
+        </div>
+      </section>
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T2</div>
+          <div>
+            <h2>Habilidades de estudio y organización</h2>
+            <p>
+              Organizamos el tiempo y usamos técnicas que facilitan aprender.
+            </p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>Organizar no es llenar la agenda</h3>
+          <p>
+            Organizarse significa decidir
+            <b>qué hacer, cuándo hacerlo y cuánto tiempo dedicar</b>. Un
+            calendario semanal permite ver tareas, evaluaciones, actividades y
+            momentos de descanso.
+          </p>
+          <table class="clean-table">
+            <tr>
+              <th>Estrategia</th>
+              <th>¿Para qué sirve?</th>
+            </tr>
+            <tr>
+              <td data-label="Estrategia"><b>Calendario semanal</b></td>
+              <td data-label="¿Para qué sirve?">
+                Distribuye tareas y evita dejar todo para el último momento.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Estrategia"><b>Subrayado</b></td>
+              <td data-label="¿Para qué sirve?">
+                Destaca ideas realmente importantes, no párrafos completos.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Estrategia"><b>Resumen</b></td>
+              <td data-label="¿Para qué sirve?">
+                Explica un contenido con palabras propias y de forma breve.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Estrategia"><b>Mapa mental</b></td>
+              <td data-label="¿Para qué sirve?">
+                Relaciona conceptos mediante palabras clave y conexiones.
+              </td>
+            </tr>
+          </table>
+          <div class="tip">
+            📌 <b>Descansar también forma parte del estudio.</b> Las pausas
+            breves ayudan a recuperar atención y evitan estudiar de forma
+            mecánica.
+          </div>
+          <h3>Trabajo en equipo</h3>
+          <p>
+            Cuando una actividad es grupal, conviene repartir responsabilidades.
+            Cada integrante debe saber qué tarea le corresponde, cumplirla y
+            comunicar a tiempo cualquier dificultad.
+          </p>
+        </div>
+      </section>
+      <section class="lesson">
+        <div class="lesson-head">
+          <div class="lesson-number">T3</div>
+          <div>
+            <h2>Salud y bienestar</h2>
+            <p>
+              Reconocemos hábitos que favorecen el equilibrio físico, emocional
+              y social.
+            </p>
+          </div>
+        </div>
+        <div class="lesson-body">
+          <h3>Bienestar integral</h3>
+          <p>
+            Sentirse bien no depende de una sola cosa. El bienestar incluye
+            alimentación, movimiento, descanso, manejo del estrés, autocuidado y
+            relaciones respetuosas.
+          </p>
+          <table class="clean-table">
+            <tr>
+              <th>Área</th>
+              <th>Hábitos que ayudan</th>
+            </tr>
+            <tr>
+              <td data-label="Área"><b>Física</b></td>
+              <td data-label="Hábitos que ayudan">
+                Alimentación equilibrada, actividad física, higiene y sueño
+                suficiente.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Área"><b>Emocional</b></td>
+              <td data-label="Hábitos que ayudan">
+                Reconocer lo que sentimos, respirar con calma, pedir ayuda y
+                expresar emociones sin agredir.
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Área"><b>Social</b></td>
+              <td data-label="Hábitos que ayudan">
+                Escuchar, respetar límites, cuidar el trato y buscar apoyo
+                cuando sea necesario.
+              </td>
+            </tr>
+          </table>
+          <h3>Manejo del estrés</h3>
+          <div class="example">
+            <b>Una estrategia sencilla:</b> detenerse unos minutos, respirar
+            lentamente, identificar qué preocupa y elegir una acción pequeña que
+            sí podamos realizar.
+          </div>
+          <div class="cloud-note">
+            <b>Autocuidado no significa hacerlo todo perfecto.</b> Significa
+            reconocer qué necesitamos y actuar de manera responsable para
+            cuidarnos.
+          </div>
+        </div>
+      </section>
+      <section class="activity">
+        <h2>📝 Actividad de aplicación · Parte 1</h2>
+        <p class="activity-intro">
+          Desarrolla en tu cuaderno. Lee cada consigna y responde exactamente lo
+          que se pide.
+        </p>
+        <div class="q">
+          <span class="q-title">1. Meta personal o académica.</span>
+          <div class="sub">
+            a) Escribe una meta que quieras alcanzar este trimestre.
+          </div>
+          <div class="sub">
+            b) Escribe dos acciones concretas que te ayudarán a cumplirla.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">2. Fortalezas y dificultades.</span>
+          <div class="sub">
+            Escribe una fortaleza que te ayuda a estudiar y una dificultad que
+            necesitas mejorar.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">3. Organización semanal.</span>
+          <div class="sub">
+            Imagina que tienes una tarea para el viernes y una prueba para el
+            lunes. Explica cómo distribuirías tu tiempo entre miércoles y
+            domingo.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">4. Técnica de estudio.</span>
+          <div class="sub">
+            Elige una: subrayado, resumen o mapa mental. Explica cuándo la
+            usarías y por qué.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">5. Trabajo en equipo.</span>
+          <div class="sub">
+            Escribe dos responsabilidades que debe cumplir un integrante para
+            que el grupo funcione bien.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">6. Bienestar.</span>
+          <div class="sub">
+            Escribe un hábito saludable para cada área: física, emocional y
+            social.
+          </div>
+        </div>
+        <div class="q">
+          <span class="q-title">7. Caso práctico.</span>
+          <div class="sub">
+            Un estudiante duerme poco, deja las tareas para el último día y se
+            siente muy estresado. Propón tres cambios realistas que podrían
+            ayudarle.
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
