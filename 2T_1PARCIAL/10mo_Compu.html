@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>10.º Básica - Computación | Unidad 1</title>
+<style>
+:root{--ink:#24354a;--blue:#2f78b7;--red:#c94c4c;--green:#5d8f67;--mustard:#d8a22f;--paper:#fffef8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);line-height:1.55;font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;background:radial-gradient(circle at 10% 20%,rgba(246,205,94,.18) 0 3px,transparent 4px),radial-gradient(circle at 90% 15%,rgba(72,142,193,.13) 0 4px,transparent 5px),linear-gradient(135deg,#efe8d8,#faf6ea 45%,#eee4cf);background-size:44px 44px,58px 58px,100% 100%}
+.page{position:relative;width:min(980px,calc(100% - 24px));margin:24px auto 55px;padding:26px 34px 40px 64px;background:linear-gradient(90deg,transparent 0 42px,rgba(220,78,78,.32) 42px 44px,transparent 44px),linear-gradient(rgba(88,151,194,.13) 1px,transparent 1px),linear-gradient(90deg,rgba(88,151,194,.13) 1px,transparent 1px),var(--paper);background-size:auto,22px 22px,22px 22px,auto;border:1px solid #ddd2bb;border-radius:8px;box-shadow:0 18px 50px rgba(71,58,35,.18);overflow:hidden}.page::after{content:"⌨  USB  ⚙  RJ45  HDMI  🖥";position:absolute;top:10px;right:20px;color:#7b6b54;opacity:.15;font:700 18px/1.2 "Comic Sans MS","Segoe Print",cursive;transform:rotate(-2deg);letter-spacing:4px}
+.actions{position:sticky;top:10px;z-index:30;text-align:right;margin-bottom:8px}.actions button{border:2px solid #2c5f88;background:#fff8d8;color:#28475f;padding:10px 16px;border-radius:8px 14px 7px 13px;font-weight:900;cursor:pointer;box-shadow:4px 5px 0 #b5cfe0}
+.notice{position:relative;margin:18px 0;padding:16px 18px;background:#fff3b8;border:2px solid #c5912e;border-radius:5px 14px 5px 13px}.notice::before{content:"📌";position:absolute;left:-18px;top:-16px;font-size:28px}.presentation-date-inline{margin:0 0 8px;padding-bottom:8px;border-bottom:1px dashed rgba(151,105,0,.45);color:#704c00;font-size:1.05rem}
+.unit-title{text-align:center;margin:18px 0;padding:16px 8px 10px}.unit-title small{color:#658150;font-weight:900;letter-spacing:1.2px}.unit-title h1{display:inline-block;margin:7px auto 0;padding:5px 14px 8px;color:#2a577a;font:700 1.85rem "Comic Sans MS","Segoe Print",cursive;border-bottom:5px double #d0a63c}.unit-sub{font-family:Georgia,serif;font-style:italic;color:#6a5a4d;margin-top:10px}
+.lesson{position:relative;margin:24px 0 30px;padding:0 3px 10px}.lesson-head{display:flex;align-items:center;gap:14px;padding:8px 8px 10px;border-bottom:2px solid rgba(53,98,132,.4)}.lesson-number{width:58px;height:45px;display:grid;place-items:center;color:#fff;font:900 1.1rem "Comic Sans MS","Segoe Print",cursive;background:#2f78b7;border:2px solid #244d6b;border-radius:5px 13px 4px 11px;box-shadow:3px 3px 0 #f2c14d}.lesson:nth-of-type(even) .lesson-number{background:#bd5e5e;box-shadow:3px 3px 0 #97b874}.lesson-head h2{margin:0;color:#2f5674;font:700 1.65rem/1.1 "Comic Sans MS","Segoe Print",cursive}.lesson-head p{margin:3px 0 0;color:#6a5a4d;font-family:Georgia,serif;font-style:italic}.lesson-body{padding:10px 8px 4px;font-family:Georgia,"Times New Roman",serif;font-size:1.02rem}.lesson-body h3{display:inline-block;margin:14px 0 8px;color:#a84e4e;font:700 1.28rem "Comic Sans MS","Segoe Print",cursive;border-bottom:3px solid #d9b747}
+.example,.tip,.warning,.activity-box{margin:10px 0;padding:9px 12px}.example{border-left:4px solid #397cad;background:rgba(222,239,249,.55)}.tip{border-left:4px solid #d79f2b;background:rgba(255,244,194,.55)}.warning{border-left:4px solid #bd5e5e;background:rgba(250,225,225,.55)}.activity-box{border:2px dashed #78909c;border-radius:18px;background:#f8fbfc}.cloud-note{border:2px dashed #78909c;border-radius:28px;padding:12px 18px;margin:12px auto;background:#f8fbfc;text-align:center;max-width:760px}
+.clean-table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;margin:16px 0 20px;border:1px solid #8fb0c4;border-radius:12px;overflow:hidden;background:rgba(255,255,255,.72);font-family:"Trebuchet MS","Segoe UI",sans-serif}.clean-table th,.clean-table td{padding:10px 12px;vertical-align:middle;text-align:center;line-height:1.35;border-right:1px solid #9db8c8;border-bottom:1px solid #9db8c8}.clean-table th{background:#dcecf5;color:#28546f;font-weight:800}.clean-table th:last-child,.clean-table td:last-child{border-right:0}.clean-table tr:last-child th,.clean-table tr:last-child td{border-bottom:0}.cols-3 th:nth-child(1),.cols-3 td:nth-child(1){width:25%}.cols-3 th:nth-child(2),.cols-3 td:nth-child(2){width:31%}.cols-3 th:nth-child(3),.cols-3 td:nth-child(3){width:44%}
+.visual{margin:16px auto;max-width:760px;text-align:center}.visual svg{width:min(100%,700px);height:auto;border:2px solid #8fb0c4;border-radius:14px;box-shadow:0 8px 24px rgba(50,70,90,.14);background:#fff}.visual figcaption{font:italic .93rem Georgia,serif;color:#665d54;margin-top:6px}.flow{display:flex;align-items:stretch;justify-content:center;gap:8px;flex-wrap:wrap;margin:14px 0}.flow-box{border:2px solid #78909c;border-radius:12px;padding:9px 12px;background:#fff;text-align:center;font-weight:700;min-width:150px}.flow-arrow{display:grid;place-items:center;font-size:1.3rem;font-weight:700}.final{margin-top:30px;padding:18px 6px 25px}.final h2{margin-top:0;color:#9b4f4f;font:700 1.8rem "Comic Sans MS","Segoe Print",cursive;text-align:center;text-decoration:underline wavy #d2a33c;text-underline-offset:7px}.final li{margin:11px 0}.vertical-label{position:absolute;left:9px;top:160px;writing-mode:vertical-rl;font-family:'Comic Sans MS','Segoe Print',cursive;font-size:13px;color:#8a7357;opacity:.34;letter-spacing:3px;transform:rotate(180deg)}
+@media(max-width:700px){body{font-size:16px}.page{width:100%;margin:0;padding:22px 16px 35px}.vertical-label{display:none}.lesson{margin:16px 4px}.lesson-head{align-items:flex-start;padding:12px 8px}.lesson-number{min-width:42px;width:42px;height:42px;font-size:.95rem}.lesson-head h2{font-size:1.2rem}.lesson-body{padding:12px 4px 16px}.clean-table{display:block;border:0;background:transparent;overflow:visible}.clean-table tr:first-child{display:none}.clean-table tr{display:block;margin:0 0 12px;border:1px solid #8fb0c4;border-radius:12px;overflow:hidden;background:rgba(255,255,255,.84)}.clean-table td,.clean-table th{display:grid;grid-template-columns:minmax(105px,38%) 1fr;gap:10px;width:100%!important;text-align:left;border-right:0;border-bottom:1px solid #c4d5df}.clean-table td::before,.clean-table th::before{content:attr(data-label);font-weight:800;color:#28546f}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg)}.actions button{width:100%}}
+@media print{html,body{margin:0!important;padding:0!important;background:#fff!important}body{width:210mm}.page{width:210mm!important;max-width:210mm!important;margin:0!important;padding:4mm 8mm 4mm 16mm!important;border:0!important;box-shadow:none!important;background-color:#fffef8!important;background-image:linear-gradient(90deg,transparent 0 12mm,rgba(210,72,72,.34) 12mm 12.45mm,transparent 12.45mm),linear-gradient(rgba(86,145,186,.18) .28mm,transparent .28mm),linear-gradient(90deg,rgba(86,145,186,.18) .28mm,transparent .28mm)!important;background-size:auto,6.5mm 6.5mm,6.5mm 6.5mm!important}.actions{display:none!important}.lesson{margin:2mm 0 3mm!important}.lesson-body{font-size:10.2pt!important;line-height:1.35!important}.final li{break-inside:avoid}@page{size:A4 portrait;margin:0}}
+</style>
+
+<style id="activity-layout-fix">
+.activity-box ol{padding-left:1.55rem;margin:0;}
+.activity-box li{margin:0 0 13px;padding:0 0 10px 6px;border-bottom:1px dashed rgba(72,111,137,.28);}
+.activity-box li:last-child{border-bottom:0;margin-bottom:0;}
+.activity-box .q-title{display:block;margin-bottom:4px;font-weight:800;color:#24354a;}
+.activity-box .q-instruction{margin:0 0 4px;}
+.activity-box .subitem{display:block;margin:2px 0;padding-left:8px;}
+.activity-box .subitem b{display:inline-block;min-width:24px;}
+/* La actividad se resuelve en el cuaderno: no se dejan espacios de respuesta en la hoja. */
+.activity-box .answer-space,
+.activity-box .answer-space-lg,
+.activity-box .answer-space-xl{display:none!important;height:0!important;margin:0!important;padding:0!important;}
+@media(max-width:700px){
+  .activity-box li{margin-bottom:12px;padding-bottom:9px;}
+  .activity-box .subitem{margin:2px 0;}
+}
+@media print{
+  .activity-box{background:transparent!important;}
+  .activity-box li{break-inside:avoid;margin-bottom:3mm!important;padding-bottom:2mm!important;}
+  .activity-box .q-title{margin-bottom:1mm!important;}
+  .activity-box .q-instruction{margin-bottom:1mm!important;}
+  .activity-box .subitem{margin:.6mm 0!important;}
+}
+</style>
+
+<style id="print-grid-svg-fix">
+.print-grid-svg{display:none;}
+@media print{
+  .print-grid-svg{
+    display:block!important;
+    position:fixed!important;
+    left:0!important;top:0!important;
+    width:210mm!important;height:297mm!important;
+    z-index:0!important;
+    pointer-events:none!important;
+  }
+  html,body{
+    background:transparent!important;
+    -webkit-print-color-adjust:exact!important;
+    print-color-adjust:exact!important;
+  }
+  body{position:relative!important;}
+  .page{
+    position:relative!important;
+    z-index:1!important;
+    background:transparent!important;
+    background-image:none!important;
+  }
+  .notice,.example,.tip,.warning,.cloud-note,.clean-table,.flow-box,.visual svg{
+    -webkit-print-color-adjust:exact!important;
+    print-color-adjust:exact!important;
+  }
+}
+</style>
+</head>
+<body>
+<svg class="print-grid-svg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 794 1123" preserveAspectRatio="none">
+  <defs>
+    <pattern id="cuadricula" width="24.57" height="24.57" patternUnits="userSpaceOnUse">
+      <path d="M 24.57 0 L 0 0 0 24.57" fill="none" stroke="#8bb8d3" stroke-opacity="0.34" stroke-width="0.9"/>
+    </pattern>
+  </defs>
+  <rect width="794" height="1123" fill="#fffef8"/>
+  <rect width="794" height="1123" fill="url(#cuadricula)"/>
+  <line x1="45.4" y1="0" x2="45.4" y2="1123" stroke="#d25050" stroke-opacity="0.42" stroke-width="1.7"/>
+</svg>
+
+<main class="page">
+<div class="vertical-label">COMPUTACIÓN • 10.º EGB</div>
+<div class="actions"><button onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button></div>
+<div class="notice"><div class="presentation-date-inline">📅 <b>Fecha de presentación: lunes 28 de septiembre de 2026</b></div><p style="margin:8px 0 6px;font-weight:800;">⭐ Indicaciones para el estudiante</p><p style="margin:0;">Lee, observa y desarrolla en tu cuaderno todos los contenidos de la unidad con orden y claridad. Revisa los ejemplos, estudia cada tema y resuelve la actividad final mostrando el procedimiento y explicando tus respuestas cuando sea necesario.</p></div>
+<section class="unit-title"><small>💻 COMPUTACIÓN · 10.º DE BÁSICA</small><br/><h1>UNIDAD 1: ENSAMBLAJE BÁSICO DEL COMPUTADOR</h1><div class="unit-sub">Reconocer conexiones esenciales y aplicar un diagnóstico básico, ordenado y seguro.</div></section>
+
+<section class="lesson">
+<div class="lesson-head"><div class="lesson-number">L1</div><div><h2>Tipos de conectores</h2><p>Reconocemos los conectores que realmente se usan con frecuencia.</p></div></div>
+<div class="lesson-body">
+<h3>Idea principal</h3>
+<p>Un <b>conector</b> une el computador con otro dispositivo. Lo importante no es memorizar muchos nombres, sino saber <b>qué transmite</b> cada uno y <b>qué dispositivo suele utilizarlo</b>.</p>
+<figure class="visual">
+<svg viewBox="0 0 900 330" role="img" aria-label="Cinco conectores esenciales del computador">
+<rect width="900" height="330" fill="#f7fbfd"/><text x="450" y="38" text-anchor="middle" font-family="Arial" font-size="27" font-weight="bold" fill="#28546f">Cinco conectores esenciales</text>
+<g font-family="Arial" fill="#24354a" text-anchor="middle">
+<g transform="translate(65,95)"><rect width="130" height="62" rx="10" fill="#dcecf5" stroke="#587a91" stroke-width="3"/><rect x="38" y="17" width="54" height="28" fill="#fff" stroke="#587a91"/><text x="65" y="92" font-size="19">USB-A</text></g>
+<g transform="translate(235,95)"><rect width="130" height="62" rx="10" fill="#e9f3e9" stroke="#5d8f67" stroke-width="3"/><rect x="32" y="18" width="66" height="26" rx="13" fill="#fff" stroke="#5d8f67"/><text x="65" y="92" font-size="19">USB-C</text></g>
+<g transform="translate(405,95)"><rect width="130" height="62" rx="10" fill="#fff3b8" stroke="#c5912e" stroke-width="3"/><path d="M30 18h70l-10 28H40z" fill="#fff" stroke="#c5912e"/><text x="65" y="92" font-size="19">HDMI</text></g>
+<g transform="translate(575,95)"><rect width="130" height="62" rx="10" fill="#f6e6e6" stroke="#bd5e5e" stroke-width="3"/><rect x="35" y="13" width="60" height="38" fill="#fff" stroke="#bd5e5e"/><path d="M44 19v26m10-26v26m10-26v26m10-26v26m10-26v26" stroke="#bd5e5e"/><text x="65" y="92" font-size="19">RJ45</text></g>
+<g transform="translate(745,95)"><rect width="90" height="62" rx="10" fill="#eee8fa" stroke="#715c99" stroke-width="3"/><circle cx="45" cy="31" r="15" fill="#fff" stroke="#715c99"/><text x="45" y="92" font-size="18">Audio</text></g>
+</g><text x="450" y="270" text-anchor="middle" font-family="Arial" font-size="18" fill="#6a5a4d">Identifica primero la forma del puerto y luego su función.</text>
+</svg>
+<figcaption>Guía visual simplificada: solo los conectores más útiles para esta unidad.</figcaption></figure>
+<table class="clean-table cols-3">
+<tr><th>Conector</th><th>Función principal</th><th>Ejemplo de uso</th></tr>
+<tr><td data-label="Conector"><b>USB-A / USB-C</b></td><td data-label="Función principal">Datos y, según el dispositivo, energía.</td><td data-label="Ejemplo de uso">Teclado, memoria USB, teléfono o disco externo.</td></tr>
+<tr><td data-label="Conector"><b>HDMI</b></td><td data-label="Función principal">Audio y video digital.</td><td data-label="Ejemplo de uso">Conectar monitor, televisor o proyector.</td></tr>
+<tr><td data-label="Conector"><b>RJ45 / Ethernet</b></td><td data-label="Función principal">Conexión de red por cable.</td><td data-label="Ejemplo de uso">Computador conectado al router.</td></tr>
+<tr><td data-label="Conector"><b>Audio 3,5 mm</b></td><td data-label="Función principal">Entrada o salida de sonido.</td><td data-label="Ejemplo de uso">Audífonos, parlantes o micrófono.</td></tr>
+</table>
+<div class="tip"><b>📌 Regla útil:</b> nunca fuerces un conector. Si no entra con suavidad, revisa la orientación o confirma que sea el puerto correcto.</div>
+<div class="example"><b>🔎 Caso:</b> si quieres mostrar la pantalla del computador en un televisor y también escuchar el sonido, <b>HDMI</b> suele ser la opción adecuada porque transporta video y audio por el mismo cable.</div>
+</div></section>
+
+<section class="lesson">
+<div class="lesson-head"><div class="lesson-number">L2</div><div><h2>Problemas de hardware</h2><p>Aprendemos a observar síntomas antes de pensar en una pieza dañada.</p></div></div>
+<div class="lesson-body">
+<h3>Idea principal</h3>
+<p>El <b>hardware</b> es la parte física del computador. Una falla de hardware puede estar relacionada con alimentación, cables, temperatura o un componente defectuoso. El diagnóstico comienza por lo más simple.</p>
+<div class="flow"><div class="flow-box">1. Observar</div><div class="flow-arrow">→</div><div class="flow-box">2. Revisar conexiones</div><div class="flow-arrow">→</div><div class="flow-box">3. Probar una cosa</div><div class="flow-arrow">→</div><div class="flow-box">4. Comparar resultado</div></div>
+<table class="clean-table cols-3">
+<tr><th>Síntoma</th><th>Primera sospecha</th><th>Comprobación segura</th></tr>
+<tr><td data-label="Síntoma"><b>No enciende</b></td><td data-label="Primera sospecha">Alimentación eléctrica.</td><td data-label="Comprobación segura">Revisar enchufe, cable, cargador y toma de corriente.</td></tr>
+<tr><td data-label="Síntoma"><b>Enciende, pero no hay imagen</b></td><td data-label="Primera sospecha">Monitor o conexión de video.</td><td data-label="Comprobación segura">Verificar monitor, entrada seleccionada y cable HDMI/DP.</td></tr>
+<tr><td data-label="Síntoma"><b>Se apaga solo</b></td><td data-label="Primera sospecha">Temperatura o alimentación.</td><td data-label="Comprobación segura">Observar ventilación, polvo y funcionamiento de ventiladores.</td></tr>
+<tr><td data-label="Síntoma"><b>USB no responde</b></td><td data-label="Primera sospecha">Puerto, cable o dispositivo.</td><td data-label="Comprobación segura">Probar otro puerto o un dispositivo que sepas que funciona.</td></tr>
+</table>
+<div class="example"><b>🔎 Caso:</b> el computador enciende y el monitor dice “Sin señal”. Antes de abrir el equipo, revisa el cable, la entrada del monitor y el puerto utilizado. Una conexión incorrecta puede parecer una falla grave.</div>
+<div class="warning"><b>⚠ Seguridad:</b> apaga y desconecta el equipo antes de manipular componentes internos. <b>No abras una fuente de poder</b>; puede conservar carga eléctrica peligrosa.</div>
+<div class="cloud-note"><b>☁ IDEA CLAVE:</b> diagnosticar es comprobar una hipótesis. Cambiar varias cosas al mismo tiempo impide saber qué causó o solucionó el problema.</div>
+</div></section>
+
+<section class="lesson">
+<div class="lesson-head"><div class="lesson-number">L3</div><div><h2>Problemas de software</h2><p>Distinguimos errores de programas y aplicamos soluciones básicas.</p></div></div>
+<div class="lesson-body">
+<h3>Idea principal</h3>
+<p>El <b>software</b> incluye el sistema operativo y las aplicaciones. Cuando un programa se congela, no abre o aparece un error, conviene resolver el problema de forma gradual: primero acciones simples, luego opciones más profundas.</p>
+<div class="flow"><div class="flow-box">1. Leer el error</div><div class="flow-arrow">→</div><div class="flow-box">2. Reiniciar</div><div class="flow-arrow">→</div><div class="flow-box">3. Actualizar / revisar</div><div class="flow-arrow">→</div><div class="flow-box">4. Reparar o reinstalar</div></div>
+<table class="clean-table cols-3">
+<tr><th>Problema</th><th>Qué revisar primero</th><th>Acción siguiente</th></tr>
+<tr><td data-label="Problema"><b>Programa no abre</b></td><td data-label="Qué revisar primero">Si quedó bloqueado o muestra un mensaje.</td><td data-label="Acción siguiente">Reiniciar y comprobar actualizaciones.</td></tr>
+<tr><td data-label="Problema"><b>Equipo lento</b></td><td data-label="Qué revisar primero">Aplicaciones abiertas y espacio disponible.</td><td data-label="Acción siguiente">Cerrar lo innecesario y reiniciar.</td></tr>
+<tr><td data-label="Problema"><b>Sin Internet</b></td><td data-label="Qué revisar primero">Wi‑Fi/cable y estado del router.</td><td data-label="Acción siguiente">Reconectar y usar el diagnóstico de red.</td></tr>
+<tr><td data-label="Problema"><b>Aviso sospechoso</b></td><td data-label="Qué revisar primero">Origen del mensaje.</td><td data-label="Acción siguiente">No abrir enlaces y ejecutar un análisis de seguridad.</td></tr>
+</table>
+<div class="tip"><b>📌 Diferencia rápida:</b> si una pieza física está rota, es <b>hardware</b>. Si la pieza funciona pero el sistema o una aplicación falla, probablemente es <b>software</b>.</div>
+<div class="example"><b>🔎 Caso:</b> un teclado funciona en otros programas, pero no escribe dentro de una aplicación específica. Eso orienta primero a un problema de <b>software</b>, no a reemplazar el teclado.</div>
+</div></section>
+
+<section class="final">
+<h2>📝 Actividad final · Unidad 1</h2>
+<p><b>Resuelve en el cuaderno.</b> Lee cada consigna y responde exactamente lo que se pide. Cuando una pregunta diga “explica”, escribe al menos una oración completa.</p>
+<div class="activity-box"><ol>
+<li>
+  <span class="q-title">Elige el conector correcto.</span>
+  <p class="q-instruction">Escribe qué conector usarías en cada situación y para qué sirve.</p>
+  <span class="subitem"><b>a)</b> Conectar el computador a un monitor o televisor.</span>
+  <div class="answer-space"></div>
+  <span class="subitem"><b>b)</b> Conectar el computador al router mediante cable.</span>
+  <div class="answer-space"></div>
+  <span class="subitem"><b>c)</b> Conectar una memoria USB.</span>
+  <div class="answer-space"></div>
+</li>
+<li>
+  <span class="q-title">Reconoce por su función.</span>
+  <p class="q-instruction">Escribe el nombre del conector que corresponde a cada descripción.</p>
+  <span class="subitem"><b>a)</b> Transmite audio y video digital.</span>
+  <div class="answer-space"></div>
+  <span class="subitem"><b>b)</b> Permite conexión de red por cable.</span>
+  <div class="answer-space"></div>
+  <span class="subitem"><b>c)</b> Se usa para audífonos o parlantes.</span>
+  <div class="answer-space"></div>
+  <span class="subitem"><b>d)</b> Sirve para conectar periféricos y transferir datos.</span>
+  <div class="answer-space"></div>
+</li>
+<li>
+  <span class="q-title">Dibuja y etiqueta.</span>
+  <p class="q-instruction">Dibuja tres conectores estudiados en la lección. Debajo de cada dibujo escribe su <b>nombre</b> y su <b>función principal</b>.</p>
+  <div class="answer-space-xl"></div>
+</li>
+<li>
+  <span class="q-title">Computador que no enciende.</span>
+  <p class="q-instruction">Imagina que presionas el botón de encendido y no ocurre nada. Escribe tres revisiones sencillas y seguras que harías primero, en orden.</p>
+  <span class="subitem"><b>1.</b></span><div class="answer-space"></div>
+  <span class="subitem"><b>2.</b></span><div class="answer-space"></div>
+  <span class="subitem"><b>3.</b></span><div class="answer-space"></div>
+</li>
+<li>
+  <span class="q-title">Monitor sin imagen.</span>
+  <p class="q-instruction">El computador enciende, pero el monitor muestra “Sin señal”. Escribe tres cosas concretas que revisarías antes de pensar que el monitor está dañado.</p>
+  <span class="subitem"><b>1.</b></span><div class="answer-space"></div>
+  <span class="subitem"><b>2.</b></span><div class="answer-space"></div>
+  <span class="subitem"><b>3.</b></span><div class="answer-space"></div>
+</li>
+<li>
+  <span class="q-title">Hardware o software.</span>
+  <p class="q-instruction">En cada caso indica si corresponde a <b>hardware</b> o <b>software</b>.</p>
+  <span class="subitem"><b>a)</b> Cable USB roto.</span>
+  <div class="answer-space"></div>
+  <span class="subitem"><b>b)</b> Programa que no abre.</span>
+  <div class="answer-space"></div>
+  <span class="subitem"><b>c)</b> Ventilador que no gira.</span>
+  <div class="answer-space"></div>
+  <span class="subitem"><b>d)</b> Aplicación congelada.</span>
+  <div class="answer-space"></div>
+  <p class="q-instruction">Explica una de tus clasificaciones.</p>
+  <div class="answer-space-lg"></div>
+</li>
+<li>
+  <span class="q-title">Una prueba a la vez.</span>
+  <p class="q-instruction">Explica con tus palabras por qué, al buscar una falla, conviene cambiar o probar una sola cosa cada vez. Añade un ejemplo breve.</p>
+  <div class="answer-space-xl"></div>
+</li>
+<li>
+  <span class="q-title">Aplicación que no abre.</span>
+  <p class="q-instruction">Ordena del 1 al 4 estas acciones, empezando por la más sencilla.</p>
+  <span class="subitem">Cerrar y volver a abrir la aplicación.</span>
+  <span class="subitem">Reiniciar el computador.</span>
+  <span class="subitem">Buscar actualizaciones.</span>
+  <span class="subitem">Reinstalar la aplicación.</span>
+  <div class="answer-space-lg"></div>
+</li>
+<li>
+  <span class="q-title">Teclado USB que no responde.</span>
+  <p class="q-instruction">Escribe dos posibles causas de hardware y una posible causa de software. Indica cómo comprobarías cada una.</p>
+  <span class="subitem"><b>a)</b> Primera causa de hardware.</span>
+  <div class="answer-space-lg"></div>
+  <span class="subitem"><b>b)</b> Segunda causa de hardware.</span>
+  <div class="answer-space-lg"></div>
+  <span class="subitem"><b>c)</b> Posible causa de software.</span>
+  <div class="answer-space-lg"></div>
+</li>
+<li>
+  <span class="q-title">Caso final.</span>
+  <p class="q-instruction">Un estudiante conecta una memoria USB y el computador no la reconoce. Escribe cuatro pasos para comprobar el problema, empezando por lo más simple.</p>
+  <span class="subitem"><b>1.</b></span><div class="answer-space"></div>
+  <span class="subitem"><b>2.</b></span><div class="answer-space"></div>
+  <span class="subitem"><b>3.</b></span><div class="answer-space"></div>
+  <span class="subitem"><b>4.</b></span><div class="answer-space"></div>
+  <p class="q-instruction">Al final, indica si el problema podría ser de hardware, software o ambos y explica por qué.</p>
+  <div class="answer-space-lg"></div>
+</li>
+</ol></div>
+</section>
+</main>
+</body>
+</html>
