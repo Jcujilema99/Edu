@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>8.º Básica - Matemática | Unidad 2</title>
+<style>
+:root{
+  --ink:#24354a;
+  --blue:#2f78b7;
+  --red:#c94c4c;
+  --green:#5d8f67;
+  --mustard:#d8a22f;
+  --paper:#fffef8;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);line-height:1.55;
+  font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(246,205,94,.18) 0 3px, transparent 4px),
+    radial-gradient(circle at 90% 15%, rgba(72,142,193,.13) 0 4px, transparent 5px),
+    linear-gradient(135deg,#efe8d8,#faf6ea 45%,#eee4cf);
+  background-size:44px 44px,58px 58px,100% 100%;
+}
+.page{
+  position:relative;width:min(980px,calc(100% - 24px));
+  margin:24px auto 55px;padding:26px 34px 40px 64px;
+  background:
+    linear-gradient(90deg, transparent 0 42px, rgba(220,78,78,.32) 42px 44px, transparent 44px),
+    linear-gradient(rgba(88,151,194,.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(88,151,194,.13) 1px, transparent 1px),
+    var(--paper);
+  background-size:auto,22px 22px,22px 22px,auto;
+  border:1px solid #ddd2bb;border-radius:8px;
+  box-shadow:0 18px 50px rgba(71,58,35,.18);overflow:hidden;
+}
+.page::after{
+  content:"✎   ∑   π   √   x²   📊";
+  position:absolute;top:10px;right:20px;color:#7b6b54;opacity:.15;
+  font:700 18px/1.2 "Comic Sans MS","Segoe Print",cursive;
+  transform:rotate(-2deg);letter-spacing:4px;
+}
+.actions{position:sticky;top:10px;z-index:30;text-align:right;margin-bottom:8px}
+.actions button{
+  border:2px solid #2c5f88;background:#fff8d8;color:#28475f;
+  padding:10px 16px;border-radius:8px 14px 7px 13px;font-weight:900;
+  cursor:pointer;box-shadow:4px 5px 0 #b5cfe0;
+}
+.notice{
+  position:relative;margin:18px 0;padding:16px 18px;background:#fff3b8;
+  border:2px solid #c5912e;border-radius:5px 14px 5px 13px;
+}
+.notice::before{content:"📌";position:absolute;left:-18px;top:-16px;font-size:28px}
+.unit-title{text-align:center;margin:18px 0;padding:16px 8px 10px}
+.unit-title small{color:#658150;font-weight:900;letter-spacing:1.2px}
+.unit-title h2{
+  display:inline-block;margin:7px auto 0;padding:5px 14px 8px;
+  color:#2a577a;font:700 1.65rem "Comic Sans MS","Segoe Print",cursive;
+  border-bottom:5px double #d0a63c;
+}
+.lesson{position:relative;margin:24px 0 30px;padding:0 3px 10px}
+.lesson::after{content:none!important}
+.lesson-head{
+  display:flex;align-items:center;gap:14px;padding:8px 8px 10px;
+  border-bottom:2px solid rgba(53,98,132,.4);
+}
+.lesson-number{
+  width:58px;height:45px;display:grid;place-items:center;color:#fff;
+  font:900 1.1rem "Comic Sans MS","Segoe Print",cursive;
+  background:#2f78b7;border:2px solid #244d6b;border-radius:5px 13px 4px 11px;
+  box-shadow:3px 3px 0 #f2c14d;
+}
+.lesson:nth-of-type(even) .lesson-number{background:#bd5e5e;box-shadow:3px 3px 0 #97b874}
+.lesson-head h2{
+  margin:0;color:#2f5674;font:700 1.65rem/1.1 "Comic Sans MS","Segoe Print",cursive;
+}
+.lesson-head p{margin:3px 0 0;color:#6a5a4d;font-family:Georgia,serif;font-style:italic}
+.lesson-body{padding:10px 8px 4px;font-family:Georgia,"Times New Roman",serif;font-size:1.02rem}
+.lesson-body h3{
+  display:inline-block;margin:7px 0 8px;color:#a84e4e;
+  font:700 1.28rem "Comic Sans MS","Segoe Print",cursive;
+  border-bottom:3px solid #d9b747;
+}
+.example,.tip{margin:8px 0;padding:5px 0 5px 10px}
+.example{border-left:3px solid #397cad}
+.tip{border-left:3px solid #d79f2b}
+.mathbox{
+  margin:8px auto;padding:6px 0;text-align:center;
+  font:800 1.05rem/1.5 "Comic Sans MS","Segoe Print",cursive;
+}
+.steps{display:block;margin:6px 0}
+.step{
+  display:grid;grid-template-columns:28px 1fr;align-items:start;
+  gap:7px;margin:4px 0;
+}
+.step-num{
+  width:23px;height:23px;display:grid;place-items:center;border-radius:50%;
+  background:#5d8f67;color:#fff;border:1px solid #42694a;
+  font:800 .78rem "Trebuchet MS";
+}
+.step p{margin:0}
+table{
+  border-collapse:separate;border-spacing:0;width:min(700px,100%);
+  margin:15px auto;background:rgba(255,254,245,.82);
+  border:2px solid #587a91;border-radius:8px;overflow:hidden;
+  font-family:"Trebuchet MS","Segoe UI",sans-serif;
+}
+th,td{padding:9px 10px;text-align:center;border-right:1px solid #94b1c1;border-bottom:1px solid #94b1c1}
+th{background:#dcebf2;color:#355d76;font-family:"Comic Sans MS","Segoe Print",cursive}
+tr:last-child td{border-bottom:none} th:last-child,td:last-child{border-right:none}
+.final{margin-top:30px;padding:18px 6px 25px}
+.final h2{
+  margin-top:0;color:#9b4f4f;font:700 1.8rem "Comic Sans MS","Segoe Print",cursive;
+  text-align:center;text-decoration:underline wavy #d2a33c;text-underline-offset:7px;
+}
+.task{
+  margin:8px 0;padding:7px 2px;
+  border-bottom:1px dashed rgba(72,111,137,.32);
+}
+@media(max-width:760px){
+  .page{padding:22px 18px 35px 44px}
+  .lesson-head{align-items:flex-start}
+  .lesson-head h2{font-size:1.35rem}
+}
+@media print{
+  html,body{margin:0!important;padding:0!important;background:#fff!important}
+  body{width:210mm}
+  .page{
+    width:210mm!important;max-width:210mm!important;margin:0!important;
+    padding:4mm 8mm 4mm 16mm!important;border:0!important;box-shadow:none!important;
+    background-color:#fffef8!important;
+    background-image:
+      linear-gradient(90deg,transparent 0 12mm,rgba(210,72,72,.34) 12mm 12.45mm,transparent 12.45mm),
+      linear-gradient(rgba(86,145,186,.18) .28mm,transparent .28mm),
+      linear-gradient(90deg,rgba(86,145,186,.18) .28mm,transparent .28mm)!important;
+    background-size:auto,6.5mm 6.5mm,6.5mm 6.5mm!important;
+  }
+  .actions{display:none!important}
+  .lesson{margin:2mm 0 3mm!important}
+  .lesson-body{font-size:10.5pt!important;line-height:1.4!important}
+  table{font-size:9.5pt!important}
+  .task{break-inside:avoid!important}
+  @page{size:A4 portrait;margin:0}
+}
+</style>
+<style>
+.sign-map{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.sign-card{border:2px solid #78909c;border-radius:14px;padding:12px;background:#fff}
+.sign-card h4{margin:0 0 8px;text-align:center;font-size:1.02rem}
+.sign-line{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 8px;margin:5px 0;border-radius:8px;background:#f4f7f8;font-weight:700}
+.mini-flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:14px 0}
+.flow-box{border:2px solid #78909c;border-radius:12px;padding:9px 12px;background:#fff;text-align:center;font-weight:700}
+.flow-arrow{font-size:1.3rem;font-weight:700}
+.cloud-note{border:2px dashed #78909c;border-radius:28px;padding:12px 18px;margin:12px auto;background:#f8fbfc;text-align:center;max-width:760px}
+@media(max-width:650px){.sign-map{grid-template-columns:1fr}}
+</style>
+<style>
+/* ===== RESPONSIVE MÓVIL / TABLET / PC ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+img, svg { max-width: 100%; height: auto; }
+
+table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+/* En móvil las tablas se convierten en tarjetas legibles */
+@media (max-width: 700px) {
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+  }
+
+  .page, .sheet, main, .container, .content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .lesson {
+    margin: 16px 10px !important;
+    border-radius: 14px;
+  }
+
+  .lesson-head {
+    padding: 14px 12px !important;
+    gap: 10px !important;
+    align-items: flex-start !important;
+  }
+
+  .lesson-number {
+    min-width: 42px;
+    width: 42px;
+    height: 42px;
+    font-size: .95rem;
+  }
+
+  .lesson-head h2 {
+    font-size: 1.15rem !important;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .lesson-head p {
+    font-size: .92rem !important;
+  }
+
+  .lesson-body {
+    padding: 14px 12px 18px !important;
+  }
+
+  h1 { font-size: 1.55rem !important; }
+  h2 { font-size: 1.2rem !important; }
+  h3 { font-size: 1.08rem !important; }
+  p, li, .example, .tip, .cloud-note {
+    line-height: 1.55 !important;
+  }
+
+  /* Tablas tipo tarjeta */
+  table {
+    display: block;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  table thead, table tbody, table tr, table th, table td {
+    display: block;
+    width: 100% !important;
+  }
+
+  table tr {
+    margin: 0 0 12px;
+    border: 1.5px solid #7d9db3;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255,255,255,.78);
+  }
+
+  table tr:first-child {
+    display: none;
+  }
+
+  table th, table td {
+    border: 0 !important;
+    border-bottom: 1px solid rgba(125,157,179,.35) !important;
+    padding: 10px 12px !important;
+    text-align: left !important;
+    min-height: 0 !important;
+    overflow-wrap: anywhere;
+  }
+
+  table td:last-child, table th:last-child {
+    border-bottom: 0 !important;
+  }
+
+  /* La primera celda funciona como encabezado de cada tarjeta */
+  table td:first-child, table th:first-child {
+    background: #e6f0f6;
+    font-weight: 800;
+    color: #28546f;
+  }
+
+  .sign-map {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .mini-flow {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 6px !important;
+  }
+
+  .flow-box {
+    width: 100% !important;
+  }
+
+  .flow-arrow {
+    transform: rotate(90deg);
+    text-align: center;
+    line-height: 1;
+  }
+
+  .mathbox, .example, .tip, .cloud-note {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    overflow-wrap: anywhere;
+  }
+
+  .actions {
+    padding: 10px !important;
+  }
+
+  .actions button {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  /* Etiqueta vertical: no debe quitar espacio en pantallas pequeñas */
+  .vertical-label {
+    display: none !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body { font-size: 15px; }
+  .lesson { margin: 12px 6px !important; }
+  .lesson-body { padding: 12px 10px 16px !important; }
+  .lesson-head { padding: 12px 10px !important; }
+  table th, table td { padding: 9px 10px !important; }
+}
+</style>
+<style>
+/* Ajuste específico: columna "Signos" más ancha y legible */
+@media (min-width: 701px) {
+  .lesson-body table th:first-child,
+  .lesson-body table td:first-child {
+    width: 32% !important;
+    min-width: 210px !important;
+  }
+  .lesson-body table th:nth-child(2),
+  .lesson-body table td:nth-child(2) {
+    width: 68% !important;
+  }
+}
+
+/* En móvil las tarjetas usan todo el ancho y los signos no se comprimen */
+@media (max-width: 700px) {
+  .lesson-body table td:first-child,
+  .lesson-body table th:first-child {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 12px 14px !important;
+    font-size: 1.05rem !important;
+  }
+  .lesson-body table td {
+    white-space: normal !important;
+  }
+}
+</style>
+<style id="table-layout-fix">
+/* ===== TABLAS: DISTRIBUCIÓN CORRECTA EN PC, TABLET Y MÓVIL ===== */
+.clean-table{
+  width:100% !important;
+  border-collapse:separate !important;
+  border-spacing:0 !important;
+  table-layout:fixed !important;
+  margin:16px 0 20px !important;
+  border:1px solid #8fb0c4 !important;
+  border-radius:12px !important;
+  overflow:hidden !important;
+  background:rgba(255,255,255,.72) !important;
+}
+.clean-table tr{display:table-row !important;}
+.clean-table th,
+.clean-table td{
+  display:table-cell !important;
+  width:auto !important;
+  min-width:0 !important;
+  padding:12px 14px !important;
+  vertical-align:middle !important;
+  text-align:center !important;
+  line-height:1.35 !important;
+  border-right:1px solid #9db8c8 !important;
+  border-bottom:1px solid #9db8c8 !important;
+  white-space:normal !important;
+  overflow-wrap:normal !important;
+  word-break:normal !important;
+}
+.clean-table th{
+  background:#dcecf5 !important;
+  color:#28546f !important;
+  font-weight:800 !important;
+}
+.clean-table th:last-child,
+.clean-table td:last-child{border-right:0 !important;}
+.clean-table tr:last-child th,
+.clean-table tr:last-child td{border-bottom:0 !important;}
+
+/* 2 columnas: regla + explicación */
+.clean-table.cols-2 th:nth-child(1),
+.clean-table.cols-2 td:nth-child(1){width:31% !important;}
+.clean-table.cols-2 th:nth-child(2),
+.clean-table.cols-2 td:nth-child(2){width:69% !important;}
+
+/* 3 columnas: signos + resultado + ejemplo */
+.clean-table.cols-3 th:nth-child(1),
+.clean-table.cols-3 td:nth-child(1){width:28% !important;}
+.clean-table.cols-3 th:nth-child(2),
+.clean-table.cols-3 td:nth-child(2){width:18% !important;}
+.clean-table.cols-3 th:nth-child(3),
+.clean-table.cols-3 td:nth-child(3){width:54% !important;}
+
+/* 4 columnas: distribuciones estadísticas */
+.clean-table.cols-4 th:nth-child(1),
+.clean-table.cols-4 td:nth-child(1){width:20% !important;}
+.clean-table.cols-4 th:nth-child(2),
+.clean-table.cols-4 td:nth-child(2){width:14% !important;}
+.clean-table.cols-4 th:nth-child(3),
+.clean-table.cols-4 td:nth-child(3){width:32% !important;}
+.clean-table.cols-4 th:nth-child(4),
+.clean-table.cols-4 td:nth-child(4){width:34% !important;}
+
+/* No permitir que reglas antiguas deformen la primera columna */
+.lesson-body .clean-table th:first-child,
+.lesson-body .clean-table td:first-child{
+  min-width:0 !important;
+}
+
+/* MÓVIL: cada fila se convierte en una tarjeta clara con etiquetas */
+@media (max-width:700px){
+  .clean-table{
+    display:block !important;
+    border:0 !important;
+    background:transparent !important;
+    overflow:visible !important;
+    table-layout:auto !important;
+  }
+  .clean-table tr:first-child{
+    display:none !important;
+  }
+  .clean-table tr{
+    display:block !important;
+    width:100% !important;
+    margin:0 0 12px !important;
+    border:1px solid #8fb0c4 !important;
+    border-radius:12px !important;
+    overflow:hidden !important;
+    background:rgba(255,255,255,.84) !important;
+  }
+  .clean-table th,
+  .clean-table td{
+    display:grid !important;
+    grid-template-columns:minmax(105px, 38%) 1fr !important;
+    gap:10px !important;
+    width:100% !important;
+    padding:10px 12px !important;
+    text-align:left !important;
+    border-right:0 !important;
+    border-bottom:1px solid #c4d5df !important;
+    align-items:center !important;
+  }
+  .clean-table tr > *:last-child{
+    border-bottom:0 !important;
+  }
+  .clean-table td::before,
+  .clean-table th::before{
+    content:attr(data-label);
+    font-weight:800;
+    color:#28546f;
+  }
+  .clean-table.cols-2 td:nth-child(n),
+  .clean-table.cols-3 td:nth-child(n),
+  .clean-table.cols-4 td:nth-child(n),
+  .clean-table.cols-2 th:nth-child(n),
+  .clean-table.cols-3 th:nth-child(n),
+  .clean-table.cols-4 th:nth-child(n){
+    width:100% !important;
+  }
+}
+
+/* Celulares muy pequeños */
+@media (max-width:420px){
+  .clean-table th,
+  .clean-table td{
+    grid-template-columns:1fr !important;
+    gap:4px !important;
+  }
+  .clean-table td::before,
+  .clean-table th::before{
+    display:block;
+    padding-bottom:2px;
+  }
+}
+</style>
+<style id="print-grid-fix">
+@media print {
+  html, body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    background-color: #fffdf7 !important;
+    background-image:
+      linear-gradient(rgba(91, 154, 196, 0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91, 154, 196, 0.16) 1px, transparent 1px) !important;
+    background-size: 24px 24px !important;
+    background-position: 0 0 !important;
+  }
+
+  .page, .sheet, main, .container, .content {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
+  /* Línea roja estilo cuaderno, visible al imprimir */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 42px;
+    width: 2px;
+    background: rgba(220, 80, 80, 0.28) !important;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .lesson, .notice, .final, .example, .tip, .cloud-note,
+  .clean-table, .sign-card, .flow-box, .mathbox {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+</style>
+<style id="grouped-data-table-fix">
+@media (min-width: 701px){
+  .grouped-data-table th:nth-child(1),
+  .grouped-data-table td:nth-child(1){width:22% !important;}
+  .grouped-data-table th:nth-child(2),
+  .grouped-data-table td:nth-child(2){width:53% !important;}
+  .grouped-data-table th:nth-child(3),
+  .grouped-data-table td:nth-child(3){width:25% !important;}
+}
+</style><style id="grouped-mean-five-cols">
+@media (min-width:701px){
+  .grouped-mean-table{table-layout:fixed!important;}
+  .grouped-mean-table th:nth-child(1),.grouped-mean-table td:nth-child(1){width:15%!important;}
+  .grouped-mean-table th:nth-child(2),.grouped-mean-table td:nth-child(2){width:29%!important;}
+  .grouped-mean-table th:nth-child(3),.grouped-mean-table td:nth-child(3){width:10%!important;}
+  .grouped-mean-table th:nth-child(4),.grouped-mean-table td:nth-child(4){width:23%!important;}
+  .grouped-mean-table th:nth-child(5),.grouped-mean-table td:nth-child(5){width:23%!important;}
+}
+</style><style id="grouped-mean-final-widths">
+@media (min-width:701px){
+  .grouped-mean-table-final{table-layout:fixed!important;}
+  .grouped-mean-table-final th:nth-child(1),.grouped-mean-table-final td:nth-child(1){width:22%!important;}
+  .grouped-mean-table-final th:nth-child(2),.grouped-mean-table-final td:nth-child(2){width:14%!important;}
+  .grouped-mean-table-final th:nth-child(3),.grouped-mean-table-final td:nth-child(3){width:32%!important;}
+  .grouped-mean-table-final th:nth-child(4),.grouped-mean-table-final td:nth-child(4){width:32%!important;}
+}
+</style><style id="integrated-date-style">
+.presentation-date-inline{
+  margin:0 0 8px 0;
+  padding-bottom:8px;
+  border-bottom:1px dashed rgba(151,105,0,.45);
+  color:#704c00;
+  font-size:1.05rem;
+  text-align:left;
+}
+@media(max-width:700px){
+  .presentation-date-inline{
+    font-size:1rem;
+    line-height:1.4;
+  }
+}
+</style></head>
+<body>
+<main class="page">
+<div aria-hidden="true" style="
+position:absolute;left:9px;top:160px;writing-mode:vertical-rl;
+font-family:'Comic Sans MS','Segoe Print',cursive;font-size:13px;
+color:#8a7357;opacity:.34;letter-spacing:3px;transform:rotate(180deg)">
+MATEMÁTICA • 8.º EGB
+</div>
+<div class="actions">
+<button onclick="window.print()">🖨️ Imprimir / Guardar en PDF</button>
+</div>
+<div class="notice"><div class="presentation-date-inline">📅 <b>Fecha de presentación: martes 29 de septiembre de 2026</b></div><p style="margin:8px 0 6px;font-weight:800;">⭐ Indicaciones para el estudiante</p><p style="margin:0;">Desarrolla los contenidos en tu cuaderno de Matemática con orden y claridad. Revisa los ejemplos y resuelve la actividad final mostrando el procedimiento cuando sea necesario.</p></div>
+<section class="unit-title">
+<small>📐 MATEMÁTICA · 8.º DE BÁSICA</small><br/>
+<h2>UNIDAD 2: OPERACIONES CON NÚMEROS ENTEROS Y TABLAS DE FRECUENCIA</h2>
+</section>
+<section class="lesson">
+<div class="lesson-head">
+<div class="lesson-number">T1</div>
+<div>
+<h2>Ley de los signos</h2>
+<p>Reglas para suma, resta, multiplicación y división de números enteros.</p>
+</div>
+</div>
+<div class="lesson-body">
+<h3>Suma y resta</h3>
+<table class="clean-table cols-2">
+<tr><th>Signos</th><th>¿Qué hago?</th></tr>
+<tr><td data-label="Signos"><b>(+) + (+)</b></td><td data-label="¿Qué hago?">Se suman y se pone el signo <b>+</b>.</td></tr>
+<tr><td data-label="Signos"><b>(−) + (−)</b></td><td data-label="¿Qué hago?">Se suman y se pone el signo <b>−</b>.</td></tr>
+<tr><td data-label="Signos"><b>(+) + (−)</b><br/><b>(−) + (+)</b></td><td data-label="¿Qué hago?">Se restan y se pone el <b>signo del número con mayor valor absoluto</b>.</td></tr>
+</table>
+<div class="example">
+<b>Ejemplos:</b><br/>
+      (+5) + (+4) = <b>+9</b><br/>
+      (−2) + (−8) = <b>−10</b><br/>
+      (+1) + (−6) = <b>−5</b>, porque 6 es mayor que 1 y tiene signo negativo.
+    </div>
+<div class="cloud-note">
+<b>☁ Cuando aparece una resta:</b> cambia la resta por suma y cambia el signo del segundo número.<br/>
+      (+8) − (−3) = (+8) + (+3) = <b>+11</b><br/>
+      (−6) − (+4) = (−6) + (−4) = <b>−10</b>
+</div>
+<h3>Multiplicación</h3>
+<table class="clean-table cols-3">
+<tr><th>Signos</th><th>Resultado</th><th>Ejemplo</th></tr>
+<tr><td data-label="Signos">(+) × (+)</td><td data-label="Resultado"><b>+</b></td><td data-label="Ejemplo">(+5) × (+4) = <b>+20</b></td></tr>
+<tr><td data-label="Signos">(−) × (−)</td><td data-label="Resultado"><b>+</b></td><td data-label="Ejemplo">(−2) × (−6) = <b>+12</b></td></tr>
+<tr><td data-label="Signos">(+) × (−)</td><td data-label="Resultado"><b>−</b></td><td data-label="Ejemplo">(+7) × (−3) = <b>−21</b></td></tr>
+<tr><td data-label="Signos">(−) × (+)</td><td data-label="Resultado"><b>−</b></td><td data-label="Ejemplo">(−1) × (+6) = <b>−6</b></td></tr>
+</table>
+<h3>División</h3>
+<table class="clean-table cols-3">
+<tr><th>Signos</th><th>Resultado</th><th>Ejemplo</th></tr>
+<tr><td data-label="Signos">(+) ÷ (+)</td><td data-label="Resultado"><b>+</b></td><td data-label="Ejemplo">(+15) ÷ (+3) = <b>+5</b></td></tr>
+<tr><td data-label="Signos">(−) ÷ (−)</td><td data-label="Resultado"><b>+</b></td><td data-label="Ejemplo">(−6) ÷ (−2) = <b>+3</b></td></tr>
+<tr><td data-label="Signos">(+) ÷ (−)</td><td data-label="Resultado"><b>−</b></td><td data-label="Ejemplo">(+21) ÷ (−3) = <b>−7</b></td></tr>
+<tr><td data-label="Signos">(−) ÷ (+)</td><td data-label="Resultado"><b>−</b></td><td data-label="Ejemplo">(−10) ÷ (+5) = <b>−2</b></td></tr>
+</table>
+<div class="cloud-note">
+<b>☁ RECUERDA EN MULTIPLICACIÓN Y DIVISIÓN:</b><br/>
+      Signos iguales → <b>resultado positivo (+)</b><br/>
+      Signos diferentes → <b>resultado negativo (−)</b>
+</div>
+</div>
+</section>
+<section class="lesson">
+<div class="lesson-head">
+<div class="lesson-number">T2</div>
+<div>
+<h2>Potenciación y radicación con números enteros</h2>
+<p>Comprendemos qué significa una potencia y cómo encontrar una raíz.</p>
+</div>
+</div>
+<div class="lesson-body">
+<h3>Potenciación</h3>
+<p>Una potencia es una multiplicación repetida. En <b>(−3)⁴</b>, el −3 es la <b>base</b> y el 4 indica que la base se multiplica cuatro veces.</p>
+<div class="example">
+      🔎 (−3)⁴ = (−3) × (−3) × (−3) × (−3) = <b>81</b><br/>
+      🔎 (−3)³ = (−3) × (−3) × (−3) = <b>−27</b>
+</div>
+<div class="cloud-note"><b>☁ BASE NEGATIVA:</b> exponente par → resultado positivo.   Exponente impar → resultado negativo.</div>
+<h3>Radicación</h3>
+<p>La raíz busca el número que, multiplicado por sí mismo las veces que indica el índice, produce el número que está dentro del radical.</p>
+<div class="example">
+      🔎 √81 = <b>9</b>, porque 9 × 9 = 81.<br/>
+      🔎 ∛(−125) = <b>−5</b>, porque (−5) × (−5) × (−5) = −125.
+    </div>
+<div class="tip">📌 En los números reales no existe la raíz de índice par de un número negativo, por ejemplo √−9.</div>
+</div>
+</section>
+<section class="lesson">
+<div class="lesson-head">
+<div class="lesson-number">T3</div>
+<div>
+<h2>Operaciones combinadas con números enteros</h2>
+<p>Usamos PEMDAS para resolver en el orden correcto.</p>
+</div>
+</div>
+<div class="lesson-body">
+<h3>Jerarquía de operaciones: PEMDAS</h3>
+<div class="mini-flow">
+<div class="flow-box"><b>P</b><br/>Paréntesis</div><div class="flow-arrow">→</div>
+<div class="flow-box"><b>E</b><br/>Exponentes</div><div class="flow-arrow">→</div>
+<div class="flow-box"><b>M / D</b><br/>Multiplicar / Dividir</div><div class="flow-arrow">→</div>
+<div class="flow-box"><b>A / S</b><br/>Sumar / Restar</div>
+</div>
+<div class="cloud-note"><b>☁ IMPORTANTE:</b> multiplicación y división tienen la misma prioridad: se resuelven de izquierda a derecha. Lo mismo ocurre con suma y resta.</div>
+<div class="example">
+      🔎 <b>Ejemplo resuelto:</b><br/><br/>
+<div style="font-size:1.12rem;line-height:1.9;font-weight:600;">
+        −2 { −(−9 + 8) + [15 ÷ √9 + (−4)²] − (−7) }<br/>
+        = −2 { −(−1) + [15 ÷ 3 + 16] − (−7) }<br/>
+        = −2 { 1 + [5 + 16] + 7 }<br/>
+        = −2 { 1 + 21 + 7 }<br/>
+        = −2 { 29 }<br/>
+        = <b>−58</b>
+</div>
+</div>
+<p>En cada línea se resuelve únicamente lo que corresponde según PEMDAS; lo demás se conserva hasta que llegue su turno.</p>
+</div>
+</section>
+<section class="lesson">
+<div class="lesson-head">
+<div class="lesson-number">T4</div>
+<div>
+<h2>Proposición condicional y bicondicional</h2>
+<p>Reconocemos cuándo una proposición compuesta es verdadera o falsa.</p>
+</div>
+</div>
+<div class="lesson-body">
+<h3>Condicional: p → q</h3>
+<p>Se lee <b>“si p, entonces q”</b>. Solo es <b>falsa</b> cuando p es verdadera y q es falsa.</p>
+<table class="clean-table cols-3">
+<tr><th>p</th><th>q</th><th>p → q</th></tr>
+<tr><td data-label="p">V</td><td data-label="q">V</td><td data-label="p → q">V</td></tr>
+<tr><td data-label="p">V</td><td data-label="q">F</td><td data-label="p → q"><b>F</b></td></tr>
+<tr><td data-label="p">F</td><td data-label="q">V</td><td data-label="p → q">V</td></tr>
+<tr><td data-label="p">F</td><td data-label="q">F</td><td data-label="p → q">V</td></tr>
+</table>
+<div class="example">🔎 p: “4 es par” = V.   q: “4 es mayor que 10” = F.<br/>Entonces <b>p → q = F</b>.</div>
+<h3>Bicondicional: p ↔ q</h3>
+<p>Se lee <b>“p si y solo si q”</b>. Es verdadera cuando p y q tienen el <b>mismo valor de verdad</b>.</p>
+<table class="clean-table cols-3">
+<tr><th>p</th><th>q</th><th>p ↔ q</th></tr>
+<tr><td data-label="p">V</td><td data-label="q">V</td><td data-label="p ↔ q"><b>V</b></td></tr>
+<tr><td data-label="p">V</td><td data-label="q">F</td><td data-label="p ↔ q">F</td></tr>
+<tr><td data-label="p">F</td><td data-label="q">V</td><td data-label="p ↔ q">F</td></tr>
+<tr><td data-label="p">F</td><td data-label="q">F</td><td data-label="p ↔ q"><b>V</b></td></tr>
+</table>
+<div class="cloud-note"><b>☁ PARA RECORDAR:</b> Condicional → solo V–F da falso.   |   Bicondicional → valores iguales dan verdadero.</div>
+</div>
+</section>
+<section class="lesson">
+<div class="lesson-head">
+<div class="lesson-number">T5</div>
+<div>
+<h2>Tablas de frecuencias</h2>
+<p>Organizamos datos no agrupados y agrupados.</p>
+</div>
+</div>
+<div class="lesson-body">
+<h3>Datos no agrupados</h3>
+<p>Se usan cuando hay pocos valores diferentes. <b>fi</b> indica cuántas veces aparece cada dato; <b>hi</b> indica qué parte del total representa.</p>
+<div class="mini-flow">
+<div class="flow-box">Contar cada dato → fi</div><div class="flow-arrow">→</div>
+<div class="flow-box">hi = fi ÷ total</div><div class="flow-arrow">→</div>
+<div class="flow-box">% = hi × 100</div>
+</div>
+<div class="example">🔎 Datos: 1, 1, 2, 2, 2, 3, 3, 3, 3, 3. Hay 10 datos en total.</div>
+<table class="clean-table cols-4">
+<tr><th>Dato</th><th>fi</th><th>hi</th><th>%</th></tr>
+<tr><td data-label="Dato">1</td><td data-label="fi">2</td><td data-label="hi">2 ÷ 10 = 0,20</td><td data-label="%">20%</td></tr>
+<tr><td data-label="Dato">2</td><td data-label="fi">3</td><td data-label="hi">3 ÷ 10 = 0,30</td><td data-label="%">30%</td></tr>
+<tr><td data-label="Dato">3</td><td data-label="fi">5</td><td data-label="hi">5 ÷ 10 = 0,50</td><td data-label="%">50%</td></tr>
+<tr><th data-label="Dato">Total</th><th data-label="fi">10</th><th data-label="hi">1,00</th><th data-label="%">100%</th></tr>
+</table>
+<h3>Datos agrupados</h3>
+<p>Cuando existen muchos datos, podemos juntarlos en <b>grupos llamados intervalos</b>. Por ejemplo, <b>10–12</b> significa: contar todos los datos desde 10 hasta 12, incluyendo ambos extremos.</p>
+<div class="example">
+      🔎 <b>Datos:</b> 10, 11, 12, 12, 13, 14, 14, 15, 16, 16, 17, 18
+    </div>
+<table class="clean-table cols-3 grouped-data-table">
+<tr>
+<th>Intervalo</th>
+<th>Datos que contiene</th>
+<th>Frecuencia (fi)</th>
+</tr>
+<tr>
+<td data-label="Intervalo"><b>10–12</b></td>
+<td data-label="Datos que contiene">10, 11, 12, 12</td>
+<td data-label="Frecuencia (fi)"><b>4</b></td>
+</tr>
+<tr>
+<td data-label="Intervalo"><b>13–15</b></td>
+<td data-label="Datos que contiene">13, 14, 14, 15</td>
+<td data-label="Frecuencia (fi)"><b>4</b></td>
+</tr>
+<tr>
+<td data-label="Intervalo"><b>16–18</b></td>
+<td data-label="Datos que contiene">16, 16, 17, 18</td>
+<td data-label="Frecuencia (fi)"><b>4</b></td>
+</tr>
+<tr>
+<th data-label="Intervalo">Total</th>
+<td data-label="Datos que contiene">12 datos</td>
+<th data-label="Frecuencia (fi)">12</th>
+</tr>
+</table>
+<div class="cloud-note"><b>☁ ¿QUÉ SIGNIFICA fi = 4?</b> Que dentro de ese intervalo encontramos <b>4 datos</b>. La frecuencia no es el valor del intervalo: es la cantidad de datos que contiene.</div>
+</div>
+</section>
+<section class="lesson">
+<div class="lesson-head">
+<div class="lesson-number">T6</div>
+<div>
+<h2>Medidas de tendencia central</h2>
+<p>Encontramos media, mediana y moda.</p>
+</div>
+</div>
+<div class="lesson-body">
+<h3>Datos no agrupados</h3>
+<table class="clean-table cols-2">
+<tr><th>Medida</th><th>¿Cómo se obtiene?</th></tr>
+<tr><td data-label="Medida"><b>Media</b></td><td data-label="¿Cómo se obtiene?">Se suman todos los datos y se divide para la cantidad de datos.</td></tr>
+<tr><td data-label="Medida"><b>Mediana</b></td><td data-label="¿Cómo se obtiene?">Se ordenan los datos y se toma el valor central. Si quedan dos centrales, se suman y se divide para 2.</td></tr>
+<tr><td data-label="Medida"><b>Moda</b></td><td data-label="¿Cómo se obtiene?">Es el dato que más veces se repite.</td></tr>
+</table>
+<div class="example">
+      🔎 Datos ordenados: <b>4, 6, 6, 8, 11</b><br/>
+      Media = (4 + 6 + 6 + 8 + 11) ÷ 5 = 35 ÷ 5 = <b>7</b><br/>
+      Mediana = <b>6</b> (está en el centro)<br/>
+      Moda = <b>6</b> (es el que más se repite)
+    </div>
+<h3>Media con datos agrupados</h3>
+<p>Como no trabajamos con cada dato por separado, usamos el <b>punto medio de cada intervalo</b>, llamado <b>marca de clase (xi)</b>.</p>
+<div class="mini-flow">
+<div class="flow-box">xi = (límite inferior + superior) ÷ 2</div><div class="flow-arrow">→</div>
+<div class="flow-box">fi × xi</div><div class="flow-arrow">→</div>
+<div class="flow-box">Σ(fi × xi) ÷ Σfi</div>
+</div>
+<div class="example grouped-source-data">
+      🔎 <b>Datos:</b> 10, 11, 12, 13, 13, 14, 14, 15, 16, 18<br/><br/>
+      Antes de calcular la media, contamos cuántos datos pertenecen a cada intervalo:<br/>
+<b>10–12:</b> 10, 11, 12 → fi = 3<br/>
+<b>13–15:</b> 13, 13, 14, 14, 15 → fi = 5<br/>
+<b>16–18:</b> 16, 18 → fi = 2
+    </div>
+<table class="clean-table grouped-mean-table-final">
+<tr>
+<th>Intervalo</th>
+<th>fi</th>
+<th>xi</th>
+<th>fi × xi</th>
+</tr>
+<tr>
+<td data-label="Intervalo">10–12</td>
+<td data-label="fi"><b>3</b></td>
+<td data-label="xi">(10+12)÷2 = <b>11</b></td>
+<td data-label="fi × xi">3×11 = <b>33</b></td>
+</tr>
+<tr>
+<td data-label="Intervalo">13–15</td>
+<td data-label="fi"><b>5</b></td>
+<td data-label="xi">(13+15)÷2 = <b>14</b></td>
+<td data-label="fi × xi">5×14 = <b>70</b></td>
+</tr>
+<tr>
+<td data-label="Intervalo">16–18</td>
+<td data-label="fi"><b>2</b></td>
+<td data-label="xi">(16+18)÷2 = <b>17</b></td>
+<td data-label="fi × xi">2×17 = <b>34</b></td>
+</tr>
+<tr>
+<th data-label="Intervalo">Total</th>
+<th data-label="fi">10</th>
+<td data-label="xi">—</td>
+<th data-label="fi × xi">137</th>
+</tr>
+</table>
+<div class="example">
+      🔎 Sumamos los productos: 33 + 70 + 34 = <b>137</b>.<br/>
+      Sumamos las frecuencias: 3 + 5 + 2 = <b>10</b>.<br/>
+      Media = 137 ÷ 10 = <b>13,7</b>.
+    </div>
+<div class="tip">📌 La <b>clase modal</b> es el intervalo con mayor frecuencia. En el ejemplo es 13–15, porque tiene fi = 5.</div>
+</div>
+</section>
+<section class="final">
+<h2>📝 Actividad final · Unidad 2</h2>
+<p>Resuelve en el cuaderno mostrando los procedimientos.</p>
+<div class="final-exercises">
+<ol>
+<li>Resuelve: <b>(−8) × (+6)</b> y <b>(−72) ÷ (−9)</b>.</li>
+<li>Calcula: <b>(−4)³</b>, <b>(−5)²</b>, <b>√144</b> y <b>∛(−125)</b>.</li>
+<li>Resuelve respetando PEMDAS: <b>−3 × [8 − (−2)] + 4²</b>.</li>
+<li>Resuelve respetando PEMDAS: <b>[18 − (−6)] ÷ 3 + 2³</b>.</li>
+<li>Completa la tabla de verdad de <b>p → q</b> para las cuatro combinaciones posibles de p y q.</li>
+<li>Completa la tabla de verdad de <b>p ↔ q</b> e indica en qué casos el bicondicional es verdadero.</li>
+<li>Con los datos <b>2, 3, 3, 4, 4, 4, 5, 5, 5, 5</b>, construye una tabla con <b>fi, hi y porcentaje</b>.</li>
+<li>
+<b>Datos:</b> 10, 11, 12, 12, 13, 14, 14, 15, 16, 16, 17, 18.<br/>
+      Agrúpalos en los intervalos <b>10–12, 13–15 y 16–18</b> y calcula la <b>frecuencia absoluta (fi)</b> de cada intervalo.
+    </li>
+<li>
+      Calcula la <b>media, mediana y moda</b> de:
+      <b>6, 8, 8, 9, 10, 10, 10, 11, 12</b>.
+    </li>
+<li>
+<b>Media con datos agrupados.</b><br/>
+<b>Datos:</b> 21, 22, 23, 24, 24, 25, 26, 26, 27, 28, 29, 29.<br/><br/>
+      Agrupa los datos en <b>21–23, 24–26 y 27–29</b>.
+      Construye una tabla con <b>fi, xi y fi × xi</b> y calcula la <b>media agrupada</b>.
+      <div class="mathbox">Media = Σ(fi × xi) ÷ Σfi</div>
+</li>
+</ol>
+</div></section>
+</main>
+</body>
+</html>
